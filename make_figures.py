@@ -156,7 +156,6 @@ def fig_cost_accuracy() -> None:
             ("fixed_k1", "round-0 vote", "round0"),
             ("ensemble_vote", "maj vote", "majvote"),
             (sc, "SC " + SC_NICE[sc], "selfcons"),
-            ("unc<q40", "DUS 0.4", "adaptive"),
             ("unc<q50", "DUS 0.5", "adaptive"),
         ]
         for r in rows:
@@ -176,7 +175,6 @@ def fig_cost_accuracy() -> None:
             ("fixed_k1", "round-0 vote", "round0"),
             ("ensemble_vote", "maj vote", "majvote"),
             (sc, "SC " + SC_NICE[sc], "selfcons"),
-            ("unc<q40", "DUS 0.4", "adaptive"),
             ("unc<q50", "DUS 0.5", "adaptive"),
         ]
         names = [r[0] for r in rows]
