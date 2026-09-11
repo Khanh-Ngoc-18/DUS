@@ -1,0 +1,4211 @@
+{
+  "n_claims": 491,
+  "n_ok": 491,
+  "claims": [
+    {
+      "section": "IV-B",
+      "claim": "4500",
+      "description": "so debate",
+      "source": "verify_threshold.json :: sequential.n_rollouts",
+      "computed": 4500,
+      "ok": true
+    },
+    {
+      "section": "IV-B",
+      "claim": "27000",
+      "description": "tong so round",
+      "source": "verify_threshold.json :: naive.n_rounds",
+      "computed": 27000,
+      "ok": true
+    },
+    {
+      "section": "IV-B",
+      "claim": "22500",
+      "description": "so round khong-cuoi",
+      "source": "verify_threshold.json :: nonfinal.n",
+      "computed": 22500,
+      "ok": true
+    },
+    {
+      "section": "IV-B",
+      "claim": "32.9",
+      "description": "ty le sai tren round khong-cuoi",
+      "source": "verify_threshold.json :: nonfinal.error_rate",
+      "computed": 0.3293333333333333,
+      "ok": true
+    },
+    {
+      "section": "IV-B",
+      "claim": "0.326",
+      "description": "base rate cua nhan da sua",
+      "source": "p0_critic_eval.json :: base_rate",
+      "computed": 0.3257333333333333,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "18978",
+      "description": "so round trong split train",
+      "source": "dus_weights.json :: n_rows",
+      "computed": 18978,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "2748",
+      "description": "so cau hoi doc lap",
+      "source": "p1_power.json :: n_samples",
+      "computed": 2748,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "0.958",
+      "description": "power tai 65 cau",
+      "source": "p1_power.json :: power.65.power",
+      "computed": 0.9583333333333334,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "0.992",
+      "description": "power tai 100 cau",
+      "source": "p1_power.json :: power.100.power",
+      "computed": 0.9916666666666667,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "1.000",
+      "description": "power tai 200 cau",
+      "source": "p1_power.json :: power.200.power",
+      "computed": 1.0,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "33.9",
+      "description": "ty le round bi gan 'stop' (giao thuc truc tiep)",
+      "source": "verify_threshold.json :: naive.stop_rate",
+      "computed": 0.33885185185185185,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "9149",
+      "description": "so round duoi nguong",
+      "source": "verify_threshold.json :: circularity.n_below_threshold",
+      "computed": 9149,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "-0.604",
+      "description": "nguong T* chon boi giao thuc truc tiep",
+      "source": "verify_threshold.json :: naive.threshold",
+      "computed": -0.604350668994671,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "4.85",
+      "description": "error rate theo ROUND",
+      "source": "verify_threshold.json :: sequential.miss_rate_per_row",
+      "computed": 0.04848148148148148,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "5.09",
+      "description": "error rate theo DEBATE",
+      "source": "verify_threshold.json :: sequential.miss_rate_per_sample",
+      "computed": 0.050888888888888886,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "1.05",
+      "description": "he so thoi phong per-round -> per-debate",
+      "source": "verify_threshold.json :: sequential.inflation",
+      "computed": 1.0496562261268143,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "1517",
+      "description": "so debate co flag fire",
+      "source": "verify_threshold.json :: sequential.n_flag_fired",
+      "computed": 1517,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "14987",
+      "description": "so round he chuan (consensus) thuc su chay",
+      "source": "verify_threshold.json :: sequential.rounds_standard_system",
+      "computed": 14987,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "0",
+      "description": "so debate dung SOM HON he chuan",
+      "source": "verify_threshold.json :: sequential.n_stopped_earlier",
+      "computed": 0,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "0.0",
+      "description": "ty le round tiet kiem THUC",
+      "source": "verify_threshold.json :: sequential.real_saving_rate",
+      "computed": 0.0,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "11754",
+      "description": "so round co answer_entropy = 0 (= consensus)",
+      "source": "verify_threshold.json :: circularity.n_entropy_zero",
+      "computed": 11754,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "2,037",
+      "description": "round entropy=0 la round CUOI cua debate",
+      "source": "verify_threshold.json :: circularity.n_entropy_zero_is_last",
+      "computed": 2037,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "872",
+      "description": "so round nam dung tai T (mass point)",
+      "source": "verify_threshold.json :: mass_point.n_rows_equal_T",
+      "computed": 872,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "37.1",
+      "description": "stop rate neu doi dau < thanh <=",
+      "source": "verify_threshold.json :: mass_point.stop_rate_le",
+      "computed": 0.37114814814814817,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "5.63",
+      "description": "error rate neu doi dau < thanh <=",
+      "source": "verify_threshold.json :: mass_point.miss_rate_le",
+      "computed": 0.056296296296296296,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "0.717",
+      "description": "AUC tren MOI round (thoi phong)",
+      "source": "verify_threshold.json :: nonfinal.auc_all_rounds",
+      "computed": 0.7166072515772561,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "0.714",
+      "description": "AUC tren round khong-cuoi",
+      "source": "verify_threshold.json :: nonfinal.auc_nonfinal",
+      "computed": 0.713549275646168,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "0.003",
+      "description": "do thoi phong AUC",
+      "source": "verify_threshold.json :: nonfinal.auc_inflation",
+      "computed": 0.0030579759310881416,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "0.323",
+      "description": "uncertain rate tren train",
+      "source": "dus_weights.json :: uncertain_rate",
+      "computed": 0.32311097059753396,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.705",
+      "description": "ROC-AUC model 'base (DUS 4 feature)'",
+      "source": "p0_critic_eval.json :: models['base (DUS 4 feature)'].auc",
+      "computed": 0.7047146091640725,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.729",
+      "description": "ROC-AUC model 'critic only'",
+      "source": "p0_critic_eval.json :: models['critic only'].auc",
+      "computed": 0.7293762577482131,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.736",
+      "description": "ROC-AUC model 'base + critic'",
+      "source": "p0_critic_eval.json :: models['base + critic'].auc",
+      "computed": 0.7360748008178691,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.738",
+      "description": "ROC-AUC DUS-11 5-fold CV theo cau",
+      "source": "p1_power.json :: auc_cv",
+      "computed": 0.7376093189839406,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.882",
+      "description": "AUC per-task gsm8k",
+      "source": "p0_critic_eval.json :: per_task.gsm8k",
+      "computed": 0.8822760776763228,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.705",
+      "description": "AUC per-task mmlu",
+      "source": "p0_critic_eval.json :: per_task.mmlu",
+      "computed": 0.7048743682890364,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.590",
+      "description": "AUC per-task strategyqa",
+      "source": "p0_critic_eval.json :: per_task.strategyqa",
+      "computed": 0.5896594566373904,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.025",
+      "description": "hieu AUC ghep cap, CRITIC-7 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['critic only - base (DUS 4 feature)'].delta",
+      "computed": 0.02466164858414066,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.007",
+      "description": "CI duoi cua hieu, CRITIC-7 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['critic only - base (DUS 4 feature)'].ci[0]",
+      "computed": 0.007305410871785564,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.042",
+      "description": "CI tren cua hieu, CRITIC-7 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['critic only - base (DUS 4 feature)'].ci[1]",
+      "computed": 0.042475463639597526,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.002",
+      "description": "p hai phia, CRITIC-7 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['critic only - base (DUS 4 feature)'].p_two_sided",
+      "computed": 0.002,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.031",
+      "description": "hieu AUC ghep cap, DUS-11 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['base + critic - base (DUS 4 feature)'].delta",
+      "computed": 0.031360191653796665,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.021",
+      "description": "CI duoi cua hieu, DUS-11 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['base + critic - base (DUS 4 feature)'].ci[0]",
+      "computed": 0.020517472023395232,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.043",
+      "description": "CI tren cua hieu, DUS-11 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['base + critic - base (DUS 4 feature)'].ci[1]",
+      "computed": 0.04306591528545858,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.000",
+      "description": "p hai phia, DUS-11 - DUS-4",
+      "source": "p0_critic_eval.json :: paired['base + critic - base (DUS 4 feature)'].p_two_sided",
+      "computed": 0.0,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.007",
+      "description": "hieu AUC ghep cap, DUS-11 - CRITIC-7",
+      "source": "p0_critic_eval.json :: paired['base + critic - critic only'].delta",
+      "computed": 0.0066985430696560044,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "-0.004",
+      "description": "CI duoi cua hieu, DUS-11 - CRITIC-7",
+      "source": "p0_critic_eval.json :: paired['base + critic - critic only'].ci[0]",
+      "computed": -0.0036075274895371436,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.017",
+      "description": "CI tren cua hieu, DUS-11 - CRITIC-7",
+      "source": "p0_critic_eval.json :: paired['base + critic - critic only'].ci[1]",
+      "computed": 0.017349725813574676,
+      "ok": true
+    },
+    {
+      "section": "V-C",
+      "claim": "0.202",
+      "description": "p hai phia, DUS-11 - CRITIC-7",
+      "source": "p0_critic_eval.json :: paired['base + critic - critic only'].p_two_sided",
+      "computed": 0.202,
+      "ok": true
+    },
+    {
+      "section": "V-D",
+      "claim": "56.6",
+      "description": "% debate mmlu q50 dung SOM HON consensus",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.stop_timing['unc<q50'].earlier_pct",
+      "computed": 56.599999999999994,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-39.4",
+      "description": "dToken mmlu unc<q50 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dtok.mean",
+      "computed": -39.42269406523168,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.001",
+      "description": "dAccuracy mmlu unc<q50 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dacc.mean",
+      "computed": -0.0006666666666666488,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-26.1",
+      "description": "dToken mmlu unc<q40 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q40'].dtok.mean",
+      "computed": -26.066237194489585,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.003",
+      "description": "dAccuracy mmlu unc<q40 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q40'].dacc.mean",
+      "computed": -0.0033333333333333435,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-6.0",
+      "description": "dToken gsm8k unc<q50 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.gsm8k.paired_vs_consensus['unc<q50'].dtok.mean",
+      "computed": -5.997333100925055,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.001",
+      "description": "dAccuracy gsm8k unc<q50 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.gsm8k.paired_vs_consensus['unc<q50'].dacc.mean",
+      "computed": -0.0006666666666666598,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.4",
+      "description": "dToken strategyqa unc<q50 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.strategyqa.paired_vs_consensus['unc<q50'].dtok.mean",
+      "computed": -0.4481722883108494,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.001",
+      "description": "dAccuracy strategyqa unc<q50 vs consensus (nested CV)",
+      "source": "p3_holdout_policy.json :: nested_cv.strategyqa.paired_vs_consensus['unc<q50'].dacc.mean",
+      "computed": -0.0006666666666667043,
+      "ok": true
+    },
+    {
+      "section": "V-F",
+      "claim": "0.51",
+      "description": "TABLE IX net tong theo %",
+      "source": "p4_rescue_hurt.json :: total.net_pct",
+      "computed": 0.5111111111111112,
+      "ok": true
+    },
+    {
+      "section": "V-F",
+      "claim": "116",
+      "description": "so cap khong khop cua gsm8k (rescued + corrupted)",
+      "source": "p4_rescue_hurt.json :: gsm8k.n_discordant",
+      "computed": 116,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "2.3",
+      "description": "SD cua dToken mmlu q50 qua 5 seed",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dtok.sd",
+      "computed": 2.3017260919241886,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-39.2",
+      "description": "dToken mmlu q50 tren holdout 70/20/10",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dtok.mean",
+      "computed": -39.194308341181824,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "14.6",
+      "description": "SD cua dToken mmlu q50 tren holdout",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dtok.sd",
+      "computed": 14.611195299070593,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.046",
+      "description": "dAccuracy mmlu q50 tren holdout 70/20/10",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc.mean",
+      "computed": -0.04555780933062881,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.096",
+      "description": "CI cua dAcc mmlu q50 tren holdout, can duoi",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc_ci_clustered[0]",
+      "computed": -0.09615384615384616,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-0.007",
+      "description": "CI cua dAcc mmlu q50 tren holdout, can tren",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc_ci_clustered[1]",
+      "computed": -0.0065348866819455115,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "151",
+      "description": "so debate test cua mmlu",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.n_debate",
+      "computed": 151,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "0.587",
+      "description": "accuracy cua `always` tren tap test MMLU",
+      "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.policies.always.acc.mean",
+      "computed": 0.5867891944814015,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "-40.9",
+      "description": "dToken mmlu q50 neu chon T in-sample",
+      "source": "p3_holdout_policy.json :: threshold_selection_optimism.mmlu['unc<q50'].in_sample_dtok",
+      "computed": -40.94284683696888,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "3.2",
+      "description": "do lac quan LON NHAT cua dToken khi chon T in-sample",
+      "source": "p3_holdout_policy.json :: max |threshold_selection_optimism.*.*.dtok_pp|",
+      "computed": 3.1843900782028713,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "0.004",
+      "description": "do lac quan LON NHAT cua dAccuracy khi chon T in-sample",
+      "source": "p3_holdout_policy.json :: max |threshold_selection_optimism.*.*.dacc|",
+      "computed": 0.0040000000000000036,
+      "ok": true
+    },
+    {
+      "section": "V-F",
+      "claim": "0.516",
+      "description": "McNemar p, net cua gsm8k khac 0",
+      "source": "p4_rescue_hurt.json :: gsm8k.mcnemar_p",
+      "computed": 0.5159130749957945,
+      "ok": true
+    },
+    {
+      "section": "V-F",
+      "claim": "0.074",
+      "description": "McNemar p, net cua mmlu khac 0",
+      "source": "p4_rescue_hurt.json :: mmlu.mcnemar_p",
+      "computed": 0.07387580201820067,
+      "ok": true
+    },
+    {
+      "section": "V-F",
+      "claim": "0.764",
+      "description": "McNemar p, net cua strategyqa khac 0",
+      "source": "p4_rescue_hurt.json :: strategyqa.mcnemar_p",
+      "computed": 0.7637740588658732,
+      "ok": true
+    },
+    {
+      "section": "V-F",
+      "claim": "0.320",
+      "description": "McNemar p, net cua total khac 0",
+      "source": "p4_rescue_hurt.json :: total.mcnemar_p",
+      "computed": 0.3197984237766786,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "0.875",
+      "description": "AUC gop qua seed, gsm8k",
+      "source": "p2_cost_accuracy.json :: pooled_auc_across_seeds.gsm8k.auc",
+      "computed": 0.874917381105202,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "56.0",
+      "description": "ty le token cua consensus, gsm8k",
+      "source": "p3_holdout_policy.json :: nested_cv.gsm8k.policies.consensus.tok.mean",
+      "computed": 55.98052595862495,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "0.685",
+      "description": "AUC gop qua seed, mmlu",
+      "source": "p2_cost_accuracy.json :: pooled_auc_across_seeds.mmlu.auc",
+      "computed": 0.6850896080500112,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "68.2",
+      "description": "ty le token cua consensus, mmlu",
+      "source": "p3_holdout_policy.json :: nested_cv.mmlu.policies.consensus.tok.mean",
+      "computed": 68.20995813189874,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "0.609",
+      "description": "AUC gop qua seed, strategyqa",
+      "source": "p2_cost_accuracy.json :: pooled_auc_across_seeds.strategyqa.auc",
+      "computed": 0.6089871090854303,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "48.5",
+      "description": "ty le token cua consensus, strategyqa",
+      "source": "p3_holdout_policy.json :: nested_cv.strategyqa.policies.consensus.tok.mean",
+      "computed": 48.45021295341782,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.638",
+      "description": "TABLE II he so tho answer_entropy",
+      "source": "(o bang)",
+      "computed": 0.6378855756678645,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.638",
+      "description": "TABLE II trong so cuoi answer_entropy",
+      "source": "(o bang)",
+      "computed": 0.6384978049804585,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.194",
+      "description": "TABLE II he so tho answer_flip_rate",
+      "source": "(o bang)",
+      "computed": 0.19375654615570068,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.194",
+      "description": "TABLE II trong so cuoi answer_flip_rate",
+      "source": "(o bang)",
+      "computed": 0.1939425096601102,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.167",
+      "description": "TABLE II he so tho disagreement_persistence",
+      "source": "(o bang)",
+      "computed": 0.16739901926130873,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.168",
+      "description": "TABLE II trong so cuoi disagreement_persistence",
+      "source": "(o bang)",
+      "computed": 0.16755968535943133,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "-0.043",
+      "description": "TABLE II he so tho confidence_variance",
+      "source": "(o bang)",
+      "computed": -0.04267787269273841,
+      "ok": true
+    },
+    {
+      "section": "TABLE II",
+      "claim": "0.000",
+      "description": "TABLE II trong so cuoi confidence_variance",
+      "source": "(o bang)",
+      "computed": 0.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.694",
+      "description": "TABLE IV AUC answer_entropy",
+      "source": "(o bang)",
+      "computed": 0.6940375692005394,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.194",
+      "description": "TABLE IV |AUC-0.5| answer_entropy",
+      "source": "(o bang)",
+      "computed": 0.19403756920053938,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.309",
+      "description": "TABLE IV AUC verdict_conf_mean",
+      "source": "(o bang)",
+      "computed": 0.30868021775572546,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.191",
+      "description": "TABLE IV |AUC-0.5| verdict_conf_mean",
+      "source": "(o bang)",
+      "computed": 0.19131978224427454,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.690",
+      "description": "TABLE IV AUC n_disagree",
+      "source": "(o bang)",
+      "computed": 0.6900397684974994,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.190",
+      "description": "TABLE IV |AUC-0.5| n_disagree",
+      "source": "(o bang)",
+      "computed": 0.19003976849749937,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.664",
+      "description": "TABLE IV AUC disagreement_persistence",
+      "source": "(o bang)",
+      "computed": 0.6641042962998458,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.164",
+      "description": "TABLE IV |AUC-0.5| disagreement_persistence",
+      "source": "(o bang)",
+      "computed": 0.1641042962998458,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.349",
+      "description": "TABLE IV AUC verdict_conf_min",
+      "source": "(o bang)",
+      "computed": 0.3489012765277672,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.151",
+      "description": "TABLE IV |AUC-0.5| verdict_conf_min",
+      "source": "(o bang)",
+      "computed": 0.1510987234722328,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.624",
+      "description": "TABLE IV AUC critic_vs_majority",
+      "source": "(o bang)",
+      "computed": 0.6241868891930397,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.124",
+      "description": "TABLE IV |AUC-0.5| critic_vs_majority",
+      "source": "(o bang)",
+      "computed": 0.12418688919303966,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.597",
+      "description": "TABLE IV AUC answer_flip_rate",
+      "source": "(o bang)",
+      "computed": 0.5971837727938523,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.097",
+      "description": "TABLE IV |AUC-0.5| answer_flip_rate",
+      "source": "(o bang)",
+      "computed": 0.09718377279385226,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.446",
+      "description": "TABLE IV AUC critic_conf",
+      "source": "(o bang)",
+      "computed": 0.44621077752463056,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.054",
+      "description": "TABLE IV |AUC-0.5| critic_conf",
+      "source": "(o bang)",
+      "computed": 0.053789222475369436,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.533",
+      "description": "TABLE IV AUC confidence_variance",
+      "source": "(o bang)",
+      "computed": 0.5331546606912876,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.033",
+      "description": "TABLE IV |AUC-0.5| confidence_variance",
+      "source": "(o bang)",
+      "computed": 0.033154660691287585,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.522",
+      "description": "TABLE IV AUC conf_gap_critic_solvers",
+      "source": "(o bang)",
+      "computed": 0.5217968922420128,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.022",
+      "description": "TABLE IV |AUC-0.5| conf_gap_critic_solvers",
+      "source": "(o bang)",
+      "computed": 0.021796892242012755,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.517",
+      "description": "TABLE IV AUC critic_alone",
+      "source": "(o bang)",
+      "computed": 0.5173642659518574,
+      "ok": true
+    },
+    {
+      "section": "TABLE IV",
+      "claim": "0.017",
+      "description": "TABLE IV |AUC-0.5| critic_alone",
+      "source": "(o bang)",
+      "computed": 0.01736426595185736,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.705",
+      "description": "TABLE V AUC DUS-4 — consensus dynamics",
+      "source": "(o bang)",
+      "computed": 0.7047146091640725,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.671",
+      "description": "TABLE V CI duoi DUS-4 — consensus dynamics",
+      "source": "(o bang)",
+      "computed": 0.6714964549968406,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.737",
+      "description": "TABLE V CI tren DUS-4 — consensus dynamics",
+      "source": "(o bang)",
+      "computed": 0.7368576027012379,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.729",
+      "description": "TABLE V AUC CRITIC-7 — critic signals alone",
+      "source": "(o bang)",
+      "computed": 0.7293762577482131,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.703",
+      "description": "TABLE V CI duoi CRITIC-7 — critic signals alone",
+      "source": "(o bang)",
+      "computed": 0.7025920737166849,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.757",
+      "description": "TABLE V CI tren CRITIC-7 — critic signals alone",
+      "source": "(o bang)",
+      "computed": 0.7566518313082761,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.736",
+      "description": "TABLE V AUC DUS-11 — both families",
+      "source": "(o bang)",
+      "computed": 0.7360748008178691,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.707",
+      "description": "TABLE V CI duoi DUS-11 — both families",
+      "source": "(o bang)",
+      "computed": 0.7067705058879963,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.764",
+      "description": "TABLE V CI tren DUS-11 — both families",
+      "source": "(o bang)",
+      "computed": 0.7644682840090662,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.738",
+      "description": "TABLE V AUC 5-fold CV",
+      "source": "(o bang)",
+      "computed": 0.7376093189839406,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.720",
+      "description": "TABLE V CI duoi 5-fold CV",
+      "source": "(o bang)",
+      "computed": 0.7204771362490493,
+      "ok": true
+    },
+    {
+      "section": "TABLE V",
+      "claim": "0.754",
+      "description": "TABLE V CI tren 5-fold CV",
+      "source": "(o bang)",
+      "computed": 0.753703508258116,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.025",
+      "description": "TABLE Va delta CRITIC-7 - DUS-4",
+      "source": "(o bang)",
+      "computed": 0.02466164858414066,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.007",
+      "description": "TABLE Va CI duoi CRITIC-7 - DUS-4",
+      "source": "(o bang)",
+      "computed": 0.007305410871785564,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.042",
+      "description": "TABLE Va CI tren CRITIC-7 - DUS-4",
+      "source": "(o bang)",
+      "computed": 0.042475463639597526,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.031",
+      "description": "TABLE Va delta DUS-11 - DUS-4",
+      "source": "(o bang)",
+      "computed": 0.031360191653796665,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.021",
+      "description": "TABLE Va CI duoi DUS-11 - DUS-4",
+      "source": "(o bang)",
+      "computed": 0.020517472023395232,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.043",
+      "description": "TABLE Va CI tren DUS-11 - DUS-4",
+      "source": "(o bang)",
+      "computed": 0.04306591528545858,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.007",
+      "description": "TABLE Va delta DUS-11 - CRITIC-7",
+      "source": "(o bang)",
+      "computed": 0.0066985430696560044,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "-0.004",
+      "description": "TABLE Va CI duoi DUS-11 - CRITIC-7",
+      "source": "(o bang)",
+      "computed": -0.0036075274895371436,
+      "ok": true
+    },
+    {
+      "section": "TABLE Va",
+      "claim": "0.017",
+      "description": "TABLE Va CI tren DUS-11 - CRITIC-7",
+      "source": "(o bang)",
+      "computed": 0.017349725813574676,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "200",
+      "description": "TABLE VI gsm8k q0.5 earlier (dem)",
+      "source": "(o bang)",
+      "computed": 200,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "13.3",
+      "description": "TABLE VI gsm8k q0.5 earlier (%)",
+      "source": "(o bang)",
+      "computed": 13.333333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "1155",
+      "description": "TABLE VI gsm8k q0.5 same (dem)",
+      "source": "(o bang)",
+      "computed": 1155,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "77.0",
+      "description": "TABLE VI gsm8k q0.5 same (%)",
+      "source": "(o bang)",
+      "computed": 77.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "145",
+      "description": "TABLE VI gsm8k q0.5 later (dem)",
+      "source": "(o bang)",
+      "computed": 145,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "9.7",
+      "description": "TABLE VI gsm8k q0.5 later (%)",
+      "source": "(o bang)",
+      "computed": 9.666666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "149",
+      "description": "TABLE VI strategyqa q0.5 earlier (dem)",
+      "source": "(o bang)",
+      "computed": 149,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "9.9",
+      "description": "TABLE VI strategyqa q0.5 earlier (%)",
+      "source": "(o bang)",
+      "computed": 9.933333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "1133",
+      "description": "TABLE VI strategyqa q0.5 same (dem)",
+      "source": "(o bang)",
+      "computed": 1133,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "75.5",
+      "description": "TABLE VI strategyqa q0.5 same (%)",
+      "source": "(o bang)",
+      "computed": 75.53333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "218",
+      "description": "TABLE VI strategyqa q0.5 later (dem)",
+      "source": "(o bang)",
+      "computed": 218,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "14.5",
+      "description": "TABLE VI strategyqa q0.5 later (%)",
+      "source": "(o bang)",
+      "computed": 14.533333333333335,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "614",
+      "description": "TABLE VI mmlu q0.4 earlier (dem)",
+      "source": "(o bang)",
+      "computed": 614,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "40.9",
+      "description": "TABLE VI mmlu q0.4 earlier (%)",
+      "source": "(o bang)",
+      "computed": 40.93333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "809",
+      "description": "TABLE VI mmlu q0.4 same (dem)",
+      "source": "(o bang)",
+      "computed": 809,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "53.9",
+      "description": "TABLE VI mmlu q0.4 same (%)",
+      "source": "(o bang)",
+      "computed": 53.93333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "77",
+      "description": "TABLE VI mmlu q0.4 later (dem)",
+      "source": "(o bang)",
+      "computed": 77,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "5.1",
+      "description": "TABLE VI mmlu q0.4 later (%)",
+      "source": "(o bang)",
+      "computed": 5.133333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "849",
+      "description": "TABLE VI mmlu q0.5 earlier (dem)",
+      "source": "(o bang)",
+      "computed": 849,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "56.6",
+      "description": "TABLE VI mmlu q0.5 earlier (%)",
+      "source": "(o bang)",
+      "computed": 56.599999999999994,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "631",
+      "description": "TABLE VI mmlu q0.5 same (dem)",
+      "source": "(o bang)",
+      "computed": 631,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "42.1",
+      "description": "TABLE VI mmlu q0.5 same (%)",
+      "source": "(o bang)",
+      "computed": 42.06666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "20",
+      "description": "TABLE VI mmlu q0.5 later (dem)",
+      "source": "(o bang)",
+      "computed": 20,
+      "ok": true
+    },
+    {
+      "section": "TABLE VI",
+      "claim": "1.3",
+      "description": "TABLE VI mmlu q0.5 later (%)",
+      "source": "(o bang)",
+      "computed": 1.3333333333333335,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.779",
+      "description": "TABLE VII accuracy gsm8k always",
+      "source": "(o bang)",
+      "computed": 0.7786666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "100.0",
+      "description": "TABLE VII token% gsm8k always",
+      "source": "(o bang)",
+      "computed": 100.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.547",
+      "description": "TABLE VII accuracy mmlu always",
+      "source": "(o bang)",
+      "computed": 0.5473333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "100.0",
+      "description": "TABLE VII token% mmlu always",
+      "source": "(o bang)",
+      "computed": 100.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.686",
+      "description": "TABLE VII accuracy strategyqa always",
+      "source": "(o bang)",
+      "computed": 0.686,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "100.0",
+      "description": "TABLE VII token% strategyqa always",
+      "source": "(o bang)",
+      "computed": 100.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.785",
+      "description": "TABLE VII accuracy gsm8k consensus",
+      "source": "(o bang)",
+      "computed": 0.7853333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "56.0",
+      "description": "TABLE VII token% gsm8k consensus",
+      "source": "(o bang)",
+      "computed": 55.98052595862495,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.546",
+      "description": "TABLE VII accuracy mmlu consensus",
+      "source": "(o bang)",
+      "computed": 0.546,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "68.2",
+      "description": "TABLE VII token% mmlu consensus",
+      "source": "(o bang)",
+      "computed": 68.20995813189874,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.691",
+      "description": "TABLE VII accuracy strategyqa consensus",
+      "source": "(o bang)",
+      "computed": 0.6906666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "48.5",
+      "description": "TABLE VII token% strategyqa consensus",
+      "source": "(o bang)",
+      "computed": 48.45021295341782,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.784",
+      "description": "TABLE VII accuracy gsm8k fixed_k1",
+      "source": "(o bang)",
+      "computed": 0.784,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "16.7",
+      "description": "TABLE VII token% gsm8k fixed_k1",
+      "source": "(o bang)",
+      "computed": 16.666666666666664,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.530",
+      "description": "TABLE VII accuracy mmlu fixed_k1",
+      "source": "(o bang)",
+      "computed": 0.53,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "16.7",
+      "description": "TABLE VII token% mmlu fixed_k1",
+      "source": "(o bang)",
+      "computed": 16.666666666666668,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.683",
+      "description": "TABLE VII accuracy strategyqa fixed_k1",
+      "source": "(o bang)",
+      "computed": 0.6826666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "16.7",
+      "description": "TABLE VII token% strategyqa fixed_k1",
+      "source": "(o bang)",
+      "computed": 16.666666666666664,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.797",
+      "description": "TABLE VII accuracy gsm8k fixed_k2",
+      "source": "(o bang)",
+      "computed": 0.7966666666666665,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "33.3",
+      "description": "TABLE VII token% gsm8k fixed_k2",
+      "source": "(o bang)",
+      "computed": 33.33333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.540",
+      "description": "TABLE VII accuracy mmlu fixed_k2",
+      "source": "(o bang)",
+      "computed": 0.5399999999999999,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "33.3",
+      "description": "TABLE VII token% mmlu fixed_k2",
+      "source": "(o bang)",
+      "computed": 33.333333333333336,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.698",
+      "description": "TABLE VII accuracy strategyqa fixed_k2",
+      "source": "(o bang)",
+      "computed": 0.698,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "33.3",
+      "description": "TABLE VII token% strategyqa fixed_k2",
+      "source": "(o bang)",
+      "computed": 33.33333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.783",
+      "description": "TABLE VII accuracy gsm8k fixed_k3",
+      "source": "(o bang)",
+      "computed": 0.7826666666666668,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "50.0",
+      "description": "TABLE VII token% gsm8k fixed_k3",
+      "source": "(o bang)",
+      "computed": 50.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.550",
+      "description": "TABLE VII accuracy mmlu fixed_k3",
+      "source": "(o bang)",
+      "computed": 0.55,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "50.0",
+      "description": "TABLE VII token% mmlu fixed_k3",
+      "source": "(o bang)",
+      "computed": 50.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.691",
+      "description": "TABLE VII accuracy strategyqa fixed_k3",
+      "source": "(o bang)",
+      "computed": 0.6913333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "50.0",
+      "description": "TABLE VII token% strategyqa fixed_k3",
+      "source": "(o bang)",
+      "computed": 50.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.779",
+      "description": "TABLE VII accuracy gsm8k unc<q30",
+      "source": "(o bang)",
+      "computed": 0.7793333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "70.7",
+      "description": "TABLE VII token% gsm8k unc<q30",
+      "source": "(o bang)",
+      "computed": 70.70363354054206,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.548",
+      "description": "TABLE VII accuracy mmlu unc<q30",
+      "source": "(o bang)",
+      "computed": 0.548,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "63.8",
+      "description": "TABLE VII token% mmlu unc<q30",
+      "source": "(o bang)",
+      "computed": 63.785761807843514,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.685",
+      "description": "TABLE VII accuracy strategyqa unc<q30",
+      "source": "(o bang)",
+      "computed": 0.6853333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "68.1",
+      "description": "TABLE VII token% strategyqa unc<q30",
+      "source": "(o bang)",
+      "computed": 68.12096462327752,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.781",
+      "description": "TABLE VII accuracy gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 0.7813333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "63.0",
+      "description": "TABLE VII token% gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 63.02911862408958,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.543",
+      "description": "TABLE VII accuracy mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": 0.5426666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "50.4",
+      "description": "TABLE VII token% mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": 50.423832863550466,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.687",
+      "description": "TABLE VII accuracy strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 0.6873333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "58.9",
+      "description": "TABLE VII token% strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 58.93607387694646,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.785",
+      "description": "TABLE VII accuracy gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 0.7846666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "52.6",
+      "description": "TABLE VII token% gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 52.597503345788276,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.545",
+      "description": "TABLE VII accuracy mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": 0.5453333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "41.3",
+      "description": "TABLE VII token% mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": 41.307389282800806,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.690",
+      "description": "TABLE VII accuracy strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 0.6900000000000001,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "48.2",
+      "description": "TABLE VII token% strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 48.19184479079573,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.863",
+      "description": "TABLE VII accuracy gsm8k oracle",
+      "source": "(o bang)",
+      "computed": 0.8633333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "32.7",
+      "description": "TABLE VII token% gsm8k oracle",
+      "source": "(o bang)",
+      "computed": 32.70292906737225,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.681",
+      "description": "TABLE VII accuracy mmlu oracle",
+      "source": "(o bang)",
+      "computed": 0.6813333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "50.6",
+      "description": "TABLE VII token% mmlu oracle",
+      "source": "(o bang)",
+      "computed": 50.61945371883374,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "0.787",
+      "description": "TABLE VII accuracy strategyqa oracle",
+      "source": "(o bang)",
+      "computed": 0.7866666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE VII",
+      "claim": "38.0",
+      "description": "TABLE VII token% strategyqa oracle",
+      "source": "(o bang)",
+      "computed": 38.02073740387517,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.001",
+      "description": "TABLE VIII gsm8k q0.5 dAcc mean",
+      "source": "(o bang)",
+      "computed": -0.0006666666666666598,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.004",
+      "description": "TABLE VIII gsm8k q0.5 dAcc sd",
+      "source": "(o bang)",
+      "computed": 0.0036514837167010697,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.007",
+      "description": "TABLE VIII gsm8k q0.5 dAcc CI lo",
+      "source": "(o bang)",
+      "computed": -0.0074275393725933905,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.006",
+      "description": "TABLE VIII gsm8k q0.5 dAcc CI hi",
+      "source": "(o bang)",
+      "computed": 0.006110291367055986,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-6.0",
+      "description": "TABLE VIII gsm8k q0.5 dToken mean",
+      "source": "(o bang)",
+      "computed": -5.997333100925055,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "5.1",
+      "description": "TABLE VIII gsm8k q0.5 dToken sd",
+      "source": "(o bang)",
+      "computed": 5.088378648849489,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.003",
+      "description": "TABLE VIII mmlu q0.4 dAcc mean",
+      "source": "(o bang)",
+      "computed": -0.0033333333333333435,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.013",
+      "description": "TABLE VIII mmlu q0.4 dAcc sd",
+      "source": "(o bang)",
+      "computed": 0.013333333333333322,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.015",
+      "description": "TABLE VIII mmlu q0.4 dAcc CI lo",
+      "source": "(o bang)",
+      "computed": -0.014876430240612292,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.008",
+      "description": "TABLE VIII mmlu q0.4 dAcc CI hi",
+      "source": "(o bang)",
+      "computed": 0.008086662868936445,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-26.1",
+      "description": "TABLE VIII mmlu q0.4 dToken mean",
+      "source": "(o bang)",
+      "computed": -26.066237194489585,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "3.3",
+      "description": "TABLE VIII mmlu q0.4 dToken sd",
+      "source": "(o bang)",
+      "computed": 3.3332318543596258,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.001",
+      "description": "TABLE VIII mmlu q0.5 dAcc mean",
+      "source": "(o bang)",
+      "computed": -0.0006666666666666488,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.013",
+      "description": "TABLE VIII mmlu q0.5 dAcc sd",
+      "source": "(o bang)",
+      "computed": 0.012780193008453887,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.015",
+      "description": "TABLE VIII mmlu q0.5 dAcc CI lo",
+      "source": "(o bang)",
+      "computed": -0.014977341433385548,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.013",
+      "description": "TABLE VIII mmlu q0.5 dAcc CI hi",
+      "source": "(o bang)",
+      "computed": 0.012786217944360608,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-39.4",
+      "description": "TABLE VIII mmlu q0.5 dToken mean",
+      "source": "(o bang)",
+      "computed": -39.42269406523168,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "2.3",
+      "description": "TABLE VIII mmlu q0.5 dToken sd",
+      "source": "(o bang)",
+      "computed": 2.3017260919241886,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.001",
+      "description": "TABLE VIII strategyqa q0.5 dAcc mean",
+      "source": "(o bang)",
+      "computed": -0.0006666666666667043,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.008",
+      "description": "TABLE VIII strategyqa q0.5 dAcc sd",
+      "source": "(o bang)",
+      "computed": 0.007601169500660898,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.009",
+      "description": "TABLE VIII strategyqa q0.5 dAcc CI lo",
+      "source": "(o bang)",
+      "computed": -0.00875465178096757,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "0.007",
+      "description": "TABLE VIII strategyqa q0.5 dAcc CI hi",
+      "source": "(o bang)",
+      "computed": 0.007134056559380262,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "-0.4",
+      "description": "TABLE VIII strategyqa q0.5 dToken mean",
+      "source": "(o bang)",
+      "computed": -0.4481722883108494,
+      "ok": true
+    },
+    {
+      "section": "TABLE VIII",
+      "claim": "8.3",
+      "description": "TABLE VIII strategyqa q0.5 dToken sd",
+      "source": "(o bang)",
+      "computed": 8.336967478148146,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "1500",
+      "description": "TABLE IX gsm8k n",
+      "source": "(o bang)",
+      "computed": 1500,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "54",
+      "description": "TABLE IX gsm8k rescued n",
+      "source": "(o bang)",
+      "computed": 54,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "3.6",
+      "description": "TABLE IX gsm8k rescued %",
+      "source": "(o bang)",
+      "computed": 3.5999999999999996,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "62",
+      "description": "TABLE IX gsm8k corrupted n",
+      "source": "(o bang)",
+      "computed": 62,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "4.1",
+      "description": "TABLE IX gsm8k corrupted %",
+      "source": "(o bang)",
+      "computed": 4.133333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "-8",
+      "description": "TABLE IX gsm8k net",
+      "source": "(o bang)",
+      "computed": -8,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "0.516",
+      "description": "TABLE IX gsm8k McNemar p",
+      "source": "(o bang)",
+      "computed": 0.5159130749957945,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "1500",
+      "description": "TABLE IX mmlu n",
+      "source": "(o bang)",
+      "computed": 1500,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "111",
+      "description": "TABLE IX mmlu rescued n",
+      "source": "(o bang)",
+      "computed": 111,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "7.4",
+      "description": "TABLE IX mmlu rescued %",
+      "source": "(o bang)",
+      "computed": 7.3999999999999995,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "85",
+      "description": "TABLE IX mmlu corrupted n",
+      "source": "(o bang)",
+      "computed": 85,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "5.7",
+      "description": "TABLE IX mmlu corrupted %",
+      "source": "(o bang)",
+      "computed": 5.666666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "26",
+      "description": "TABLE IX mmlu net",
+      "source": "(o bang)",
+      "computed": 26,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "0.074",
+      "description": "TABLE IX mmlu McNemar p",
+      "source": "(o bang)",
+      "computed": 0.07387580201820067,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "1500",
+      "description": "TABLE IX strategyqa n",
+      "source": "(o bang)",
+      "computed": 1500,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "91",
+      "description": "TABLE IX strategyqa rescued n",
+      "source": "(o bang)",
+      "computed": 91,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "6.1",
+      "description": "TABLE IX strategyqa rescued %",
+      "source": "(o bang)",
+      "computed": 6.066666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "86",
+      "description": "TABLE IX strategyqa corrupted n",
+      "source": "(o bang)",
+      "computed": 86,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "5.7",
+      "description": "TABLE IX strategyqa corrupted %",
+      "source": "(o bang)",
+      "computed": 5.733333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "5",
+      "description": "TABLE IX strategyqa net",
+      "source": "(o bang)",
+      "computed": 5,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "0.764",
+      "description": "TABLE IX strategyqa McNemar p",
+      "source": "(o bang)",
+      "computed": 0.7637740588658732,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "4500",
+      "description": "TABLE IX total n",
+      "source": "(o bang)",
+      "computed": 4500,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "256",
+      "description": "TABLE IX total rescued n",
+      "source": "(o bang)",
+      "computed": 256,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "5.7",
+      "description": "TABLE IX total rescued %",
+      "source": "(o bang)",
+      "computed": 5.688888888888889,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "233",
+      "description": "TABLE IX total corrupted n",
+      "source": "(o bang)",
+      "computed": 233,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "5.2",
+      "description": "TABLE IX total corrupted %",
+      "source": "(o bang)",
+      "computed": 5.177777777777778,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "23",
+      "description": "TABLE IX total net",
+      "source": "(o bang)",
+      "computed": 23,
+      "ok": true
+    },
+    {
+      "section": "TABLE IX",
+      "claim": "0.320",
+      "description": "TABLE IX total McNemar p",
+      "source": "(o bang)",
+      "computed": 0.3197984237766786,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "0.779",
+      "description": "TABLE X accuracy (always) gsm8k",
+      "source": "(o bang)",
+      "computed": 0.7786666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "0.875",
+      "description": "TABLE X pooled AUC gsm8k",
+      "source": "(o bang)",
+      "computed": 0.874917381105202,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "56.0",
+      "description": "TABLE X consensus token% gsm8k",
+      "source": "(o bang)",
+      "computed": 55.98052595862495,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "-6.0",
+      "description": "TABLE X dToken achieved gsm8k",
+      "source": "(o bang)",
+      "computed": -5.997333100925055,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "0.686",
+      "description": "TABLE X accuracy (always) strategyqa",
+      "source": "(o bang)",
+      "computed": 0.686,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "0.609",
+      "description": "TABLE X pooled AUC strategyqa",
+      "source": "(o bang)",
+      "computed": 0.6089871090854303,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "48.5",
+      "description": "TABLE X consensus token% strategyqa",
+      "source": "(o bang)",
+      "computed": 48.45021295341782,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "-0.4",
+      "description": "TABLE X dToken achieved strategyqa",
+      "source": "(o bang)",
+      "computed": -0.4481722883108494,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "0.547",
+      "description": "TABLE X accuracy (always) mmlu",
+      "source": "(o bang)",
+      "computed": 0.5473333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "0.685",
+      "description": "TABLE X pooled AUC mmlu",
+      "source": "(o bang)",
+      "computed": 0.6850896080500112,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "68.2",
+      "description": "TABLE X consensus token% mmlu",
+      "source": "(o bang)",
+      "computed": 68.20995813189874,
+      "ok": true
+    },
+    {
+      "section": "TABLE X",
+      "claim": "-39.4",
+      "description": "TABLE X dToken achieved mmlu",
+      "source": "(o bang)",
+      "computed": -39.42269406523168,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.779",
+      "description": "TABLE 0 accuracy gsm8k always",
+      "source": "(o bang)",
+      "computed": 0.7786666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "100.0",
+      "description": "TABLE 0 token% gsm8k always",
+      "source": "(o bang)",
+      "computed": 100.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.547",
+      "description": "TABLE 0 accuracy mmlu always",
+      "source": "(o bang)",
+      "computed": 0.5473333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "100.0",
+      "description": "TABLE 0 token% mmlu always",
+      "source": "(o bang)",
+      "computed": 100.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.686",
+      "description": "TABLE 0 accuracy strategyqa always",
+      "source": "(o bang)",
+      "computed": 0.686,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "100.0",
+      "description": "TABLE 0 token% strategyqa always",
+      "source": "(o bang)",
+      "computed": 100.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.863",
+      "description": "TABLE 0 accuracy gsm8k oracle",
+      "source": "(o bang)",
+      "computed": 0.8633333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "32.7",
+      "description": "TABLE 0 token% gsm8k oracle",
+      "source": "(o bang)",
+      "computed": 32.706101657726386,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.681",
+      "description": "TABLE 0 accuracy mmlu oracle",
+      "source": "(o bang)",
+      "computed": 0.6813333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "50.7",
+      "description": "TABLE 0 token% mmlu oracle",
+      "source": "(o bang)",
+      "computed": 50.6821210237969,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.787",
+      "description": "TABLE 0 accuracy strategyqa oracle",
+      "source": "(o bang)",
+      "computed": 0.7866666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "38.0",
+      "description": "TABLE 0 token% strategyqa oracle",
+      "source": "(o bang)",
+      "computed": 38.0141373430597,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.762",
+      "description": "TABLE 0 accuracy gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.762,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "11.2",
+      "description": "TABLE 0 token% gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": 11.154269835232881,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.521",
+      "description": "TABLE 0 accuracy mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.5206666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "13.2",
+      "description": "TABLE 0 token% mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": 13.219045186513782,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.615",
+      "description": "TABLE 0 accuracy strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.6153333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "5.6",
+      "description": "TABLE 0 token% strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": 5.576192500292389,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.638",
+      "description": "TABLE 0 accuracy gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.638,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "10.9",
+      "description": "TABLE 0 token% gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": 10.871607088851471,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.582",
+      "description": "TABLE 0 accuracy mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.582,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "11.1",
+      "description": "TABLE 0 token% mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": 11.112642483486994,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.548",
+      "description": "TABLE 0 accuracy strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.548,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "4.1",
+      "description": "TABLE 0 token% strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": 4.0852169033466605,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.691",
+      "description": "TABLE 0 accuracy gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": 0.6906666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "9.4",
+      "description": "TABLE 0 token% gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": 9.350013787102005,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.293",
+      "description": "TABLE 0 accuracy mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": 0.29333333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "16.4",
+      "description": "TABLE 0 token% mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": 16.399712635866273,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.611",
+      "description": "TABLE 0 accuracy strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": 0.6113333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "4.1",
+      "description": "TABLE 0 token% strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": 4.113333045663544,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.780",
+      "description": "TABLE 0 accuracy gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.78,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "12.7",
+      "description": "TABLE 0 token% gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": 12.663418279571392,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.515",
+      "description": "TABLE 0 accuracy mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.5146666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "10.5",
+      "description": "TABLE 0 token% mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": 10.481162117753122,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.679",
+      "description": "TABLE 0 accuracy strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.6786666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "8.4",
+      "description": "TABLE 0 token% strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": 8.41793395947722,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.784",
+      "description": "TABLE 0 accuracy gsm8k fixed_k1",
+      "source": "(o bang)",
+      "computed": 0.784,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "16.7",
+      "description": "TABLE 0 token% gsm8k fixed_k1",
+      "source": "(o bang)",
+      "computed": 16.666666666666668,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.530",
+      "description": "TABLE 0 accuracy mmlu fixed_k1",
+      "source": "(o bang)",
+      "computed": 0.53,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "16.7",
+      "description": "TABLE 0 token% mmlu fixed_k1",
+      "source": "(o bang)",
+      "computed": 16.666666666666664,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.683",
+      "description": "TABLE 0 accuracy strategyqa fixed_k1",
+      "source": "(o bang)",
+      "computed": 0.6826666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "16.7",
+      "description": "TABLE 0 token% strategyqa fixed_k1",
+      "source": "(o bang)",
+      "computed": 16.666666666666668,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.797",
+      "description": "TABLE 0 accuracy gsm8k fixed_k2",
+      "source": "(o bang)",
+      "computed": 0.7966666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "33.3",
+      "description": "TABLE 0 token% gsm8k fixed_k2",
+      "source": "(o bang)",
+      "computed": 33.333333333333336,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.540",
+      "description": "TABLE 0 accuracy mmlu fixed_k2",
+      "source": "(o bang)",
+      "computed": 0.54,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "33.3",
+      "description": "TABLE 0 token% mmlu fixed_k2",
+      "source": "(o bang)",
+      "computed": 33.33333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.698",
+      "description": "TABLE 0 accuracy strategyqa fixed_k2",
+      "source": "(o bang)",
+      "computed": 0.698,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "33.3",
+      "description": "TABLE 0 token% strategyqa fixed_k2",
+      "source": "(o bang)",
+      "computed": 33.333333333333336,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.783",
+      "description": "TABLE 0 accuracy gsm8k fixed_k3",
+      "source": "(o bang)",
+      "computed": 0.7826666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "50.0",
+      "description": "TABLE 0 token% gsm8k fixed_k3",
+      "source": "(o bang)",
+      "computed": 50.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.550",
+      "description": "TABLE 0 accuracy mmlu fixed_k3",
+      "source": "(o bang)",
+      "computed": 0.55,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "50.0",
+      "description": "TABLE 0 token% mmlu fixed_k3",
+      "source": "(o bang)",
+      "computed": 50.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.691",
+      "description": "TABLE 0 accuracy strategyqa fixed_k3",
+      "source": "(o bang)",
+      "computed": 0.6913333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "50.0",
+      "description": "TABLE 0 token% strategyqa fixed_k3",
+      "source": "(o bang)",
+      "computed": 50.0,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.779",
+      "description": "TABLE 0 accuracy gsm8k fixed_k4",
+      "source": "(o bang)",
+      "computed": 0.7793333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "66.7",
+      "description": "TABLE 0 token% gsm8k fixed_k4",
+      "source": "(o bang)",
+      "computed": 66.66666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.557",
+      "description": "TABLE 0 accuracy mmlu fixed_k4",
+      "source": "(o bang)",
+      "computed": 0.5566666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "66.7",
+      "description": "TABLE 0 token% mmlu fixed_k4",
+      "source": "(o bang)",
+      "computed": 66.66666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.677",
+      "description": "TABLE 0 accuracy strategyqa fixed_k4",
+      "source": "(o bang)",
+      "computed": 0.6773333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "66.7",
+      "description": "TABLE 0 token% strategyqa fixed_k4",
+      "source": "(o bang)",
+      "computed": 66.66666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.793",
+      "description": "TABLE 0 accuracy gsm8k fixed_k5",
+      "source": "(o bang)",
+      "computed": 0.7933333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "83.3",
+      "description": "TABLE 0 token% gsm8k fixed_k5",
+      "source": "(o bang)",
+      "computed": 83.33333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.563",
+      "description": "TABLE 0 accuracy mmlu fixed_k5",
+      "source": "(o bang)",
+      "computed": 0.5633333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "83.3",
+      "description": "TABLE 0 token% mmlu fixed_k5",
+      "source": "(o bang)",
+      "computed": 83.33333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.689",
+      "description": "TABLE 0 accuracy strategyqa fixed_k5",
+      "source": "(o bang)",
+      "computed": 0.6886666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "83.3",
+      "description": "TABLE 0 token% strategyqa fixed_k5",
+      "source": "(o bang)",
+      "computed": 83.33333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.785",
+      "description": "TABLE 0 accuracy gsm8k consensus",
+      "source": "(o bang)",
+      "computed": 0.7853333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "56.0",
+      "description": "TABLE 0 token% gsm8k consensus",
+      "source": "(o bang)",
+      "computed": 55.97975657217523,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.546",
+      "description": "TABLE 0 accuracy mmlu consensus",
+      "source": "(o bang)",
+      "computed": 0.546,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "68.2",
+      "description": "TABLE 0 token% mmlu consensus",
+      "source": "(o bang)",
+      "computed": 68.2029773672295,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.691",
+      "description": "TABLE 0 accuracy strategyqa consensus",
+      "source": "(o bang)",
+      "computed": 0.6906666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "48.5",
+      "description": "TABLE 0 token% strategyqa consensus",
+      "source": "(o bang)",
+      "computed": 48.45748465050627,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.781",
+      "description": "TABLE 0 accuracy gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 0.7813333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "63.0",
+      "description": "TABLE 0 token% gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 63.038088143004344,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.543",
+      "description": "TABLE 0 accuracy mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": 0.5426666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "50.4",
+      "description": "TABLE 0 token% mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": 50.363451564412784,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.687",
+      "description": "TABLE 0 accuracy strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 0.6873333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "58.9",
+      "description": "TABLE 0 token% strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 58.94103088226307,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.785",
+      "description": "TABLE 0 accuracy gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 0.7846666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "52.6",
+      "description": "TABLE 0 token% gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 52.622877837586536,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.545",
+      "description": "TABLE 0 accuracy mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": 0.5453333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "41.3",
+      "description": "TABLE 0 token% mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": 41.28941343310014,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "0.690",
+      "description": "TABLE 0 accuracy strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 0.69,
+      "ok": true
+    },
+    {
+      "section": "TABLE 0",
+      "claim": "48.2",
+      "description": "TABLE 0 token% strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 48.19260715976262,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0153",
+      "description": "TABLE XI dacc gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 0.015333333333333332,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0013",
+      "description": "TABLE XI CI-lo gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 0.0013458723924981062,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0293",
+      "description": "TABLE XI CI-hi gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 0.02927485951973736,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.035",
+      "description": "TABLE XI p gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": 0.0354,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-29.7",
+      "description": "TABLE XI dtok gsm8k unc<q40",
+      "source": "(o bang)",
+      "computed": -29.70475480967101,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0120",
+      "description": "TABLE XI dacc gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 0.012,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0013",
+      "description": "TABLE XI CI-lo gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": -0.0013351134846461949,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0253",
+      "description": "TABLE XI CI-hi gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 0.025282767797737856,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.080",
+      "description": "TABLE XI p gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": 0.0798,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-19.3",
+      "description": "TABLE XI dtok gsm8k unc<q50",
+      "source": "(o bang)",
+      "computed": -19.289544504253207,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0027",
+      "description": "TABLE XI dacc mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": -0.0026666666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0182",
+      "description": "TABLE XI CI-lo mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": -0.018182431189848587,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0132",
+      "description": "TABLE XI CI-hi mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": 0.01315811129205502,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.768",
+      "description": "TABLE XI p mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": 0.7682,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-17.0",
+      "description": "TABLE XI dtok mmlu unc<q40",
+      "source": "(o bang)",
+      "computed": -17.030118231079456,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0053",
+      "description": "TABLE XI dacc mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": -0.005333333333333333,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0207",
+      "description": "TABLE XI CI-lo mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": -0.020658693780933934,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0101",
+      "description": "TABLE XI CI-hi mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": 0.010114632501685773,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.525",
+      "description": "TABLE XI p mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": 0.525,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-8.0",
+      "description": "TABLE XI dtok mmlu unc<q50",
+      "source": "(o bang)",
+      "computed": -7.956080099766802,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0107",
+      "description": "TABLE XI dacc strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 0.010666666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0046",
+      "description": "TABLE XI CI-lo strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": -0.004635838391285839,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0257",
+      "description": "TABLE XI CI-hi strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 0.025728262445115984,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.178",
+      "description": "TABLE XI p strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": 0.178,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-25.6",
+      "description": "TABLE XI dtok strategyqa unc<q40",
+      "source": "(o bang)",
+      "computed": -25.607697548929735,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0080",
+      "description": "TABLE XI dacc strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 0.008,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-0.0066",
+      "description": "TABLE XI CI-lo strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": -0.006600769059732922,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.0226",
+      "description": "TABLE XI CI-hi strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 0.022591362126245847,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "0.310",
+      "description": "TABLE XI p strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": 0.3098,
+      "ok": true
+    },
+    {
+      "section": "TABLE XI",
+      "claim": "-14.9",
+      "description": "TABLE XI dtok strategyqa unc<q50",
+      "source": "(o bang)",
+      "computed": -14.859273826429293,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0227",
+      "description": "TABLE XII dacc gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.02266666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0419",
+      "description": "TABLE XII CI-lo gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.041861250785669386,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0038",
+      "description": "TABLE XII CI-hi gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.0038403761284829543,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.024",
+      "description": "TABLE XII p gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.0244,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-41.5",
+      "description": "TABLE XII dtok gsm8k ensemble_vote",
+      "source": "(o bang)",
+      "computed": -41.468608002353655,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1467",
+      "description": "TABLE XII dacc gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": -0.14666666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1752",
+      "description": "TABLE XII CI-lo gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": -0.1752182449220108,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1178",
+      "description": "TABLE XII CI-hi gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": -0.11776226854353544,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0001",
+      "description": "TABLE XII p gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.0001,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-41.8",
+      "description": "TABLE XII dtok gsm8k self_consistency_a",
+      "source": "(o bang)",
+      "computed": -41.75127074873507,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0940",
+      "description": "TABLE XII dacc gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.094,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1210",
+      "description": "TABLE XII CI-lo gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.12095311065710589,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0668",
+      "description": "TABLE XII CI-hi gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.0667547918043622,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0001",
+      "description": "TABLE XII p gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": 0.0001,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-43.3",
+      "description": "TABLE XII dtok gsm8k self_consistency_b",
+      "source": "(o bang)",
+      "computed": -43.272864050484536,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0047",
+      "description": "TABLE XII dacc gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.004666666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0224",
+      "description": "TABLE XII CI-lo gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.022442244224422443,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0132",
+      "description": "TABLE XII CI-hi gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.013157894736842105,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.630",
+      "description": "TABLE XII p gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.6304,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-40.0",
+      "description": "TABLE XII dtok gsm8k self_consistency_c",
+      "source": "(o bang)",
+      "computed": -39.95945955801515,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0247",
+      "description": "TABLE XII dacc mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.024666666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0493",
+      "description": "TABLE XII CI-lo mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.049324768847795165,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0007",
+      "description": "TABLE XII CI-hi mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.0006536268731461145,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.055",
+      "description": "TABLE XII p mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.0552,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-28.1",
+      "description": "TABLE XII dtok mmlu ensemble_vote",
+      "source": "(o bang)",
+      "computed": -28.070368246586362,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0367",
+      "description": "TABLE XII dacc mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.03666666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0072",
+      "description": "TABLE XII CI-lo mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.007169059316562901,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0661",
+      "description": "TABLE XII CI-hi mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.06614335548128233,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.015",
+      "description": "TABLE XII p mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.0152,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-30.2",
+      "description": "TABLE XII dtok mmlu self_consistency_a",
+      "source": "(o bang)",
+      "computed": -30.17677094961314,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.2520",
+      "description": "TABLE XII dacc mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.252,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.2882",
+      "description": "TABLE XII CI-lo mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.28818061088977426,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.2161",
+      "description": "TABLE XII CI-hi mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.2160693950185898,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0001",
+      "description": "TABLE XII p mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": 0.0001,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-24.9",
+      "description": "TABLE XII dtok mmlu self_consistency_b",
+      "source": "(o bang)",
+      "computed": -24.889700797233864,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0307",
+      "description": "TABLE XII dacc mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.030666666666666665,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0521",
+      "description": "TABLE XII CI-lo mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.05207046070222037,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0092",
+      "description": "TABLE XII CI-hi mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.009216589861751152,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.006",
+      "description": "TABLE XII p mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.0058,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-30.8",
+      "description": "TABLE XII dtok mmlu self_consistency_c",
+      "source": "(o bang)",
+      "computed": -30.808251315347018,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0747",
+      "description": "TABLE XII dacc strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.07466666666666667,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1077",
+      "description": "TABLE XII CI-lo strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.10767185547044478,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0405",
+      "description": "TABLE XII CI-hi strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": -0.04054893324844806,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0002",
+      "description": "TABLE XII p strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": 0.0002,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-42.6",
+      "description": "TABLE XII dtok strategyqa ensemble_vote",
+      "source": "(o bang)",
+      "computed": -42.61641465947023,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1420",
+      "description": "TABLE XII dacc strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": -0.142,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1880",
+      "description": "TABLE XII CI-lo strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": -0.1879858803986711,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0961",
+      "description": "TABLE XII CI-hi strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": -0.0961021505376344,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0001",
+      "description": "TABLE XII p strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": 0.0001,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-44.1",
+      "description": "TABLE XII dtok strategyqa self_consistency_a",
+      "source": "(o bang)",
+      "computed": -44.10739025641596,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0787",
+      "description": "TABLE XII dacc strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.07866666666666666,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.1165",
+      "description": "TABLE XII CI-lo strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.11645009149529453,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0411",
+      "description": "TABLE XII CI-hi strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": -0.04108588710001098,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0002",
+      "description": "TABLE XII p strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": 0.0002,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-44.1",
+      "description": "TABLE XII dtok strategyqa self_consistency_b",
+      "source": "(o bang)",
+      "computed": -44.07927411409908,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0113",
+      "description": "TABLE XII dacc strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.011333333333333334,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-0.0317",
+      "description": "TABLE XII CI-lo strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": -0.03165014258681805,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.0090",
+      "description": "TABLE XII CI-hi strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.008998591764479235,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "0.293",
+      "description": "TABLE XII p strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": 0.2934,
+      "ok": true
+    },
+    {
+      "section": "TABLE XII",
+      "claim": "-39.8",
+      "description": "TABLE XII dtok strategyqa self_consistency_c",
+      "source": "(o bang)",
+      "computed": -39.774673200285406,
+      "ok": true
+    },
+    {
+      "section": "V-B",
+      "claim": "27000",
+      "description": "so round dang thuc entropy=0 <=> consensus dung",
+      "source": "LIVE: dem round co (answer_entropy == 0) == consensus_now  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 27000,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "978",
+      "description": "so cau hoi DUY NHAT tren gsm8k (1500 luot rut)",
+      "source": "LIVE: nunique(sample_id) tren gsm8k  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 978,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "1123",
+      "description": "so cau hoi DUY NHAT tren mmlu (1500 luot rut)",
+      "source": "LIVE: nunique(sample_id) tren mmlu  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 1123,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "647",
+      "description": "so cau hoi DUY NHAT tren strategyqa (1500 luot rut)",
+      "source": "LIVE: nunique(sample_id) tren strategyqa  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 647,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "46",
+      "description": "chong lan cau hoi lon nhat giua hai seed bat ky (%)",
+      "source": "LIVE: max |giao| / 300 tren moi cap seed, moi benchmark  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 46,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "12",
+      "description": "chong lan cau hoi nho nhat giua hai seed bat ky (%)",
+      "source": "LIVE: min |giao| / 300 tren moi cap seed, moi benchmark  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 12,
+      "ok": true
+    },
+    {
+      "section": "IV-D",
+      "claim": "0.992",
+      "description": "do giong prompt solver(r0) vs independent tren gsm8k",
+      "source": "LIVE: SequenceMatcher.ratio(), cau hoi thay bang 'WHAT_IS_THE_QUESTION'  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.9921235989094214,
+      "ok": true
+    },
+    {
+      "section": "IV-D",
+      "claim": "0.994",
+      "description": "do giong prompt solver(r0) vs independent tren mmlu",
+      "source": "LIVE: SequenceMatcher.ratio(), cau hoi thay bang 'WHAT_IS_THE_QUESTION'  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.9944040290990487,
+      "ok": true
+    },
+    {
+      "section": "IV-D",
+      "claim": "0.027",
+      "description": "do giong prompt solver(r0) vs independent tren strategyqa",
+      "source": "LIVE: SequenceMatcher.ratio(), cau hoi thay bang 'WHAT_IS_THE_QUESTION'  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.02660423539427477,
+      "ok": true
+    },
+    {
+      "section": "IV-D",
+      "claim": "2.7",
+      "description": "do giong prompt tren strategyqa, dang phan tram",
+      "source": "LIVE: sim(strategyqa) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.02660423539427477,
+      "ok": true
+    },
+    {
+      "section": "IV-D",
+      "claim": "8390",
+      "description": "do dai prompt solver(r0) tren strategyqa",
+      "source": "LIVE: len(build_solver_prompt), cau hoi thay bang 'WHAT_IS_THE_QUESTION'  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 8390,
+      "ok": true
+    },
+    {
+      "section": "IV-D",
+      "claim": "1007",
+      "description": "do dai prompt independent tren strategyqa",
+      "source": "LIVE: len(build_independent_prompt), cau hoi thay bang 'WHAT_IS_THE_QUESTION'  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 1007,
+      "ok": true
+    },
+    {
+      "section": "V",
+      "claim": "6.7",
+      "description": "chenh lech lon nhat giua fixed_k1 va majority voting chay rieng (diem)",
+      "source": "LIVE: max |acc(fixed_k1) - acc(ensemble_vote)| * 100 qua 3 benchmark  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 6.733333333333336,
+      "ok": true
+    },
+    {
+      "section": "VI-C",
+      "claim": "1701",
+      "description": "so dap an MMLU nam ngoai A-D",
+      "source": "LIVE: dem tren log debate  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 1701,
+      "ok": true
+    },
+    {
+      "section": "VI-C",
+      "claim": "6.30",
+      "description": "ty le dap an MMLU khong parse duoc",
+      "source": "LIVE: 1701 / 27000  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 6.3,
+      "ok": true
+    },
+    {
+      "section": "VI-C",
+      "claim": "13.4",
+      "description": "ty le khong parse duoc tren MMLU, solver_b",
+      "source": "LIVE: 1210 / 9000  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 13.444444444444445,
+      "ok": true
+    },
+    {
+      "section": "VI-C",
+      "claim": "2.5",
+      "description": "ty le khong parse duoc tren MMLU, solver_a",
+      "source": "LIVE: 221 / 9000  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 2.4555555555555557,
+      "ok": true
+    },
+    {
+      "section": "VI-C",
+      "claim": "3.0",
+      "description": "ty le khong parse duoc tren MMLU, critic",
+      "source": "LIVE: 270 / 9000  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 3.0,
+      "ok": true
+    },
+    {
+      "section": "VI-C",
+      "claim": "0.00",
+      "description": "ty le khong parse duoc tren GSM8K va StrategyQA",
+      "source": "LIVE: dem tren log debate, ca hai benchmark  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.0,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "3.7",
+      "description": "worst-case regret cua unc<q50 (diem accuracy)",
+      "source": "LIVE: max qua benchmark cua (acc tot nhat - acc chinh sach) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 3.6666666666666625,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "4.2",
+      "description": "worst-case regret cua fixed_k2 (diem accuracy)",
+      "source": "LIVE: max qua benchmark cua (acc tot nhat - acc chinh sach) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 4.199999999999992,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "6.7",
+      "description": "worst-case regret cua self_consistency_c (diem accuracy)",
+      "source": "LIVE: max qua benchmark cua (acc tot nhat - acc chinh sach) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 6.7333333333333245,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "8.3",
+      "description": "worst-case regret cua ensemble_vote (diem accuracy)",
+      "source": "LIVE: max qua benchmark cua (acc tot nhat - acc chinh sach) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 8.266666666666666,
+      "ok": true
+    },
+    {
+      "section": "VI-A",
+      "claim": "15.9",
+      "description": "worst-case regret cua self_consistency_a (diem accuracy)",
+      "source": "LIVE: max qua benchmark cua (acc tot nhat - acc chinh sach) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 15.866666666666662,
+      "ok": true
+    },
+    {
+      "section": "V",
+      "claim": "29",
+      "description": "do trai rong lon nhat giua ba model self-consistency tren mot benchmark",
+      "source": "LIVE: max - min acc cua SC a/b/c tren MMLU, * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 28.866666666666664,
+      "ok": true
+    },
+    {
+      "section": "V-A",
+      "claim": "20385",
+      "description": "so vong khong-cuoi chot cung ket cuc voi vong cuoi",
+      "source": "LIVE: voi moi round r < round cuoi: so ok_if_stop[r] voi ok_if_stop[cuoi]  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 20385,
+      "ok": true
+    },
+    {
+      "section": "V-A",
+      "claim": "90.6",
+      "description": "ty le vong khong-cuoi khong doi ket cuc",
+      "source": "LIVE: 20,385 / 22,500  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.906,
+      "ok": true
+    },
+    {
+      "section": "V-A",
+      "claim": "11754",
+      "description": "so round co consensus",
+      "source": "LIVE: dem round consensus_now == True  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 11754,
+      "ok": true
+    },
+    {
+      "section": "V-A",
+      "claim": "2020",
+      "description": "so round consensus nhung chot sai",
+      "source": "LIVE: trong round consensus, dem ok_if_stop == False  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 2020,
+      "ok": true
+    },
+    {
+      "section": "V-A",
+      "claim": "17.2",
+      "description": "blind-spot rate chung",
+      "source": "LIVE: 2,020 / 11,754  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.171856389314276,
+      "ok": true
+    },
+    {
+      "section": "TABLE I",
+      "claim": "2.9",
+      "description": "blind-spot rate gsm8k",
+      "source": "LIVE: trong round consensus cua gsm8k, ty le ok_if_stop == False  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.02888332954287014,
+      "ok": true
+    },
+    {
+      "section": "TABLE I",
+      "claim": "28.0",
+      "description": "blind-spot rate mmlu",
+      "source": "LIVE: trong round consensus cua mmlu, ty le ok_if_stop == False  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.2803951367781155,
+      "ok": true
+    },
+    {
+      "section": "TABLE I",
+      "claim": "24.4",
+      "description": "blind-spot rate strategyqa",
+      "source": "LIVE: trong round consensus cua strategyqa, ty le ok_if_stop == False  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.24444444444444444,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "685",
+      "description": "so cau hoi split train cua gsm8k",
+      "source": "LIVE: dem sample_id trong results/split/gsm8k/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 685,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "196",
+      "description": "so cau hoi split val cua gsm8k",
+      "source": "LIVE: dem sample_id trong results/split/gsm8k/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 196,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "97",
+      "description": "so cau hoi split test cua gsm8k",
+      "source": "LIVE: dem sample_id trong results/split/gsm8k/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 97,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "786",
+      "description": "so cau hoi split train cua mmlu",
+      "source": "LIVE: dem sample_id trong results/split/mmlu/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 786,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "225",
+      "description": "so cau hoi split val cua mmlu",
+      "source": "LIVE: dem sample_id trong results/split/mmlu/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 225,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "112",
+      "description": "so cau hoi split test cua mmlu",
+      "source": "LIVE: dem sample_id trong results/split/mmlu/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 112,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "453",
+      "description": "so cau hoi split train cua strategyqa",
+      "source": "LIVE: dem sample_id trong results/split/strategyqa/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 453,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "129",
+      "description": "so cau hoi split val cua strategyqa",
+      "source": "LIVE: dem sample_id trong results/split/strategyqa/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 129,
+      "ok": true
+    },
+    {
+      "section": "IV-C",
+      "claim": "65",
+      "description": "so cau hoi split test cua strategyqa",
+      "source": "LIVE: dem sample_id trong results/split/strategyqa/split_sample_ids.json  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 65,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "0.547",
+      "description": "accuracy cua `always` tren toan bo MMLU",
+      "source": "LIVE: trong moi debate mmlu: trung binh theo seed cua ty le dung o round cuoi  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.5473333333333333,
+      "ok": true
+    },
+    {
+      "section": "V-E",
+      "claim": "0.587",
+      "description": "accuracy cua `always` tren tap test MMLU",
+      "source": "LIVE: trong debate mmlu thuoc split test: trung binh theo seed cua ty le dung o round cuoi  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
+      "computed": 0.5867891944814015,
+      "ok": true
+    }
+  ],
+  "live": [
+    {
+      "claim": "27000",
+      "desc": "so round dang thuc entropy=0 <=> consensus dung",
+      "how": "dem round co (answer_entropy == 0) == consensus_now",
+      "computed": 27000
+    },
+    {
+      "claim": "978",
+      "desc": "so cau hoi DUY NHAT tren gsm8k (1500 luot rut)",
+      "how": "nunique(sample_id) tren gsm8k",
+      "computed": 978
+    },
+    {
+      "claim": "1123",
+      "desc": "so cau hoi DUY NHAT tren mmlu (1500 luot rut)",
+      "how": "nunique(sample_id) tren mmlu",
+      "computed": 1123
+    },
+    {
+      "claim": "647",
+      "desc": "so cau hoi DUY NHAT tren strategyqa (1500 luot rut)",
+      "how": "nunique(sample_id) tren strategyqa",
+      "computed": 647
+    },
+    {
+      "claim": "46",
+      "desc": "chong lan cau hoi lon nhat giua hai seed bat ky (%)",
+      "how": "max |giao| / 300 tren moi cap seed, moi benchmark",
+      "computed": 46
+    },
+    {
+      "claim": "12",
+      "desc": "chong lan cau hoi nho nhat giua hai seed bat ky (%)",
+      "how": "min |giao| / 300 tren moi cap seed, moi benchmark",
+      "computed": 12
+    },
+    {
+      "claim": "0.992",
+      "desc": "do giong prompt solver(r0) vs independent tren gsm8k",
+      "how": "SequenceMatcher.ratio(), cau hoi thay bang 'WHAT_IS_THE_QUESTION'",
+      "computed": 0.9921235989094214
+    },
+    {
+      "claim": "0.994",
+      "desc": "do giong prompt solver(r0) vs independent tren mmlu",
+      "how": "SequenceMatcher.ratio(), cau hoi thay bang 'WHAT_IS_THE_QUESTION'",
+      "computed": 0.9944040290990487
+    },
+    {
+      "claim": "0.027",
+      "desc": "do giong prompt solver(r0) vs independent tren strategyqa",
+      "how": "SequenceMatcher.ratio(), cau hoi thay bang 'WHAT_IS_THE_QUESTION'",
+      "computed": 0.02660423539427477
+    },
+    {
+      "claim": "2.7",
+      "desc": "do giong prompt tren strategyqa, dang phan tram",
+      "how": "sim(strategyqa) * 100",
+      "computed": 0.02660423539427477
+    },
+    {
+      "claim": "8390",
+      "desc": "do dai prompt solver(r0) tren strategyqa",
+      "how": "len(build_solver_prompt), cau hoi thay bang 'WHAT_IS_THE_QUESTION'",
+      "computed": 8390
+    },
+    {
+      "claim": "1007",
+      "desc": "do dai prompt independent tren strategyqa",
+      "how": "len(build_independent_prompt), cau hoi thay bang 'WHAT_IS_THE_QUESTION'",
+      "computed": 1007
+    },
+    {
+      "claim": "6.7",
+      "desc": "chenh lech lon nhat giua fixed_k1 va majority voting chay rieng (diem)",
+      "how": "max |acc(fixed_k1) - acc(ensemble_vote)| * 100 qua 3 benchmark",
+      "computed": 6.733333333333336
+    },
+    {
+      "claim": "1701",
+      "desc": "so dap an MMLU nam ngoai A-D",
+      "how": "dem tren log debate",
+      "computed": 1701
+    },
+    {
+      "claim": "6.30",
+      "desc": "ty le dap an MMLU khong parse duoc",
+      "how": "1701 / 27000",
+      "computed": 6.3
+    },
+    {
+      "claim": "13.4",
+      "desc": "ty le khong parse duoc tren MMLU, solver_b",
+      "how": "1210 / 9000",
+      "computed": 13.444444444444445
+    },
+    {
+      "claim": "2.5",
+      "desc": "ty le khong parse duoc tren MMLU, solver_a",
+      "how": "221 / 9000",
+      "computed": 2.4555555555555557
+    },
+    {
+      "claim": "3.0",
+      "desc": "ty le khong parse duoc tren MMLU, critic",
+      "how": "270 / 9000",
+      "computed": 3.0
+    },
+    {
+      "claim": "0.00",
+      "desc": "ty le khong parse duoc tren GSM8K va StrategyQA",
+      "how": "dem tren log debate, ca hai benchmark",
+      "computed": 0.0
+    },
+    {
+      "claim": "3.7",
+      "desc": "worst-case regret cua unc<q50 (diem accuracy)",
+      "how": "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100",
+      "computed": 3.6666666666666625
+    },
+    {
+      "claim": "4.2",
+      "desc": "worst-case regret cua fixed_k2 (diem accuracy)",
+      "how": "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100",
+      "computed": 4.199999999999992
+    },
+    {
+      "claim": "6.7",
+      "desc": "worst-case regret cua self_consistency_c (diem accuracy)",
+      "how": "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100",
+      "computed": 6.7333333333333245
+    },
+    {
+      "claim": "8.3",
+      "desc": "worst-case regret cua ensemble_vote (diem accuracy)",
+      "how": "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100",
+      "computed": 8.266666666666666
+    },
+    {
+      "claim": "15.9",
+      "desc": "worst-case regret cua self_consistency_a (diem accuracy)",
+      "how": "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100",
+      "computed": 15.866666666666662
+    },
+    {
+      "claim": "29",
+      "desc": "do trai rong lon nhat giua ba model self-consistency tren mot benchmark",
+      "how": "max - min acc cua SC a/b/c tren MMLU, * 100",
+      "computed": 28.866666666666664
+    },
+    {
+      "claim": "20385",
+      "desc": "so vong khong-cuoi chot cung ket cuc voi vong cuoi",
+      "how": "voi moi round r < round cuoi: so ok_if_stop[r] voi ok_if_stop[cuoi]",
+      "computed": 20385
+    },
+    {
+      "claim": "90.6",
+      "desc": "ty le vong khong-cuoi khong doi ket cuc",
+      "how": "20,385 / 22,500",
+      "computed": 0.906
+    },
+    {
+      "claim": "11754",
+      "desc": "so round co consensus",
+      "how": "dem round consensus_now == True",
+      "computed": 11754
+    },
+    {
+      "claim": "2020",
+      "desc": "so round consensus nhung chot sai",
+      "how": "trong round consensus, dem ok_if_stop == False",
+      "computed": 2020
+    },
+    {
+      "claim": "17.2",
+      "desc": "blind-spot rate chung",
+      "how": "2,020 / 11,754",
+      "computed": 0.171856389314276
+    },
+    {
+      "claim": "2.9",
+      "desc": "blind-spot rate gsm8k",
+      "how": "trong round consensus cua gsm8k, ty le ok_if_stop == False",
+      "computed": 0.02888332954287014
+    },
+    {
+      "claim": "28.0",
+      "desc": "blind-spot rate mmlu",
+      "how": "trong round consensus cua mmlu, ty le ok_if_stop == False",
+      "computed": 0.2803951367781155
+    },
+    {
+      "claim": "24.4",
+      "desc": "blind-spot rate strategyqa",
+      "how": "trong round consensus cua strategyqa, ty le ok_if_stop == False",
+      "computed": 0.24444444444444444
+    },
+    {
+      "claim": "685",
+      "desc": "so cau hoi split train cua gsm8k",
+      "how": "dem sample_id trong results/split/gsm8k/split_sample_ids.json",
+      "computed": 685
+    },
+    {
+      "claim": "196",
+      "desc": "so cau hoi split val cua gsm8k",
+      "how": "dem sample_id trong results/split/gsm8k/split_sample_ids.json",
+      "computed": 196
+    },
+    {
+      "claim": "97",
+      "desc": "so cau hoi split test cua gsm8k",
+      "how": "dem sample_id trong results/split/gsm8k/split_sample_ids.json",
+      "computed": 97
+    },
+    {
+      "claim": "786",
+      "desc": "so cau hoi split train cua mmlu",
+      "how": "dem sample_id trong results/split/mmlu/split_sample_ids.json",
+      "computed": 786
+    },
+    {
+      "claim": "225",
+      "desc": "so cau hoi split val cua mmlu",
+      "how": "dem sample_id trong results/split/mmlu/split_sample_ids.json",
+      "computed": 225
+    },
+    {
+      "claim": "112",
+      "desc": "so cau hoi split test cua mmlu",
+      "how": "dem sample_id trong results/split/mmlu/split_sample_ids.json",
+      "computed": 112
+    },
+    {
+      "claim": "453",
+      "desc": "so cau hoi split train cua strategyqa",
+      "how": "dem sample_id trong results/split/strategyqa/split_sample_ids.json",
+      "computed": 453
+    },
+    {
+      "claim": "129",
+      "desc": "so cau hoi split val cua strategyqa",
+      "how": "dem sample_id trong results/split/strategyqa/split_sample_ids.json",
+      "computed": 129
+    },
+    {
+      "claim": "65",
+      "desc": "so cau hoi split test cua strategyqa",
+      "how": "dem sample_id trong results/split/strategyqa/split_sample_ids.json",
+      "computed": 65
+    },
+    {
+      "claim": "0.547",
+      "desc": "accuracy cua `always` tren toan bo MMLU",
+      "how": "trong moi debate mmlu: trung binh theo seed cua ty le dung o round cuoi",
+      "computed": 0.5473333333333333
+    },
+    {
+      "claim": "0.587",
+      "desc": "accuracy cua `always` tren tap test MMLU",
+      "how": "trong debate mmlu thuoc split test: trung binh theo seed cua ty le dung o round cuoi",
+      "computed": 0.5867891944814015
+    }
+  ],
+  "orphans": [
+    "0.00185",
+    "0.0033",
+    "0.5473",
+    "0.76",
+    "10000",
+    "14.2",
+    "14.7",
+    "25.2",
+    "27"
+  ]
+}
