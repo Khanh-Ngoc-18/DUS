@@ -37,8 +37,10 @@ Output: results/p3_holdout_policy.json
 """
 from __future__ import annotations
 
+import glob
 import importlib.util
 import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -57,6 +59,124 @@ N_OUTER = 5
 INNER_VAL_FRAC = 0.25
 RNG = np.random.default_rng(0)
 
+# ----------------------------------------------------- CRITIC dung SC o round 0
+# Thu nghiem: rieng baseline "unc" (DUS), o round 0 cau tra loi DOC LAP cua CRITIC
+# (cai dung de bau, KHONG phai buoc phe binh verdict_vs_solver_a/b - buoc do van
+# chay binh thuong nen verdict_conf_mean/min giu nguyen) duoc thay bang cau tra loi
+# tu chinh log self-consistency cua no (results/logs_sc/agent_c). Sau do DUS cham
+# diem nhu binh thuong; neu diem duoi nguong T thi dung ngay tai round 0. Neu du
+# lieu SC khong co cho mot debate, hanh vi giu NGUYEN nhu truoc (khong doi).
+SC_CRITIC_PATTERN = "results/logs_sc/agent_c/**/self_consistency_*.jsonl"
+R0SC_FEATS = ["answer_entropy", "confidence_variance", "disagreement_persistence",
+              "answer_flip_rate", "critic_conf", "n_disagree",
+              "critic_vs_majority", "critic_alone", "conf_gap_critic_solvers"]
+R0SC_COLS = ["r0sc_" + f for f in R0SC_FEATS] + ["r0sc_ok_if_stop"]
+
+
+def _shannon_entropy(labels: list[str]) -> float:
+    """Sao y cong thuc trong src/orchestrator.py de tai tao dung metric round 0."""
+    if not labels:
+        return 0.0
+    counts: dict[str, int] = {}
+    for lab in labels:
+        counts[lab] = counts.get(lab, 0) + 1
+    n = len(labels)
+    return -sum((c / n) * math.log2(c / n) for c in counts.values())
+
+
+def _population_variance(values: list[float]) -> float:
+    if not values:
+        return 0.0
+    m = sum(values) / len(values)
+    return sum((v - m) ** 2 for v in values) / len(values)
+
+
+def _load_critic_sc(pattern: str = SC_CRITIC_PATTERN) -> dict[tuple[int, str, int], tuple[str, float]]:
+    """Doc dap an self-consistency cua CRITIC: (seed, task, sample_id) ->
+    (dap an da so, do tin cay trung binh cua cac phieu ung ho dap an do)."""
+    out: dict[tuple[int, str, int], tuple[str, float]] = {}
+    for f in glob.glob(pattern, recursive=True):
+        for line in open(f, encoding="utf-8"):
+            line = line.strip()
+            if not line:
+                continue
+            r = json.loads(line)
+            ans = str(r["final_answer"]).strip()
+            votes = r.get("votes", [])
+            confs = [float(v["confidence"]) for v in votes
+                     if str(v.get("normalized_answer", "")).strip() == ans]
+            if not confs:
+                confs = [float(v["confidence"]) for v in votes] or [0.0]
+            key = (int(r.get("seed", 0)), r["task"], int(r["sample_id"]))
+            out[key] = (ans, float(np.mean(confs)))
+    return out
+
+
+def _load_round0_solvers(pattern: str | None = None) -> dict[tuple[int, str, int], tuple[str, str, float, float]]:
+    """Doc lai log goc (chi round 0) de lay cau tra loi + do tin cay cua HAI SOLVER
+    (khong doi), can de tinh lai feature khi thay rieng cau tra loi cua critic."""
+    out: dict[tuple[int, str, int], tuple[str, str, float, float]] = {}
+    for f in glob.glob(pattern or logio.DEFAULT_PATTERN, recursive=True):
+        for line in open(f, encoding="utf-8"):
+            line = line.strip()
+            if not line:
+                continue
+            r = json.loads(line)
+            rounds = r.get("rounds", [])
+            rd0 = next((x for x in rounds if x["round_id"] == 0), None)
+            if rd0 is None:
+                continue
+            ag = rd0["agents"]
+            a, b = ag["solver_a"], ag["solver_b"]
+            key = (int(r.get("seed", 0)), r["task"], int(r["sample_id"]))
+            out[key] = (str(a["normalized_answer"]).strip(), str(b["normalized_answer"]).strip(),
+                        float(a["confidence"]), float(b["confidence"]))
+    return out
+
+
+def _build_r0sc_table(df: pd.DataFrame) -> pd.DataFrame:
+    """1 dong / debate co du lieu SC: gia tri round-0 NEU cau tra loi doc lap cua
+    critic duoc thay bang dap an self-consistency cua no (na, nb giu nguyen)."""
+    sc = _load_critic_sc()
+    ctx = _load_round0_solvers()
+    r0 = df[df.round_id == 0]
+    rows = []
+    for seed, task, sid, gt in zip(r0.seed, r0.task, r0.sample_id, r0.ground_truth):
+        key = (int(seed), task, int(sid))
+        if key not in sc or key not in ctx:
+            continue
+        nc, cc = sc[key]
+        na, nb, ca, cb = ctx[key]
+        answers, confs = [na, nb, nc], [ca, cb, cc]
+        chosen = logio.select_final([(na, ca), (nb, cb), (nc, cc)])
+        rows.append(dict(
+            seed=int(seed), task=task, sample_id=int(sid),
+            r0sc_ok_if_stop=float(logio.score(task, chosen, gt)),
+            r0sc_answer_entropy=_shannon_entropy(answers),
+            r0sc_confidence_variance=_population_variance(confs),
+            r0sc_disagreement_persistence=float(len(set(answers)) != 1),
+            r0sc_answer_flip_rate=0.0,  # round 0: khong co round truoc de so sanh
+            r0sc_critic_conf=cc,
+            r0sc_n_disagree=sum(1 for x in (na, nb) if x != nc),
+            r0sc_critic_vs_majority=float(answers.count(nc) == 1),
+            r0sc_critic_alone=float(na == nb and nc != na),
+            r0sc_conf_gap_critic_solvers=cc - float(np.mean([ca, cb])),
+        ))
+    cols = ["seed", "task", "sample_id"] + R0SC_COLS
+    return pd.DataFrame(rows, columns=cols)
+
+
+def apply_critic_sc_round0(ap: pd.DataFrame) -> pd.DataFrame:
+    """Ban sao cua ap: o round 0 co du lieu SC, thay R0SC_FEATS + ok_if_stop bang
+    ban da tinh trong _build_r0sc_table. Dung RIENG khi cham diem baseline unc;
+    khong dung cho always / consensus / fixed_k / oracle."""
+    out = ap.copy()
+    have = (out.round_id == 0) & out["r0sc_ok_if_stop"].notna()
+    for f in R0SC_FEATS:
+        out.loc[have, f] = out.loc[have, "r0sc_" + f]
+    out.loc[have, "ok_if_stop"] = out.loc[have, "r0sc_ok_if_stop"].astype(bool)
+    return out
+
 
 # ---------------------------------------------------------------- du lieu
 def load() -> pd.DataFrame:
@@ -67,6 +187,13 @@ def load() -> pd.DataFrame:
     # round cuoi cua moi debate: noi khong the tiet kiem gi neu dung
     df["maxr"] = df.groupby(["seed", "task", "sample_id"]).round_id.transform("max")
     df["nonfinal"] = df.round_id < df.maxr
+
+    # CRITIC dung SC o round 0 (xem khoi "CRITIC dung SC o round 0" o tren): merge
+    # gia tri da tinh, roi gioi han lai CHI round 0 (merge theo debate se lap
+    # nham sang moi round neu khong che).
+    r0sc = _build_r0sc_table(df)
+    df = df.merge(r0sc, on=["seed", "task", "sample_id"], how="left")
+    df.loc[df.round_id != 0, R0SC_COLS] = np.nan
     return df
 
 
@@ -101,6 +228,11 @@ def stop_index(g: pd.DataFrame, kind: str, T: float = None, k: int = None) -> in
         w = np.where(g.consensus_now.to_numpy())[0]
         return int(w[0]) if len(w) else len(g) - 1
     if kind == "unc":
+        # Round 0: neu co diem tinh tu cau tra loi CRITIC-theo-SC va no da duoi
+        # nguong, dung ngay lap tuc (tiet kiem het cac round con lai).
+        if len(g) and "unc_r0sc" in g.columns and pd.notna(g.unc_r0sc.iloc[0]) \
+                and g.unc_r0sc.iloc[0] < T:
+            return 0
         w = np.where(g.unc.to_numpy() < T)[0]
         return int(w[0]) if len(w) else len(g) - 1
     if kind == "oracle":
@@ -124,7 +256,13 @@ def evaluate(ev: pd.DataFrame, T: dict[tuple[str, float], float]) -> pd.DataFram
         for name, kw in pol:
             i = stop_index(g, **kw)
             rec[f"i_{name}"] = i
-            rec[f"acc_{name}"] = bool(g.ok_if_stop.iloc[i])
+            # Neu unc dung o round 0 nho nhanh CRITIC-SC, cham dung theo dap an
+            # da tinh voi cau tra loi CRITIC-theo-SC, khong phai dap an goc.
+            if kw["kind"] == "unc" and i == 0 and "unc_r0sc" in g.columns \
+                    and pd.notna(g.unc_r0sc.iloc[0]) and g.unc_r0sc.iloc[0] < kw["T"]:
+                rec[f"acc_{name}"] = bool(g.ok_if_stop_r0sc.iloc[0])
+            else:
+                rec[f"acc_{name}"] = bool(g.ok_if_stop.iloc[i])
             rec[f"tok_{name}"] = tpr * (i + 1)
         out.append(rec)
     return pd.DataFrame(out)
@@ -153,6 +291,11 @@ def protocol_nested(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
             ev = ds[te].copy()
             ival["unc"] = fit_score(itr, ival)
             ev["unc"] = fit_score(itr, ev)
+            # Diem "unc" cho phuong an CRITIC dung SC o round 0, dung DE RIENG
+            # cho quyet dinh dung cua baseline unc (xem apply_critic_sc_round0).
+            ev_sc = apply_critic_sc_round0(ev)
+            ev["unc_r0sc"] = fit_score(itr, ev_sc)
+            ev["ok_if_stop_r0sc"] = ev_sc["ok_if_stop"]
             held.append(evaluate(ev, pick_thresholds(ival)))
             insample.append(evaluate(ev, pick_thresholds(ev)))     # <- chi khac dong nay
     return pd.concat(held, ignore_index=True), pd.concat(insample, ignore_index=True)
@@ -169,6 +312,9 @@ def protocol_holdout(df: pd.DataFrame) -> pd.DataFrame:
             continue
         val["unc"] = fit_score(tr, val)
         te["unc"] = fit_score(tr, te)
+        te_sc = apply_critic_sc_round0(te)
+        te["unc_r0sc"] = fit_score(tr, te_sc)
+        te["ok_if_stop_r0sc"] = te_sc["ok_if_stop"]
         parts.append(evaluate(te, pick_thresholds(val)))
     return pd.concat(parts, ignore_index=True)
 

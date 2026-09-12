@@ -34,7 +34,7 @@ R = Path("results")
 C_CONS, C_NONCONS = "#4C72B0", "#C44E52"
 C_ADAPT, C_FIXED, C_INCUMBENT = "#4C72B0", "#B0B0B0", "#C44E52"
 BENCH = ["gsm8k", "mmlu", "strategyqa"]
-NICE = {"gsm8k": "GSM8K", "mmlu": "MMLU", "strategyqa": "StrategyQA"}
+NICE = {"gsm8k": "(a) GSM8K", "mmlu": "(b) MMLU", "strategyqa": "(c) StrategyQA"}
 
 plt.rcParams.update({
     "font.family": "DejaVu Sans", "font.size": 9,

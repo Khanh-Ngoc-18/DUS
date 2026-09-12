@@ -290,14 +290,22 @@ def run_majority_vote_task(task: str, n: int, seed: int, resume: bool, n_votes: 
         if n_votes < 2:
             raise SystemExit(
                 "--sc_model can khong duoc dung voi --mv_votes 1: self-consistency 1 mau "
-                "chi la mot lan goi model, khong co gi de bo phieu. Dung --mv_votes 3.")
+                "chi la mot lan goi model, khong co gi de bo phieu. Dung --mv_votes 3.\n"
+                "(Neu can diem re nhat cho duong cost-accuracy sweep, dung 1 lan goi doc "
+                "lap co san o round-0 vote / fixed_k1 lam moc K=1, khong can chay lai o day.)")
 
     solver_a_config, solver_b_config, critic_configs = configs
     benchmark = get_benchmark(task)
 
     mode = "self_consistency" if sc_model else "majority_voting"
-    prefix = "self_consistency" if sc_model else "majority_vote"
-    tag = f"SC-{sc_model}" if sc_model else "MV"
+    # QUAN TRONG cho SC-k sweep: n_votes (K) phai nam trong PREFIX, khong chi trong
+    # noi dung record. Neu khong, chay --mv_votes 3 roi --mv_votes 7 tren CUNG
+    # (task, seed, sc_model) se ghi vao CUNG thu muc va _completed_ids() se coi cac
+    # sample_id da chay o K=3 la "da xong" khi ban dinh chay K=7 - mat het du lieu K=7
+    # (hoac tron lan hai K trong cung file khi glob "self_consistency_*.jsonl" o cac
+    # script phan tich khac). Encode K vao ten file tach hoan toan cac lan sweep.
+    prefix = (f"self_consistency_k{n_votes}" if sc_model else f"majority_vote_k{n_votes}")
+    tag = f"SC-{sc_model}-k{n_votes}" if sc_model else f"MV-k{n_votes}"
 
     os.environ["MAD_SEED"] = str(seed)
     out_dir = (Path(f"results/logs_sc/agent_{sc_model}/{task}/seed{seed}") if sc_model
