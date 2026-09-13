@@ -1,6 +1,6 @@
 model:
   provider: ollama
-  name: llama3.1:8b-instruct
+  name: llama3.1:8b
   temperature: 0.3
   max_tokens: 1024
   top_p: 1.0

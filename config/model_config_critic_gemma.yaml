@@ -1,6 +1,6 @@
 model:
   provider: ollama
-  name: gemma2:9b-instruct
+  name: gemma2:9b
   temperature: 0.3
   max_tokens: 1024
   top_p: 1.0
