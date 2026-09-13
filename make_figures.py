@@ -2,6 +2,8 @@
 
   Fig. 2  fig2_circularity    - TABLE III thanh bieu do: 33.9% bao cao vs 0.0% thuc te (muc 22)
   Fig. 3  fig3_cost_accuracy  - cot: chi phi token giam, accuracy khong doi (muc 23)
+  Fig. 4  fig4_cascade_vs_sc_frontier - duong: frontier cascade (unc<q) vs duong cong
+                                SC-solo theo k=1,2,3 phieu (xac nhan Section V-G)
 
 Nguyen tac: HINH LA BIEU DO, khong phai hop chu. Moi giai thich de o caption trong
 paper, trong hinh chi giu nhan truc, nhan gia tri va chu thich ngan.
@@ -9,6 +11,7 @@ paper, trong hinh chi giu nhan truc, nhan gia tri va chu thich ngan.
 Moi so doc TRUC TIEP tu file ket qua, khong go tay:
   Fig. 2 <- results/verify_threshold.json
   Fig. 3 <- results/p3_holdout_policy.json  (nested CV, nguong T chon tren du lieu giu rieng)
+  Fig. 4 <- results/p5_cascade_confirmatory.json  (sinh boi p5_cascade_confirmatory.py)
 
 Xuat ca PNG (300 dpi, de nhung Word) va SVG (vector, de nhung LaTeX) vao figures/.
 
@@ -115,7 +118,7 @@ def fig_circularity() -> None:
 FIG3_FAM = {
     "incumbent": ("#C44E52", "consensus"),
     "fixed": ("#B0B0B0", "fixed depth ($k$=2)"),
-    "round0": ("#DD8452", "ensemble vote"),
+    "round0": ("#DD8452", "round-0 ensemble vote"),
     "majvote": ("#937860", "majority voting"),
     "selfcons": ("#8172B3", "self-consistency@3 (1 model)"),
     "adaptive": ("#4C72B0", "adaptive (DUS-11)"),
@@ -153,7 +156,7 @@ def fig_cost_accuracy() -> None:
         rows = [
             ("consensus", "consensus", "incumbent"),
             ("fixed_k2", "fixed $k$=2", "fixed"),
-            ("fixed_k1", "round-0 vote", "round0"),
+            ("fixed_k1", "round-0 ens. vote", "round0"),
             ("ensemble_vote", "maj vote", "majvote"),
             (sc, "SC " + SC_NICE[sc], "selfcons"),
             ("unc<q50", "DUS 0.5", "adaptive"),
@@ -172,7 +175,7 @@ def fig_cost_accuracy() -> None:
             (FIG3_REF, "always", "adaptive"),
             ("consensus", "consensus", "incumbent"),
             (fk, "fixed $k$=2", "fixed"),
-            ("fixed_k1", "round-0 vote", "round0"),
+            ("fixed_k1", "round-0 ens. vote", "round0"),
             ("ensemble_vote", "maj vote", "majvote"),
             (sc, "SC " + SC_NICE[sc], "selfcons"),
             ("unc<q50", "DUS 0.5", "adaptive"),
@@ -252,7 +255,56 @@ def fig_cost_accuracy() -> None:
     save(fig, "fig3_cost_accuracy")
 
 
+def fig_frontier_vs_sc() -> None:
+    """Fig. 4 - Duong bien (frontier) cascade (unc<q10..q50, T tu val) doi chieu voi
+    duong cong SC-solo theo k=1,2,3 phieu (bao/envelope model tot nhat moi k).
+    Nguon: results/p5_cascade_confirmatory.json (sinh boi p5_cascade_confirmatory.py)."""
+    R5 = load("p5_cascade_confirmatory.json")["cascade_vs_sc_frontier"]
+
+    fig, axes = plt.subplots(1, 3, figsize=(11.2, 3.6), sharey=True)
+    for col, b in enumerate(BENCH):
+        ax = axes[col]
+        d = R5[b]
+
+        casc = sorted(d["cascade_frontier"], key=lambda p: p["tok_pct"])
+        cx = [p["tok_pct"] for p in casc]
+        cy = [p["acc"] for p in casc]
+        ax.plot(cx, cy, marker="o", ms=5, lw=1.8, color=C_ADAPT, zorder=4,
+                label="cascade")
+        for p in casc:
+            ax.annotate(f"q{int(p['q']*100)}", (p["tok_pct"], p["acc"]),
+                        textcoords="offset points", xytext=(0, 6),
+                        ha="center", fontsize=6.3, color=C_ADAPT)
+
+        sc = sorted(d["sc_solo_envelope"], key=lambda p: p["tok_pct"])
+        sx = [p["tok_pct"] for p in sc]
+        sy = [p["acc"] for p in sc]
+        ax.plot(sx, sy, marker="s", ms=5, lw=1.8, ls="--", color=C_NONCONS, zorder=4,
+                label="SC-solo(k)")
+        for i, p in enumerate(sc):
+            ax.annotate(f"k={p['k']}", (p["tok_pct"], p["acc"]),
+                        textcoords="offset points", xytext=(0, -12 - 9 * (i % 2)),
+                        ha="center", fontsize=6.3, color=C_NONCONS)
+
+        n_dom = sum(1 for x in d["pointwise_pareto_vs_sc_solo"] if x["dominates"])
+        n_tot = len(d["pointwise_pareto_vs_sc_solo"])
+        ax.set_title(f"{NICE[b]}  —  cascade ≥ SC-solo at {n_dom}/{n_tot} points",
+                     loc="left", fontsize=8.3)
+        ax.set_xlabel("token cost (% of always)", fontsize=8)
+        ax.grid(alpha=0.22, lw=0.6, zorder=0)
+        ax.set_xlim(left=0)
+
+    axes[0].set_ylabel("accuracy", fontsize=8)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=2, frameon=False,
+               bbox_to_anchor=(0.5, -0.08))
+    fig.suptitle("Cascade frontier vs. sc-solo curve over k ", fontsize=9, y=1.03)
+    fig.tight_layout()
+    save(fig, "fig4_cascade_vs_sc_frontier")
+
+
 if __name__ == "__main__":
     print("Fig. 2 circularity"); fig_circularity()
     print("Fig. 3 cost reduction"); fig_cost_accuracy()
-    print("\nXong. 2 hinh o figures/ (PNG 300dpi + SVG).")
+    print("Fig. 4 cascade vs SC-solo frontier"); fig_frontier_vs_sc()
+    print("\nXong. 3 hinh o figures/ (PNG 300dpi + SVG).")

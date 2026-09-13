@@ -334,7 +334,7 @@ for r in md_table("**TABLE VI —")[1:]:
 
 # TABLE VII - accuracy / token cua moi chinh sach
 POL = {"always (6 rounds)": "always", "consensus": "consensus",
-       "round-0 vote (fixed\\_k1)": "fixed_k1", "fixed\\_k2": "fixed_k2",
+       "round-0 ensemble vote (fixed\\_k1)": "fixed_k1", "fixed\\_k2": "fixed_k2",
        "fixed\\_k3": "fixed_k3", "unc\\<q30": "unc<q30", "unc\\<q40": "unc<q40",
        "unc\\<q50": "unc<q50", "oracle (unachievable)": "oracle"}
 for r in md_table("**TABLE VII —")[1:]:
@@ -389,7 +389,7 @@ for r in md_table("**TABLE X —")[1:]:
 P6 = P3          # da gop vao p3; moi key nam duoi "baseline_showdown"
 POL0 = {"always (6 rounds)": "always", "consensus (incumbent)": "consensus",
         "majority voting, 3 models, symmetric": "ensemble_vote",
-        "fixed\\_k1 *(= debate round 0; also a majority vote)*": "fixed_k1",
+        "fixed\\_k1 *(round-0 ensemble vote)*": "fixed_k1",
         "fixed\\_k2": "fixed_k2", "fixed\\_k3": "fixed_k3",
         "fixed\\_k4": "fixed_k4", "fixed\\_k5": "fixed_k5",
         "DUS-11, *q* \\= 0.4": "unc<q40", "DUS-11, *q* \\= 0.5": "unc<q50",

@@ -18,12 +18,21 @@ Chinh sach (tat ca suy ra offline tu log chay --no_early_stop, KHONG chay lai LL
   fixed k     - luon dung sau dung k round
   unc < T     - dung khi diem bat dinh thap (T = quantile theo tung benchmark)
   oracle      - can tren: dung o round dau tien ma dap an dung
-  self-cons@3 - = fixed_k1: round 0 chua co thong tin cheo (orchestrator chi truyen
-                critic_messages khi round_id > 0), nen majority-vote 3 agent tai round 0
-                CHINH LA self-consistency 3 mau doc lap khong debate = baseline (iii).
+  fixed_k1    - "round-0 ensemble vote": round 0 chua co thong tin cheo (orchestrator
+                chi truyen critic_messages khi round_id > 0), nen majority-vote 3 agent
+                (2 solver + critic) tai round 0 la mot ENSEMBLE vote doc lap khong debate.
+
+CANH BAO NHAN (xem mv_baseline.py va paper.md Section IV-D): fixed_k1 KHONG PHAI
+self-consistency@3. Self-consistency giu NGUYEN mot model va lay nhieu MAU cua no;
+fixed_k1 lay MOT mau moi model tu BA model khac nhau (bat doi xung ve prompt/decode).
+Mot ban truoc cua file nay goi fixed_k1 la "self-consistency@3" - do la SAI va da
+duoc go bo. Baseline self-consistency@3 THAT su duoc chay rieng trong mv_baseline.py
+(results/logs_sc/agent_<x>/...) va so sanh trong p3_holdout_policy.py.
 
 Bang so sanh baseline bat buoc cua review muc 10C duoc IN o cuoi (print_baseline_table):
-unc vs (i) consensus, (ii) fixed k re nhat cung ngan sach, (iii) self-consistency@3.
+unc vs (i) consensus, (ii) fixed k re nhat cung ngan sach, (iii) fixed_k1 (round-0
+ensemble vote, moc chi phi thap nhat suy duoc TRUC TIEP tu log debate - KHONG phai
+self-consistency@3, xem canh bao tren).
 
 Uoc luong token: total_tokens / so_round (log chi co token tong moi cau). Dung xap xi
 uniform token/round nhu ban cu.
@@ -127,10 +136,13 @@ def print_baseline_table(tasks, acc, tok, seeds) -> None:
 
     (i)   consensus              - baseline hien tai cua repo
     (ii)  fixed k                - chay cung k round
-    (iii) self-consistency@3     - = fixed_k1. Round 0 la round DUY NHAT khong co thong
+    (iii) fixed_k1 ("round-0 ensemble vote") - round 0 la round DUY NHAT khong co thong
           tin cheo (orchestrator.py:115 chi truyen critic_messages khi round_id > 0),
-          nen majority-vote 3 agent tai round 0 chinh la self-consistency 3 mau doc lap
-          (2 solver + critic tra loi doc lap), KHONG debate. Suy ra offline, khong chay lai LLM.
+          nen majority-vote 3 agent tai round 0 la mot ensemble-vote doc lap khong debate,
+          suy ra offline tu CHINH log debate (khong chay lai LLM). Day KHONG PHAI
+          self-consistency@3 (xem canh bao nhan o dau file): fixed_k1 doi da dang MODEL,
+          self-consistency doi da dang MAU cua CUNG mot model. Self-consistency@3 that
+          su duoc chay va bao cao rieng trong p3_holdout_policy.py / mv_baseline.py.
     """
     fixed = [f"fixed_k{k}" for k in FIXED_K]
     unc_names = [f"unc<q{int(q * 100):02d}" for q in QS]
@@ -143,7 +155,7 @@ def print_baseline_table(tasks, acc, tok, seeds) -> None:
 
         print(f"\n--- {t} ---")
         print(f"  {'baseline':<15}{'token%':>8}{'acc ± SD':>16}")
-        tags = {"fixed_k1": "(iii)", "fixed_k2": "(ii)"}
+        tags = {"fixed_k1": "(iii)=round-0 vote", "fixed_k2": "(ii)"}
         for name, tagb in ([("always", "goc"), ("consensus", "(i)")]
                            + [(f, tags.get(f, "     ")) for f in fixed]):
             if name not in acc[t]:

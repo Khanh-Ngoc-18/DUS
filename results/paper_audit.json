@@ -1,6 +1,6 @@
 {
   "n_claims": 491,
-  "n_ok": 491,
+  "n_ok": 320,
   "claims": [
     {
       "section": "IV-B",
@@ -391,72 +391,72 @@
       "claim": "56.6",
       "description": "% debate mmlu q50 dung SOM HON consensus",
       "source": "p3_holdout_policy.json :: nested_cv.mmlu.stop_timing['unc<q50'].earlier_pct",
-      "computed": 56.599999999999994,
-      "ok": true
+      "computed": 57.86666666666667,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-39.4",
       "description": "dToken mmlu unc<q50 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dtok.mean",
-      "computed": -39.42269406523168,
-      "ok": true
+      "computed": -41.065770697660646,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.001",
       "description": "dAccuracy mmlu unc<q50 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dacc.mean",
-      "computed": -0.0006666666666666488,
-      "ok": true
+      "computed": 0.0006666666666666598,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-26.1",
       "description": "dToken mmlu unc<q40 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q40'].dtok.mean",
-      "computed": -26.066237194489585,
-      "ok": true
+      "computed": -28.22154857830205,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.003",
       "description": "dAccuracy mmlu unc<q40 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q40'].dacc.mean",
-      "computed": -0.0033333333333333435,
-      "ok": true
+      "computed": -0.001333333333333342,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-6.0",
       "description": "dToken gsm8k unc<q50 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.gsm8k.paired_vs_consensus['unc<q50'].dtok.mean",
-      "computed": -5.997333100925055,
-      "ok": true
+      "computed": -6.843663531147529,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.001",
       "description": "dAccuracy gsm8k unc<q50 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.gsm8k.paired_vs_consensus['unc<q50'].dacc.mean",
-      "computed": -0.0006666666666666598,
-      "ok": true
+      "computed": 0.000666666666666682,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.4",
       "description": "dToken strategyqa unc<q50 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.strategyqa.paired_vs_consensus['unc<q50'].dtok.mean",
-      "computed": -0.4481722883108494,
-      "ok": true
+      "computed": -1.8881810398373418,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.001",
       "description": "dAccuracy strategyqa unc<q50 vs consensus (nested CV)",
       "source": "p3_holdout_policy.json :: nested_cv.strategyqa.paired_vs_consensus['unc<q50'].dacc.mean",
-      "computed": -0.0006666666666667043,
-      "ok": true
+      "computed": 0.0033333333333333214,
+      "ok": false
     },
     {
       "section": "V-F",
@@ -479,48 +479,48 @@
       "claim": "2.3",
       "description": "SD cua dToken mmlu q50 qua 5 seed",
       "source": "p3_holdout_policy.json :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dtok.sd",
-      "computed": 2.3017260919241886,
-      "ok": true
+      "computed": 2.190585619693063,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-39.2",
       "description": "dToken mmlu q50 tren holdout 70/20/10",
       "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dtok.mean",
-      "computed": -39.194308341181824,
-      "ok": true
+      "computed": -41.662590254898674,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "14.6",
       "description": "SD cua dToken mmlu q50 tren holdout",
       "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dtok.sd",
-      "computed": 14.611195299070593,
-      "ok": true
+      "computed": 12.740849742426184,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.046",
       "description": "dAccuracy mmlu q50 tren holdout 70/20/10",
       "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc.mean",
-      "computed": -0.04555780933062881,
-      "ok": true
+      "computed": -0.01644654796784615,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.096",
       "description": "CI cua dAcc mmlu q50 tren holdout, can duoi",
       "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc_ci_clustered[0]",
-      "computed": -0.09615384615384616,
-      "ok": true
+      "computed": -0.074842745317305,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "-0.007",
       "description": "CI cua dAcc mmlu q50 tren holdout, can tren",
       "source": "p3_holdout_policy.json :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc_ci_clustered[1]",
-      "computed": -0.0065348866819455115,
-      "ok": true
+      "computed": 0.031451516598996865,
+      "ok": false
     },
     {
       "section": "V-E",
@@ -543,24 +543,24 @@
       "claim": "-40.9",
       "description": "dToken mmlu q50 neu chon T in-sample",
       "source": "p3_holdout_policy.json :: threshold_selection_optimism.mmlu['unc<q50'].in_sample_dtok",
-      "computed": -40.94284683696888,
-      "ok": true
+      "computed": -43.44786982324344,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "3.2",
       "description": "do lac quan LON NHAT cua dToken khi chon T in-sample",
       "source": "p3_holdout_policy.json :: max |threshold_selection_optimism.*.*.dtok_pp|",
-      "computed": 3.1843900782028713,
-      "ok": true
+      "computed": 3.7321000143467966,
+      "ok": false
     },
     {
       "section": "V-E",
       "claim": "0.004",
       "description": "do lac quan LON NHAT cua dAccuracy khi chon T in-sample",
       "source": "p3_holdout_policy.json :: max |threshold_selection_optimism.*.*.dacc|",
-      "computed": 0.0040000000000000036,
-      "ok": true
+      "computed": 0.006000000000000005,
+      "ok": false
     },
     {
       "section": "V-F",
@@ -1055,32 +1055,32 @@
       "claim": "200",
       "description": "TABLE VI gsm8k q0.5 earlier (dem)",
       "source": "(o bang)",
-      "computed": 200,
-      "ok": true
+      "computed": 208,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "13.3",
       "description": "TABLE VI gsm8k q0.5 earlier (%)",
       "source": "(o bang)",
-      "computed": 13.333333333333334,
-      "ok": true
+      "computed": 13.866666666666665,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "1155",
       "description": "TABLE VI gsm8k q0.5 same (dem)",
       "source": "(o bang)",
-      "computed": 1155,
-      "ok": true
+      "computed": 1147,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "77.0",
       "description": "TABLE VI gsm8k q0.5 same (%)",
       "source": "(o bang)",
-      "computed": 77.0,
-      "ok": true
+      "computed": 76.46666666666667,
+      "ok": false
     },
     {
       "section": "TABLE VI",
@@ -1103,16 +1103,16 @@
       "claim": "149",
       "description": "TABLE VI strategyqa q0.5 earlier (dem)",
       "source": "(o bang)",
-      "computed": 149,
-      "ok": true
+      "computed": 159,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "9.9",
       "description": "TABLE VI strategyqa q0.5 earlier (%)",
       "source": "(o bang)",
-      "computed": 9.933333333333334,
-      "ok": true
+      "computed": 10.6,
+      "ok": false
     },
     {
       "section": "TABLE VI",
@@ -1135,96 +1135,96 @@
       "claim": "218",
       "description": "TABLE VI strategyqa q0.5 later (dem)",
       "source": "(o bang)",
-      "computed": 218,
-      "ok": true
+      "computed": 208,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "14.5",
       "description": "TABLE VI strategyqa q0.5 later (%)",
       "source": "(o bang)",
-      "computed": 14.533333333333335,
-      "ok": true
+      "computed": 13.866666666666665,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "614",
       "description": "TABLE VI mmlu q0.4 earlier (dem)",
       "source": "(o bang)",
-      "computed": 614,
-      "ok": true
+      "computed": 645,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "40.9",
       "description": "TABLE VI mmlu q0.4 earlier (%)",
       "source": "(o bang)",
-      "computed": 40.93333333333333,
-      "ok": true
+      "computed": 43.0,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "809",
       "description": "TABLE VI mmlu q0.4 same (dem)",
       "source": "(o bang)",
-      "computed": 809,
-      "ok": true
+      "computed": 783,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "53.9",
       "description": "TABLE VI mmlu q0.4 same (%)",
       "source": "(o bang)",
-      "computed": 53.93333333333333,
-      "ok": true
+      "computed": 52.2,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "77",
       "description": "TABLE VI mmlu q0.4 later (dem)",
       "source": "(o bang)",
-      "computed": 77,
-      "ok": true
+      "computed": 72,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "5.1",
       "description": "TABLE VI mmlu q0.4 later (%)",
       "source": "(o bang)",
-      "computed": 5.133333333333334,
-      "ok": true
+      "computed": 4.8,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "849",
       "description": "TABLE VI mmlu q0.5 earlier (dem)",
       "source": "(o bang)",
-      "computed": 849,
-      "ok": true
+      "computed": 868,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "56.6",
       "description": "TABLE VI mmlu q0.5 earlier (%)",
       "source": "(o bang)",
-      "computed": 56.599999999999994,
-      "ok": true
+      "computed": 57.86666666666667,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "631",
       "description": "TABLE VI mmlu q0.5 same (dem)",
       "source": "(o bang)",
-      "computed": 631,
-      "ok": true
+      "computed": 612,
+      "ok": false
     },
     {
       "section": "TABLE VI",
       "claim": "42.1",
       "description": "TABLE VI mmlu q0.5 same (%)",
       "source": "(o bang)",
-      "computed": 42.06666666666667,
-      "ok": true
+      "computed": 40.8,
+      "ok": false
     },
     {
       "section": "TABLE VI",
@@ -1487,32 +1487,32 @@
       "claim": "0.779",
       "description": "TABLE VII accuracy gsm8k unc<q30",
       "source": "(o bang)",
-      "computed": 0.7793333333333334,
-      "ok": true
+      "computed": 0.78,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "70.7",
       "description": "TABLE VII token% gsm8k unc<q30",
       "source": "(o bang)",
-      "computed": 70.70363354054206,
-      "ok": true
+      "computed": 70.6034650819722,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.548",
       "description": "TABLE VII accuracy mmlu unc<q30",
       "source": "(o bang)",
-      "computed": 0.548,
-      "ok": true
+      "computed": 0.5526666666666668,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "63.8",
       "description": "TABLE VII token% mmlu unc<q30",
       "source": "(o bang)",
-      "computed": 63.785761807843514,
-      "ok": true
+      "computed": 62.79299575571514,
+      "ok": false
     },
     {
       "section": "TABLE VII",
@@ -1527,47 +1527,47 @@
       "claim": "68.1",
       "description": "TABLE VII token% strategyqa unc<q30",
       "source": "(o bang)",
-      "computed": 68.12096462327752,
-      "ok": true
+      "computed": 67.49290804077344,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.781",
       "description": "TABLE VII accuracy gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 0.7813333333333333,
-      "ok": true
+      "computed": 0.7826666666666667,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "63.0",
       "description": "TABLE VII token% gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 63.02911862408958,
-      "ok": true
+      "computed": 62.63587143286372,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.543",
       "description": "TABLE VII accuracy mmlu unc<q40",
       "source": "(o bang)",
-      "computed": 0.5426666666666666,
-      "ok": true
+      "computed": 0.5446666666666666,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "50.4",
       "description": "TABLE VII token% mmlu unc<q40",
       "source": "(o bang)",
-      "computed": 50.423832863550466,
-      "ok": true
+      "computed": 48.96214764596503,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.687",
       "description": "TABLE VII accuracy strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 0.6873333333333334,
+      "computed": 0.6866666666666668,
       "ok": true
     },
     {
@@ -1575,56 +1575,56 @@
       "claim": "58.9",
       "description": "TABLE VII token% strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 58.93607387694646,
-      "ok": true
+      "computed": 58.28846411165021,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.785",
       "description": "TABLE VII accuracy gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 0.7846666666666666,
-      "ok": true
+      "computed": 0.786,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "52.6",
       "description": "TABLE VII token% gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 52.597503345788276,
-      "ok": true
+      "computed": 52.128220753311474,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.545",
       "description": "TABLE VII accuracy mmlu unc<q50",
       "source": "(o bang)",
-      "computed": 0.5453333333333333,
-      "ok": true
+      "computed": 0.5466666666666666,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "41.3",
       "description": "TABLE VII token% mmlu unc<q50",
       "source": "(o bang)",
-      "computed": 41.307389282800806,
-      "ok": true
+      "computed": 40.18128400276163,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "0.690",
       "description": "TABLE VII accuracy strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 0.6900000000000001,
-      "ok": true
+      "computed": 0.6940000000000001,
+      "ok": false
     },
     {
       "section": "TABLE VII",
       "claim": "48.2",
       "description": "TABLE VII token% strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 48.19184479079573,
-      "ok": true
+      "computed": 47.499969293114816,
+      "ok": false
     },
     {
       "section": "TABLE VII",
@@ -1679,23 +1679,23 @@
       "claim": "-0.001",
       "description": "TABLE VIII gsm8k q0.5 dAcc mean",
       "source": "(o bang)",
-      "computed": -0.0006666666666666598,
-      "ok": true
+      "computed": 0.000666666666666682,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.004",
       "description": "TABLE VIII gsm8k q0.5 dAcc sd",
       "source": "(o bang)",
-      "computed": 0.0036514837167010697,
-      "ok": true
+      "computed": 0.002788866755113583,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.007",
       "description": "TABLE VIII gsm8k q0.5 dAcc CI lo",
       "source": "(o bang)",
-      "computed": -0.0074275393725933905,
+      "computed": -0.006788981559373063,
       "ok": true
     },
     {
@@ -1703,135 +1703,135 @@
       "claim": "0.006",
       "description": "TABLE VIII gsm8k q0.5 dAcc CI hi",
       "source": "(o bang)",
-      "computed": 0.006110291367055986,
-      "ok": true
+      "computed": 0.008661326360975191,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-6.0",
       "description": "TABLE VIII gsm8k q0.5 dToken mean",
       "source": "(o bang)",
-      "computed": -5.997333100925055,
-      "ok": true
+      "computed": -6.843663531147529,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "5.1",
       "description": "TABLE VIII gsm8k q0.5 dToken sd",
       "source": "(o bang)",
-      "computed": 5.088378648849489,
-      "ok": true
+      "computed": 4.70858412950165,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.003",
       "description": "TABLE VIII mmlu q0.4 dAcc mean",
       "source": "(o bang)",
-      "computed": -0.0033333333333333435,
-      "ok": true
+      "computed": -0.001333333333333342,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.013",
       "description": "TABLE VIII mmlu q0.4 dAcc sd",
       "source": "(o bang)",
-      "computed": 0.013333333333333322,
-      "ok": true
+      "computed": 0.01676636845327908,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.015",
       "description": "TABLE VIII mmlu q0.4 dAcc CI lo",
       "source": "(o bang)",
-      "computed": -0.014876430240612292,
-      "ok": true
+      "computed": -0.014002822580645162,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.008",
       "description": "TABLE VIII mmlu q0.4 dAcc CI hi",
       "source": "(o bang)",
-      "computed": 0.008086662868936445,
-      "ok": true
+      "computed": 0.011020202281541687,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-26.1",
       "description": "TABLE VIII mmlu q0.4 dToken mean",
       "source": "(o bang)",
-      "computed": -26.066237194489585,
-      "ok": true
+      "computed": -28.22154857830205,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "3.3",
       "description": "TABLE VIII mmlu q0.4 dToken sd",
       "source": "(o bang)",
-      "computed": 3.3332318543596258,
-      "ok": true
+      "computed": 2.7495308068529947,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.001",
       "description": "TABLE VIII mmlu q0.5 dAcc mean",
       "source": "(o bang)",
-      "computed": -0.0006666666666666488,
-      "ok": true
+      "computed": 0.0006666666666666598,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.013",
       "description": "TABLE VIII mmlu q0.5 dAcc sd",
       "source": "(o bang)",
-      "computed": 0.012780193008453887,
-      "ok": true
+      "computed": 0.019206480387850552,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.015",
       "description": "TABLE VIII mmlu q0.5 dAcc CI lo",
       "source": "(o bang)",
-      "computed": -0.014977341433385548,
-      "ok": true
+      "computed": -0.01388062898222036,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.013",
       "description": "TABLE VIII mmlu q0.5 dAcc CI hi",
       "source": "(o bang)",
-      "computed": 0.012786217944360608,
-      "ok": true
+      "computed": 0.014896845086502148,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-39.4",
       "description": "TABLE VIII mmlu q0.5 dToken mean",
       "source": "(o bang)",
-      "computed": -39.42269406523168,
-      "ok": true
+      "computed": -41.065770697660646,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "2.3",
       "description": "TABLE VIII mmlu q0.5 dToken sd",
       "source": "(o bang)",
-      "computed": 2.3017260919241886,
-      "ok": true
+      "computed": 2.190585619693063,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.001",
       "description": "TABLE VIII strategyqa q0.5 dAcc mean",
       "source": "(o bang)",
-      "computed": -0.0006666666666667043,
-      "ok": true
+      "computed": 0.0033333333333333214,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.008",
       "description": "TABLE VIII strategyqa q0.5 dAcc sd",
       "source": "(o bang)",
-      "computed": 0.007601169500660898,
+      "computed": 0.008164965809277266,
       "ok": true
     },
     {
@@ -1839,32 +1839,32 @@
       "claim": "-0.009",
       "description": "TABLE VIII strategyqa q0.5 dAcc CI lo",
       "source": "(o bang)",
-      "computed": -0.00875465178096757,
-      "ok": true
+      "computed": -0.005373004545672301,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "0.007",
       "description": "TABLE VIII strategyqa q0.5 dAcc CI hi",
       "source": "(o bang)",
-      "computed": 0.007134056559380262,
-      "ok": true
+      "computed": 0.011969685117760828,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "-0.4",
       "description": "TABLE VIII strategyqa q0.5 dToken mean",
       "source": "(o bang)",
-      "computed": -0.4481722883108494,
-      "ok": true
+      "computed": -1.8881810398373418,
+      "ok": false
     },
     {
       "section": "TABLE VIII",
       "claim": "8.3",
       "description": "TABLE VIII strategyqa q0.5 dToken sd",
       "source": "(o bang)",
-      "computed": 8.336967478148146,
-      "ok": true
+      "computed": 7.615593797365178,
+      "ok": false
     },
     {
       "section": "TABLE IX",
@@ -2119,8 +2119,8 @@
       "claim": "-6.0",
       "description": "TABLE X dToken achieved gsm8k",
       "source": "(o bang)",
-      "computed": -5.997333100925055,
-      "ok": true
+      "computed": -6.843663531147529,
+      "ok": false
     },
     {
       "section": "TABLE X",
@@ -2151,8 +2151,8 @@
       "claim": "-0.4",
       "description": "TABLE X dToken achieved strategyqa",
       "source": "(o bang)",
-      "computed": -0.4481722883108494,
-      "ok": true
+      "computed": -1.8881810398373418,
+      "ok": false
     },
     {
       "section": "TABLE X",
@@ -2183,8 +2183,8 @@
       "claim": "-39.4",
       "description": "TABLE X dToken achieved mmlu",
       "source": "(o bang)",
-      "computed": -39.42269406523168,
-      "ok": true
+      "computed": -41.065770697660646,
+      "ok": false
     },
     {
       "section": "TABLE 0",
@@ -2767,39 +2767,39 @@
       "claim": "0.781",
       "description": "TABLE 0 accuracy gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 0.7813333333333333,
-      "ok": true
+      "computed": 0.7826666666666666,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "63.0",
       "description": "TABLE 0 token% gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 63.038088143004344,
-      "ok": true
+      "computed": 62.643682887446914,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "0.543",
       "description": "TABLE 0 accuracy mmlu unc<q40",
       "source": "(o bang)",
-      "computed": 0.5426666666666666,
-      "ok": true
+      "computed": 0.5446666666666666,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "50.4",
       "description": "TABLE 0 token% mmlu unc<q40",
       "source": "(o bang)",
-      "computed": 50.363451564412784,
-      "ok": true
+      "computed": 48.9053251507471,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "0.687",
       "description": "TABLE 0 accuracy strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 0.6873333333333334,
+      "computed": 0.6866666666666666,
       "ok": true
     },
     {
@@ -2807,199 +2807,199 @@
       "claim": "58.9",
       "description": "TABLE 0 token% strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 58.94103088226307,
-      "ok": true
+      "computed": 58.295007191419316,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "0.785",
       "description": "TABLE 0 accuracy gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 0.7846666666666666,
-      "ok": true
+      "computed": 0.786,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "52.6",
       "description": "TABLE 0 token% gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 52.622877837586536,
-      "ok": true
+      "computed": 52.15221808893645,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "0.545",
       "description": "TABLE 0 accuracy mmlu unc<q50",
       "source": "(o bang)",
-      "computed": 0.5453333333333333,
-      "ok": true
+      "computed": 0.5466666666666666,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "41.3",
       "description": "TABLE 0 token% mmlu unc<q50",
       "source": "(o bang)",
-      "computed": 41.28941343310014,
-      "ok": true
+      "computed": 40.16852963735908,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "0.690",
       "description": "TABLE 0 accuracy strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 0.69,
-      "ok": true
+      "computed": 0.694,
+      "ok": false
     },
     {
       "section": "TABLE 0",
       "claim": "48.2",
       "description": "TABLE 0 token% strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 48.19260715976262,
-      "ok": true
+      "computed": 47.501945838807686,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0153",
       "description": "TABLE XI dacc gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 0.015333333333333332,
-      "ok": true
+      "computed": 0.014,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0013",
       "description": "TABLE XI CI-lo gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 0.0013458723924981062,
-      "ok": true
+      "computed": 0.0,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0293",
       "description": "TABLE XI CI-hi gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 0.02927485951973736,
-      "ok": true
+      "computed": 0.02781456953642384,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.035",
       "description": "TABLE XI p gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": 0.0354,
-      "ok": true
+      "computed": 0.0514,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-29.7",
       "description": "TABLE XI dtok gsm8k unc<q40",
       "source": "(o bang)",
-      "computed": -29.70475480967101,
-      "ok": true
+      "computed": -29.31034955411358,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0120",
       "description": "TABLE XI dacc gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 0.012,
-      "ok": true
+      "computed": 0.010666666666666666,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0013",
       "description": "TABLE XI CI-lo gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": -0.0013351134846461949,
-      "ok": true
+      "computed": -0.0026702269692923898,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0253",
       "description": "TABLE XI CI-hi gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 0.025282767797737856,
-      "ok": true
+      "computed": 0.02385725435187284,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.080",
       "description": "TABLE XI p gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": 0.0798,
-      "ok": true
+      "computed": 0.1286,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-19.3",
       "description": "TABLE XI dtok gsm8k unc<q50",
       "source": "(o bang)",
-      "computed": -19.289544504253207,
-      "ok": true
+      "computed": -18.81888475560312,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0027",
       "description": "TABLE XI dacc mmlu unc<q40",
       "source": "(o bang)",
-      "computed": -0.0026666666666666666,
-      "ok": true
+      "computed": -0.004666666666666667,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0182",
       "description": "TABLE XI CI-lo mmlu unc<q40",
       "source": "(o bang)",
-      "computed": -0.018182431189848587,
-      "ok": true
+      "computed": -0.02083438552188552,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0132",
       "description": "TABLE XI CI-hi mmlu unc<q40",
       "source": "(o bang)",
-      "computed": 0.01315811129205502,
-      "ok": true
+      "computed": 0.01200800533689126,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.768",
       "description": "TABLE XI p mmlu unc<q40",
       "source": "(o bang)",
-      "computed": 0.7682,
-      "ok": true
+      "computed": 0.5996,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-17.0",
       "description": "TABLE XI dtok mmlu unc<q40",
       "source": "(o bang)",
-      "computed": -17.030118231079456,
-      "ok": true
+      "computed": -15.57199181741377,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0053",
       "description": "TABLE XI dacc mmlu unc<q50",
       "source": "(o bang)",
-      "computed": -0.005333333333333333,
-      "ok": true
+      "computed": -0.006666666666666667,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0207",
       "description": "TABLE XI CI-lo mmlu unc<q50",
       "source": "(o bang)",
-      "computed": -0.020658693780933934,
-      "ok": true
+      "computed": -0.023117951335017258,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0101",
       "description": "TABLE XI CI-hi mmlu unc<q50",
       "source": "(o bang)",
-      "computed": 0.010114632501685773,
+      "computed": 0.01008759405199481,
       "ok": true
     },
     {
@@ -3007,160 +3007,160 @@
       "claim": "0.525",
       "description": "TABLE XI p mmlu unc<q50",
       "source": "(o bang)",
-      "computed": 0.525,
-      "ok": true
+      "computed": 0.4656,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-8.0",
       "description": "TABLE XI dtok mmlu unc<q50",
       "source": "(o bang)",
-      "computed": -7.956080099766802,
-      "ok": true
+      "computed": -6.835196304025745,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0107",
       "description": "TABLE XI dacc strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 0.010666666666666666,
-      "ok": true
+      "computed": 0.011333333333333334,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0046",
       "description": "TABLE XI CI-lo strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": -0.004635838391285839,
-      "ok": true
+      "computed": -0.004067865602649311,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0257",
       "description": "TABLE XI CI-hi strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 0.025728262445115984,
-      "ok": true
+      "computed": 0.02677391473142734,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.178",
       "description": "TABLE XI p strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": 0.178,
-      "ok": true
+      "computed": 0.1626,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-25.6",
       "description": "TABLE XI dtok strategyqa unc<q40",
       "source": "(o bang)",
-      "computed": -25.607697548929735,
-      "ok": true
+      "computed": -24.96167385808598,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0080",
       "description": "TABLE XI dacc strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 0.008,
-      "ok": true
+      "computed": 0.004,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-0.0066",
       "description": "TABLE XI CI-lo strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": -0.006600769059732922,
-      "ok": true
+      "computed": -0.010492320286077422,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.0226",
       "description": "TABLE XI CI-hi strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 0.022591362126245847,
-      "ok": true
+      "computed": 0.01876684279479771,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "0.310",
       "description": "TABLE XI p strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": 0.3098,
-      "ok": true
+      "computed": 0.6394,
+      "ok": false
     },
     {
       "section": "TABLE XI",
       "claim": "-14.9",
       "description": "TABLE XI dtok strategyqa unc<q50",
       "source": "(o bang)",
-      "computed": -14.859273826429293,
-      "ok": true
+      "computed": -14.168612505474352,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0227",
       "description": "TABLE XII dacc gsm8k ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.02266666666666667,
-      "ok": true
+      "computed": -0.024,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0419",
       "description": "TABLE XII CI-lo gsm8k ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.041861250785669386,
-      "ok": true
+      "computed": -0.04316595306750551,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0038",
       "description": "TABLE XII CI-hi gsm8k ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.0038403761284829543,
-      "ok": true
+      "computed": -0.004700905388397852,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.024",
       "description": "TABLE XII p gsm8k ensemble_vote",
       "source": "(o bang)",
-      "computed": 0.0244,
-      "ok": true
+      "computed": 0.0178,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-41.5",
       "description": "TABLE XII dtok gsm8k ensemble_vote",
       "source": "(o bang)",
-      "computed": -41.468608002353655,
-      "ok": true
+      "computed": -40.997948253703576,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1467",
       "description": "TABLE XII dacc gsm8k self_consistency_a",
       "source": "(o bang)",
-      "computed": -0.14666666666666667,
-      "ok": true
+      "computed": -0.148,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1752",
       "description": "TABLE XII CI-lo gsm8k self_consistency_a",
       "source": "(o bang)",
-      "computed": -0.1752182449220108,
-      "ok": true
+      "computed": -0.17662787823755552,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1178",
       "description": "TABLE XII CI-hi gsm8k self_consistency_a",
       "source": "(o bang)",
-      "computed": -0.11776226854353544,
-      "ok": true
+      "computed": -0.11921758299608463,
+      "ok": false
     },
     {
       "section": "TABLE XII",
@@ -3175,32 +3175,32 @@
       "claim": "-41.8",
       "description": "TABLE XII dtok gsm8k self_consistency_a",
       "source": "(o bang)",
-      "computed": -41.75127074873507,
-      "ok": true
+      "computed": -41.28061100008498,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0940",
       "description": "TABLE XII dacc gsm8k self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.094,
-      "ok": true
+      "computed": -0.09533333333333334,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1210",
       "description": "TABLE XII CI-lo gsm8k self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.12095311065710589,
-      "ok": true
+      "computed": -0.12224485515882262,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0668",
       "description": "TABLE XII CI-hi gsm8k self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.0667547918043622,
-      "ok": true
+      "computed": -0.06798063365945288,
+      "ok": false
     },
     {
       "section": "TABLE XII",
@@ -3215,152 +3215,152 @@
       "claim": "-43.3",
       "description": "TABLE XII dtok gsm8k self_consistency_b",
       "source": "(o bang)",
-      "computed": -43.272864050484536,
-      "ok": true
+      "computed": -42.80220430183444,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0047",
       "description": "TABLE XII dacc gsm8k self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.004666666666666667,
-      "ok": true
+      "computed": -0.006,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0224",
       "description": "TABLE XII CI-lo gsm8k self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.022442244224422443,
-      "ok": true
+      "computed": -0.02336145360155743,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0132",
       "description": "TABLE XII CI-hi gsm8k self_consistency_c",
       "source": "(o bang)",
-      "computed": 0.013157894736842105,
-      "ok": true
+      "computed": 0.011704465351347074,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.630",
       "description": "TABLE XII p gsm8k self_consistency_c",
       "source": "(o bang)",
-      "computed": 0.6304,
-      "ok": true
+      "computed": 0.5232,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-40.0",
       "description": "TABLE XII dtok gsm8k self_consistency_c",
       "source": "(o bang)",
-      "computed": -39.95945955801515,
-      "ok": true
+      "computed": -39.48879980936507,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0247",
       "description": "TABLE XII dacc mmlu ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.024666666666666667,
-      "ok": true
+      "computed": -0.026,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0493",
       "description": "TABLE XII CI-lo mmlu ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.049324768847795165,
-      "ok": true
+      "computed": -0.050658114035087715,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0007",
       "description": "TABLE XII CI-hi mmlu ensemble_vote",
       "source": "(o bang)",
-      "computed": 0.0006536268731461145,
-      "ok": true
+      "computed": -0.0013288815943314233,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.055",
       "description": "TABLE XII p mmlu ensemble_vote",
       "source": "(o bang)",
-      "computed": 0.0552,
-      "ok": true
+      "computed": 0.0432,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-28.1",
       "description": "TABLE XII dtok mmlu ensemble_vote",
       "source": "(o bang)",
-      "computed": -28.070368246586362,
-      "ok": true
+      "computed": -26.9494844508453,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0367",
       "description": "TABLE XII dacc mmlu self_consistency_a",
       "source": "(o bang)",
-      "computed": 0.03666666666666667,
-      "ok": true
+      "computed": 0.035333333333333335,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0072",
       "description": "TABLE XII CI-lo mmlu self_consistency_a",
       "source": "(o bang)",
-      "computed": 0.007169059316562901,
-      "ok": true
+      "computed": 0.005999700598802396,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0661",
       "description": "TABLE XII CI-hi mmlu self_consistency_a",
       "source": "(o bang)",
-      "computed": 0.06614335548128233,
-      "ok": true
+      "computed": 0.06462100048776469,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.015",
       "description": "TABLE XII p mmlu self_consistency_a",
       "source": "(o bang)",
-      "computed": 0.0152,
-      "ok": true
+      "computed": 0.0186,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-30.2",
       "description": "TABLE XII dtok mmlu self_consistency_a",
       "source": "(o bang)",
-      "computed": -30.17677094961314,
-      "ok": true
+      "computed": -29.055887153872085,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.2520",
       "description": "TABLE XII dacc mmlu self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.252,
-      "ok": true
+      "computed": -0.25333333333333335,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.2882",
       "description": "TABLE XII CI-lo mmlu self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.28818061088977426,
-      "ok": true
+      "computed": -0.2899131596526386,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.2161",
       "description": "TABLE XII CI-hi mmlu self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.2160693950185898,
-      "ok": true
+      "computed": -0.21668853746074473,
+      "ok": false
     },
     {
       "section": "TABLE XII",
@@ -3375,23 +3375,23 @@
       "claim": "-24.9",
       "description": "TABLE XII dtok mmlu self_consistency_b",
       "source": "(o bang)",
-      "computed": -24.889700797233864,
-      "ok": true
+      "computed": -23.76881700149281,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0307",
       "description": "TABLE XII dacc mmlu self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.030666666666666665,
-      "ok": true
+      "computed": -0.032,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0521",
       "description": "TABLE XII CI-lo mmlu self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.05207046070222037,
+      "computed": -0.05245974275593103,
       "ok": true
     },
     {
@@ -3399,55 +3399,55 @@
       "claim": "-0.0092",
       "description": "TABLE XII CI-hi mmlu self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.009216589861751152,
-      "ok": true
+      "computed": -0.011310336138354526,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.006",
       "description": "TABLE XII p mmlu self_consistency_c",
       "source": "(o bang)",
-      "computed": 0.0058,
-      "ok": true
+      "computed": 0.0028,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-30.8",
       "description": "TABLE XII dtok mmlu self_consistency_c",
       "source": "(o bang)",
-      "computed": -30.808251315347018,
-      "ok": true
+      "computed": -29.687367519605957,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0747",
       "description": "TABLE XII dacc strategyqa ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.07466666666666667,
-      "ok": true
+      "computed": -0.07866666666666666,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1077",
       "description": "TABLE XII CI-lo strategyqa ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.10767185547044478,
-      "ok": true
+      "computed": -0.11133333333333334,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0405",
       "description": "TABLE XII CI-hi strategyqa ensemble_vote",
       "source": "(o bang)",
-      "computed": -0.04054893324844806,
-      "ok": true
+      "computed": -0.04509701728707624,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0002",
       "description": "TABLE XII p strategyqa ensemble_vote",
       "source": "(o bang)",
-      "computed": 0.0002,
+      "computed": 0.0001,
       "ok": true
     },
     {
@@ -3455,32 +3455,32 @@
       "claim": "-42.6",
       "description": "TABLE XII dtok strategyqa ensemble_vote",
       "source": "(o bang)",
-      "computed": -42.61641465947023,
-      "ok": true
+      "computed": -41.9257533385153,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1420",
       "description": "TABLE XII dacc strategyqa self_consistency_a",
       "source": "(o bang)",
-      "computed": -0.142,
-      "ok": true
+      "computed": -0.146,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1880",
       "description": "TABLE XII CI-lo strategyqa self_consistency_a",
       "source": "(o bang)",
-      "computed": -0.1879858803986711,
-      "ok": true
+      "computed": -0.19163002768635687,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0961",
       "description": "TABLE XII CI-hi strategyqa self_consistency_a",
       "source": "(o bang)",
-      "computed": -0.0961021505376344,
-      "ok": true
+      "computed": -0.09993506384019998,
+      "ok": false
     },
     {
       "section": "TABLE XII",
@@ -3495,39 +3495,39 @@
       "claim": "-44.1",
       "description": "TABLE XII dtok strategyqa self_consistency_a",
       "source": "(o bang)",
-      "computed": -44.10739025641596,
-      "ok": true
+      "computed": -43.41672893546102,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0787",
       "description": "TABLE XII dacc strategyqa self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.07866666666666666,
-      "ok": true
+      "computed": -0.08266666666666667,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.1165",
       "description": "TABLE XII CI-lo strategyqa self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.11645009149529453,
-      "ok": true
+      "computed": -0.12039490186586868,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0411",
       "description": "TABLE XII CI-hi strategyqa self_consistency_b",
       "source": "(o bang)",
-      "computed": -0.04108588710001098,
-      "ok": true
+      "computed": -0.04542199684342782,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0002",
       "description": "TABLE XII p strategyqa self_consistency_b",
       "source": "(o bang)",
-      "computed": 0.0002,
+      "computed": 0.0001,
       "ok": true
     },
     {
@@ -3535,48 +3535,48 @@
       "claim": "-44.1",
       "description": "TABLE XII dtok strategyqa self_consistency_b",
       "source": "(o bang)",
-      "computed": -44.07927411409908,
-      "ok": true
+      "computed": -43.38861279314414,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0113",
       "description": "TABLE XII dacc strategyqa self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.011333333333333334,
-      "ok": true
+      "computed": -0.015333333333333332,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-0.0317",
       "description": "TABLE XII CI-lo strategyqa self_consistency_c",
       "source": "(o bang)",
-      "computed": -0.03165014258681805,
-      "ok": true
+      "computed": -0.03521630698034555,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.0090",
       "description": "TABLE XII CI-hi strategyqa self_consistency_c",
       "source": "(o bang)",
-      "computed": 0.008998591764479235,
-      "ok": true
+      "computed": 0.004651240103908954,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "0.293",
       "description": "TABLE XII p strategyqa self_consistency_c",
       "source": "(o bang)",
-      "computed": 0.2934,
-      "ok": true
+      "computed": 0.1434,
+      "ok": false
     },
     {
       "section": "TABLE XII",
       "claim": "-39.8",
       "description": "TABLE XII dtok strategyqa self_consistency_c",
       "source": "(o bang)",
-      "computed": -39.774673200285406,
-      "ok": true
+      "computed": -39.08401187933047,
+      "ok": false
     },
     {
       "section": "V-B",
@@ -3735,8 +3735,8 @@
       "claim": "3.7",
       "description": "worst-case regret cua unc<q50 (diem accuracy)",
       "source": "LIVE: max qua benchmark cua (acc tot nhat - acc chinh sach) * 100  [results/logs/**/debate_full_*.jsonl (qua logio.load_rounds)]",
-      "computed": 3.6666666666666625,
-      "ok": true
+      "computed": 3.5333333333333328,
+      "ok": false
     },
     {
       "section": "VI-A",
@@ -4050,7 +4050,7 @@
       "claim": "3.7",
       "desc": "worst-case regret cua unc<q50 (diem accuracy)",
       "how": "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100",
-      "computed": 3.6666666666666625
+      "computed": 3.5333333333333328
     },
     {
       "claim": "4.2",
