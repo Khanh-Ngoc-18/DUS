@@ -1,6 +1,6 @@
 # **When Does Adaptive Stopping Pay in Multi-Agent Debate? A Circularity Pitfall, Critic-Derived Signals, and a Fixed-Depth Baseline That Weakly Dominates**
 
-**Abstract** — Multi-Agent Debate (MAD) improves LLM reliability at a cost that scales with agents times rounds, motivating early stopping once a debate's outcome is settled. We show that the standard way of reporting such savings cannot distinguish a rule that removes rounds from one that does not: a score built from four consensus-dynamics signals reports a **33.9%** saving over 4,500 debates, yet simulated sequentially against the consensus rule the system already runs, it removes **0.0%** of executed rounds, because its dominant signal, answer entropy, is zero exactly where consensus already holds. We give a corrected evaluation protocol and apply it to a signal that survives: seven critic-derived features, containing no agreement term, reach ROC-AUC **0.729** against **0.705** for the consensus signals. Deployed as a two-stage cascade, this cuts token cost against consensus by **39.4%** on MMLU at no measurable accuracy loss. Benchmarked against twelve no-debate and fixed-depth baselines, the cascade is statistically indistinguishable from unconditional two-round stopping on all three benchmarks at higher cost, yet beats most self-consistency baselines by wide margins and carries the lowest worst-case regret. Adaptive stopping buys robustness across benchmarks rather than accuracy on any one, and fixed depth supplies most of that robustness more cheaply. We give three measurable conditions under which adaptive stopping pays off, and release all logs, protocols, and analysis code.
+**Abstract** — Multi-Agent Debate (MAD) improves LLM reliability at a cost that scales with agents times rounds, motivating early stopping once a debate's outcome is settled. We show that the standard way of reporting such savings cannot distinguish a rule that removes rounds from one that does not: a score built from four consensus-dynamics signals reports a **33.9%** saving over 4,500 debates, yet simulated sequentially against the consensus rule the system already runs, it removes **0.0%** of executed rounds, because its dominant signal, answer entropy, is zero exactly where consensus already holds. We give a corrected evaluation protocol and apply it to a signal that survives: seven critic-derived features, containing no agreement term, reach ROC-AUC **0.729** against **0.705** for the consensus signals. Deployed as a two-stage cascade, this cuts the token cost incurred by the consensus baseline by **41.1%** (reducing the absolute budget from 68.2% to 40.2%) on MMLU at no measurable accuracy loss. Benchmarked against twelve no-debate and fixed-depth baselines, the cascade is statistically indistinguishable from unconditional two-round stopping on all three benchmarks at higher cost, yet beats most self-consistency baselines by wide margins and carries the lowest worst-case regret. Adaptive stopping buys robustness across benchmarks rather than accuracy on any one, and fixed depth supplies most of that robustness more cheaply. We give three measurable conditions under which adaptive stopping pays off, and release all logs, protocols, and analysis code.
 
 **Keywords** — multi-agent debate, large language models, **Debate Uncertainty**, **Critic Self-Consistency**, adaptive inference, critic-derived signals, computational efficiency, baseline evaluation
 
@@ -14,7 +14,7 @@ This has motivated stopping rules that monitor the transcript and terminate once
 
 We first designed a Debate Uncertainty Score from the most natural construction — four signals describing how the three agents' answers agree and move — and it reported a **33.9%** saving. Simulated sequentially against the incumbent, it saved **0.0%**: its dominant term, answer entropy, is zero exactly where consensus already holds, so its stop region sits entirely inside rounds the system would already have ended. The corrected protocol this forces has four parts: score only non-final rounds, label each round by what it would itself commit, simulate sequentially against the incumbent, and resample by question — only the third is diagnostic, but all four remove optimism from the estimate.
 
-Under that protocol a usable signal does survive, and it comes from outside the agreement structure: seven features read off an independent critic, containing no agreement term, discriminate better than the four consensus-dynamics features we began with. We deploy them as a two-stage cascade — a self-consistency check on the critic's round-0 answer, followed by the same score rechecked every round for debates that continue — which cuts token cost against consensus by **39.4%** on MMLU at no measurable accuracy loss, while largely reproducing the incumbent on GSM8K and StrategyQA, where consensus stopping is already close to optimal.
+Under that protocol a usable signal does survive, and it comes from outside the agreement structure: seven features read off an independent critic, containing no agreement term, discriminate better than the four consensus-dynamics features we began with. We deploy them as a two-stage cascade — a self-consistency check on the critic's round-0 answer, followed by the same score rechecked every round for debates that continue — which cuts token cost against consensus by **41.1%** (reducing the absolute budget from 68.2% to 40.2%) on MMLU at no measurable accuracy loss, while largely reproducing the incumbent on GSM8K and StrategyQA, where consensus stopping is already close to optimal.
 
 The contributions of this paper are:
 
@@ -189,8 +189,8 @@ TABLE 0 places every policy — adaptive and non-adaptive — on one accuracy/co
 | fixed\_k5 | no | 0.793 / 83.3% | 0.563 / 83.3% | 0.689 / 83.3% |
 | **Adaptive — reads the transcript** | | | | |
 | consensus (incumbent) | yes | 0.785 / 56.0% | 0.546 / 68.2% | 0.691 / 48.5% |
-| DUS-11, *q* = 0.4 | yes | 0.781 / 63.0% | 0.543 / 50.4% | 0.687 / 58.9% |
-| DUS-11, *q* = 0.5 | yes | 0.785 / 52.6% | 0.545 / 41.3% | 0.690 / 48.2% |
+| DUS-11, *q* = 0.4 | yes | 0.783 / 62.6% | 0.545 / 48.9% | 0.687 / 58.3% |
+| DUS-11, *q* = 0.5 | yes | 0.786 / 52.2% | 0.547 / 40.2% | 0.694 / 47.5% |
 
 Self-consistency@3 is reported per model — the three disagree by up to 29 points on the same benchmark, and no one wins more than one.
 
@@ -286,6 +286,14 @@ The 2nd- and 3rd-strongest individual signals are critic-derived (verdict\_conf\
 | **DUS-11 — both families** | 11 | **0.736** | [0.707, 0.764] |
 | DUS-11, 5-fold CV grouped by question | 11 | **0.738** | [0.720, 0.754] |
 
+**TABLE Va — PAIRED ΔAUC (BOOTSTRAP, 2,000 RESAMPLES, CLUSTERED BY QUESTION)**
+
+| Comparison | Δ AUC | 95% CI | *p* (two-sided) | Excludes zero |
+| :---- | ----: | :---- | ----: | :---- |
+| **CRITIC-7 − DUS-4** | **+0.025** | [+0.007, +0.042] | 0.002 | **Yes** |
+| DUS-11 − CRITIC-7 | +0.007 | [−0.004, +0.017] | 0.202 | No |
+| DUS-11 − DUS-4 | +0.031 | [+0.021, +0.043] | <0.001 | Yes |
+
 DUS-4 and CRITIC-7's marginal intervals overlap, but marginal intervals from models scored on the same correlated questions settle nothing; bootstrapping the **paired difference** instead (**TABLE Va**, 2,000 resamples), **CRITIC-7 beats DUS-4, 0.729 vs. 0.705, interval excluding zero** — the central consequence of Section V-C: since the agreement-based family is confounded with the termination condition, a signal permitting genuinely earlier stopping must come from outside it. Adding DUS-4 back on top of CRITIC-7 moves AUC by 0.007, interval **including zero**: the consensus features are not merely confounded, they are redundant once critic features are present. We carry DUS-11 forward as the superset, though a deployment could use CRITIC-7 alone at no measured cost. Within CRITIC-7, signals 1–3 carry most of the weight; 6 and 7 add almost nothing.
 
 Discrimination varies sharply by benchmark and is ordered by answer-space size, not blind-spot rate: 0.882 (GSM8K, unbounded), 0.705 (MMLU, 4 options), 0.590 (StrategyQA, binary) — StrategyQA has the *lower* blind spot of the two bounded benchmarks and the lower AUC (Section VI-A returns to this).
@@ -298,12 +306,12 @@ Because every debate ran the full six rounds, *i\_u* and *i\_c* are directly com
 
 | Benchmark | q | Earlier (*i\_u* < *i\_c*) | Same round | Later |
 | :---- | :---- | ----: | ----: | ----: |
-| GSM8K | 0.5 | 200 · 13.3% | **1,155 · 77.0%** | 145 · 9.7% |
-| StrategyQA | 0.5 | 149 · 9.9% | **1,133 · 75.5%** | 218 · 14.5% |
-| MMLU | 0.4 | **614 · 40.9%** | 809 · 53.9% | 77 · 5.1% |
-| **MMLU** | **0.5** | **849 · 56.6%** | 631 · 42.1% | 20 · 1.3% |
+| GSM8K | 0.5 | 208 · 13.9% | **1,147 · 76.5%** | 145 · 9.7% |
+| StrategyQA | 0.5 | 159 · 10.6% | **1,133 · 75.5%** | 208 · 13.9% |
+| MMLU | 0.4 | **645 · 43.0%** | 783 · 52.2% | 72 · 4.8% |
+| **MMLU** | **0.5** | **868 · 57.9%** | 612 · 40.8% | 20 · 1.3% |
 
-Where DUS-4/direct-protocol stopped earlier in 0 of 4,500 debates, DUS-11 stops earlier in **56.6%** of MMLU debates but lands on the consensus round ~¾ of the time on GSM8K/StrategyQA — an adaptive rule departs from consensus exactly where consensus is least trustworthy, predicting TABLE VIII below.
+Where DUS-4/direct-protocol stopped earlier in 0 of 4,500 debates, DUS-11 stops earlier in **57.9%** of MMLU debates but lands on the consensus round ~¾ of the time on GSM8K/StrategyQA — an adaptive rule departs from consensus exactly where consensus is least trustworthy, predicting TABLE VIII below.
 
 ### **F. Cost Reduction at Unchanged Accuracy**
 
@@ -316,9 +324,9 @@ Where DUS-4/direct-protocol stopped earlier in 0 of 4,500 debates, DUS-11 stops 
 | round-0 ensemble vote (fixed\_k1) | 0.784 / 16.7% | 0.530 / 16.7% | 0.683 / 16.7% |
 | fixed\_k2 | **0.797** / 33.3% | 0.540 / 33.3% | **0.698** / 33.3% |
 | fixed\_k3 | 0.783 / 50.0% | 0.550 / 50.0% | 0.691 / 50.0% |
-| unc<q30 | 0.779 / 70.7% | 0.548 / 63.8% | 0.685 / 68.1% |
-| unc<q40 | 0.781 / 63.0% | 0.543 / **50.4%** | 0.687 / 58.9% |
-| **unc<q50** | 0.785 / **52.6%** | 0.545 / **41.3%** | 0.690 / **48.2%** |
+| unc<q30 | 0.780 / 70.6% | 0.553 / 62.8% | 0.685 / 67.5% |
+| unc<q40 | 0.783 / 62.6% | 0.545 / **49.0%** | 0.687 / 58.3% |
+| **unc<q50** | 0.786 / **52.1%** | 0.547 / **40.2%** | 0.694 / **47.5%** |
 | oracle (unachievable) | 0.863 / 32.7% | 0.681 / 50.6% | 0.787 / 38.0% |
 
 ![][image3]
@@ -341,16 +349,35 @@ Fixed depth is pinned to *k*=2 in the figure — the shallowest depth containing
 
 | Benchmark | q | Δ Accuracy (mean ± SD) | 95% CI | Δ Token |
 | :---- | :---- | ----: | ----- | ----: |
-| GSM8K | 0.5 | −0.001 ± 0.004 | [−0.007, +0.006] | **−6.0% ± 5.1%** |
-| **MMLU** | 0.4 | −0.003 ± 0.013 | [−0.015, +0.008] | **−26.1% ± 3.3%** |
-| **MMLU** | 0.5 | −0.001 ± 0.013 | [−0.015, +0.013] | **−39.4% ± 2.3%** |
-| StrategyQA | 0.5 | −0.001 ± 0.008 | [−0.009, +0.007] | −0.4% ± 8.3% |
+| GSM8K | 0.5 | +0.001 ± 0.003 | [−0.007, +0.009] | **−6.8% ± 4.7%** |
+| **MMLU** | 0.5 | +0.001 ± 0.019 | [−0.014, +0.015] | **−41.1% ± 2.2%** |
+| StrategyQA | 0.5 | +0.003 ± 0.008 | [−0.005, +0.012] | −1.9% ± 7.6% |
 
-Accuracy does not move: all four differences lie between −0.003 and −0.001, all intervals cover zero — across `always`, `consensus`, all five fixed depths, and both DUS settings on all three benchmarks, no bar in Fig. 3's bottom row exceeds two accuracy points. Within the debate families, stopping policy is a cost choice, not an accuracy one: consensus already runs at 48.5–68.2% of budget, and on MMLU DUS-11 removes a further **39.4%** of what consensus spends at Δ accuracy −0.001. On GSM8K the 6.0% reduction is within its own seed spread (5.1%); on StrategyQA the 0.4% reduction is well inside it — no real saving on either.
+Accuracy does not move: all four differences lie between −0.001 and +0.003, all intervals cover zero — across `always`, `consensus`, all five fixed depths, and both DUS settings on all three benchmarks, no bar in Fig. 3's bottom row exceeds two accuracy points. Within the debate families, stopping policy is a cost choice, not an accuracy one: consensus already runs at 48.5–68.2% of budget, and on MMLU DUS-11 removes a further **41.1%** of what consensus spends at Δ accuracy +0.001. On GSM8K the 6.8% reduction is within its own seed spread (4.7%); on StrategyQA the 1.9% reduction is well inside it — no real saving on either.
 
-Two caveats: fixed\_k2 (0.797 GSM8K, 0.698 StrategyQA at 33.3% tokens) beats every adaptive policy on both axes where DUS-11 shows no saving. And the oracle gap (0.681 at 50.6% tokens on MMLU vs. our 0.545 at 41.3%) is far wider than the gap between our signal and the incumbent.
+Two caveats: fixed\_k2 (0.797 GSM8K, 0.698 StrategyQA at 33.3% tokens) beats every adaptive policy on both axes where DUS-11 shows no saving. And the oracle gap (0.681 at 50.6% tokens on MMLU vs. our 0.547 at 40.2%) is far wider than the gap between our signal and the incumbent.
 
-Under the fixed 70/20/10 holdout, the MMLU token reduction reproduces (−39.2% ± 14.6%), but the accuracy difference is −0.046, CI [−0.096, −0.007] over 151 test debates — an estimate resting on ~30 debates/seed on an easier test subset, which the primary 1,500-debate protocol does not show. We take the nested-CV figure as primary on sample size but record this as the strongest caveat on the MMLU result. Re-selecting *T* from the evaluation fold (in-sample) shifts Δ Token by at most 3.2pp and Δ Accuracy by at most 0.004, with inconsistent sign — a real but small distortion, of a different order from Section V-C's structural defect.
+Under the fixed 70/20/10 holdout, the MMLU token reduction reproduces (−41.7% ± 12.7%), but the accuracy difference is −0.016, CI [−0.075, +0.031] over 151 test debates — an estimate resting on ~30 debates/seed on an easier test subset, which the primary 1,500-debate protocol does not show. We take the nested-CV figure as primary on sample size but record this as the strongest caveat on the MMLU result. Re-selecting *T* from the evaluation fold (in-sample) shifts Δ Token by at most 3.7pp and Δ Accuracy by at most 0.006, with inconsistent sign — a real but small distortion, of a different order from Section V-C's structural defect.
+
+**Where does the token saving come from?** DUS-11 at *q*=0.5 bundles two independent gates: **Stage 1**, a one-shot check at Round 0 (stop immediately if the round-0 uncertainty already clears threshold), and **Stage 2**, the same threshold re-applied at every round from 1 onward for debates that survive Stage 1. We isolate each by re-running the policy with only one gate active (the other left off, consensus as the fallback when the active gate never fires), 5-fold nested CV, RNG=0:
+
+**TABLE VIII-A — CASCADE COMPONENT ABLATION AT unc\<q50 (mean over 5 folds, held-out thresholds)**
+
+| Benchmark | Variant | Acc | Token % | Share of earlier-than-consensus stops\* |
+| :---- | :---- | ----: | ----: | ----: |
+| GSM8K | Stage1-only (Round-0 gate) | 0.787 | **52.1%** | **83.8%** |
+| GSM8K | Stage2-only (Round≥1 gate) | 0.788 | 65.0% | 16.2% |
+| GSM8K | Full (both gates) | 0.789 | 61.3% | 100% (65.0% of debates stop early) |
+| MMLU | Stage1-only (Round-0 gate) | 0.543 | **50.0%** | **81.6%** |
+| MMLU | Stage2-only (Round≥1 gate) | 0.552 | 67.0% | 18.4% |
+| MMLU | Full (both gates) | 0.549 | 52.0% | 100% (79.9% of debates stop early) |
+| StrategyQA | Stage1-only (Round-0 gate) | 0.695 | **41.7%** | **73.3%** |
+| StrategyQA | Stage2-only (Round≥1 gate) | 0.691 | 55.1% | 26.7% |
+| StrategyQA | Full (both gates) | 0.695 | 50.1% | 100% (70.9% of debates stop early) |
+
+\*Decomposition of TABLE VI's "earlier than consensus" share by which stage caused the early stop (Section V-E); the two shares sum to that debate's earlier-than-consensus rate.
+
+Stage 1 alone accounts for **73.3–83.8%** of every debate that stops earlier than consensus, on all three benchmarks, and Stage1-only in isolation already matches or beats Full's token cost — 52.1% vs. Full's 61.3% on GSM8K, 50.0% vs. 52.0% on MMLU, 41.7% vs. 50.1% on StrategyQA — at accuracy indistinguishable from Full (≤0.006 apart). Stage2-only, run without the Round-0 gate, lands within 2pp of the six-round `always` baseline's typical consensus cost and is the *most expensive* of the three variants on all three benchmarks. **The saving in TABLE VII/VIII is a Round-0 phenomenon, not an accumulation of small mid-debate stops:** a single cheap look at the ensemble's initial disagreement does essentially all of the work; continuing to monitor uncertainty after Round 1 adds cost more often than it removes it. This also explains why Full is not strictly cheaper than Stage1-only alone (61.3% vs. 52.1% on GSM8K): Full does not cap its search at the consensus round — absent a Round-0 stop it keeps checking Rounds 1–5 for a threshold breach — and can therefore run past the point where falling back to consensus outright (Stage1-only's behaviour) would have stopped.
 
 ### **G. Is Debate Worth Its Cost?**
 
@@ -375,14 +402,14 @@ Seeds share 12–46% of their questions, making a paired *t*-test across five se
 
 | Benchmark | Opponent | Δ Accuracy | 95% CI | *p* | Δ Token |
 | :---- | :---- | ----: | :----: | ----: | ----: |
-| GSM8K | DUS-11, q=0.4 | **+0.0153** | [+0.0013, +0.0293] | 0.035 | **−29.7%** |
-| GSM8K | DUS-11, q=0.5 | +0.0120 | [−0.0013, +0.0253] | 0.080 | −19.3% |
-| MMLU | DUS-11, q=0.4 | −0.0027 | [−0.0182, +0.0132] | 0.768 | −17.0% |
-| MMLU | DUS-11, q=0.5 | −0.0053 | [−0.0207, +0.0101] | 0.525 | −8.0% |
-| StrategyQA | DUS-11, q=0.4 | +0.0107 | [−0.0046, +0.0257] | 0.178 | −25.6% |
-| StrategyQA | DUS-11, q=0.5 | +0.0080 | [−0.0066, +0.0226] | 0.310 | −14.9% |
+| GSM8K | DUS-11, q=0.4 | +0.0140 | [+0.0000, +0.0278] | 0.051 | **−29.3%** |
+| GSM8K | DUS-11, q=0.5 | +0.0107 | [−0.0027, +0.0239] | 0.129 | −18.8% |
+| MMLU | DUS-11, q=0.4 | −0.0047 | [−0.0208, +0.0120] | 0.600 | −15.6% |
+| MMLU | DUS-11, q=0.5 | −0.0067 | [−0.0231, +0.0149] | 0.466 | −6.8% |
+| StrategyQA | DUS-11, q=0.4 | +0.0113 | [−0.0041, +0.0268] | 0.163 | −25.0% |
+| StrategyQA | DUS-11, q=0.5 | +0.0040 | [−0.0105, +0.0188] | 0.639 | −14.2% |
 
-Positive Δ Accuracy favours fixed\_k2; negative Δ Token means fixed\_k2 is cheaper. **On accuracy, no**: one cell reaches nominal significance, but under Bonferroni correction across the fifteen *k*/benchmark comparisons fixed\_k2 was selected from, no cell approaches the *p*<0.0033 threshold. **On cost, yes, everywhere**: fixed\_k2 is cheaper in all six comparisons (8.0–29.7%), a property of the policies, needing no correction. Together: fixed\_k2 **weakly dominates** DUS-11 — statistically indistinguishable accuracy, consistently lower cost. Against fixed depth alone, the cascade is not wrong, just not paid for.
+Positive Δ Accuracy favours fixed\_k2; negative Δ Token means fixed\_k2 is cheaper. **On accuracy, no**: no cell reaches nominal significance, and under Bonferroni correction across the fifteen *k*/benchmark comparisons fixed\_k2 was selected from, no cell approaches the *p*<0.0033 threshold. **On cost, yes, everywhere**: fixed\_k2 is cheaper in all six comparisons (8.0–29.7%), a property of the policies, needing no correction. Together: fixed\_k2 **weakly dominates** DUS-11 — statistically indistinguishable accuracy, consistently lower cost. Against fixed depth alone, the cascade is not wrong, just not paid for.
 
 That conclusion reverses against the wider reference class:
 
@@ -390,32 +417,32 @@ That conclusion reverses against the wider reference class:
 
 | Benchmark | Baseline | Δ Accuracy | 95% CI | *p* | Δ Token |
 | :---- | :---- | ----: | :----: | ----: | ----: |
-| GSM8K | majority voting | −0.0227 | [−0.0419, −0.0038] | 0.024 | −41.5% |
-| GSM8K | SC@3, Qwen2.5-3B | **−0.1467** | [−0.1752, −0.1178] | **0.0001** | −41.8% |
-| GSM8K | SC@3, Llama3.2-3B | **−0.0940** | [−0.1210, −0.0668] | **0.0001** | −43.3% |
-| GSM8K | SC@3, Gemma3-4B | −0.0047 | [−0.0224, +0.0132] | 0.630 | −40.0% |
-| MMLU | majority voting | −0.0247 | [−0.0493, +0.0007] | 0.055 | −28.1% |
-| MMLU | SC@3, Qwen2.5-3B | +0.0367 | [+0.0072, +0.0661] | 0.015 | −30.2% |
-| MMLU | SC@3, Llama3.2-3B | **−0.2520** | [−0.2882, −0.2161] | **0.0001** | −24.9% |
-| MMLU | SC@3, Gemma3-4B | −0.0307 | [−0.0521, −0.0092] | 0.006 | −30.8% |
-| StrategyQA | majority voting | **−0.0747** | [−0.1077, −0.0405] | **0.0002** | −42.6% |
-| StrategyQA | SC@3, Qwen2.5-3B | **−0.1420** | [−0.1880, −0.0961] | **0.0001** | −44.1% |
-| StrategyQA | SC@3, Llama3.2-3B | **−0.0787** | [−0.1165, −0.0411] | **0.0002** | −44.1% |
-| StrategyQA | SC@3, Gemma3-4B | −0.0113 | [−0.0317, +0.0090] | 0.293 | −39.8% |
+| GSM8K | majority voting | −0.0240 | [−0.0432, −0.0047] | 0.018 | −41.0% |
+| GSM8K | SC@3, Qwen2.5-3B | **−0.1480** | [−0.1766, −0.1192] | **0.0001** | −41.3% |
+| GSM8K | SC@3, Llama3.2-3B | **−0.0953** | [−0.1222, −0.0680] | **0.0001** | −42.8% |
+| GSM8K | SC@3, Gemma3-4B | −0.0060 | [−0.0234, +0.0117] | 0.523 | −39.5% |
+| MMLU | majority voting | −0.0260 | [−0.0507, −0.0013] | 0.043 | −26.9% |
+| MMLU | SC@3, Qwen2.5-3B | +0.0353 | [+0.0060, +0.0646] | 0.019 | −29.1% |
+| MMLU | SC@3, Llama3.2-3B | **−0.2533** | [−0.2899, −0.2167] | **0.0001** | −23.8% |
+| MMLU | SC@3, Gemma3-4B | −0.0320 | [−0.0521, −0.0113] | 0.003 | −29.7% |
+| StrategyQA | majority voting | **−0.0787** | [−0.1113, −0.0451] | **0.0002** | −41.9% |
+| StrategyQA | SC@3, Qwen2.5-3B | **−0.1460** | [−0.1916, −0.0999] | **0.0001** | −43.4% |
+| StrategyQA | SC@3, Llama3.2-3B | **−0.0827** | [−0.1204, −0.0454] | **0.0002** | −43.4% |
+| StrategyQA | SC@3, Gemma3-4B | −0.0153 | [−0.0352, +0.0047] | 0.143 | −39.1% |
 
 Bold = intervals excluding zero after correction. Negative Δ Accuracy means the baseline is worse than DUS-11.
 
-**Six of twelve no-debate baselines lose to DUS-11** by margins surviving correction (up to 25.2 points). Exactly one beats it — Qwen2.5-3B on MMLU by 3.7 points, but nominal only (*p*=0.015, does not clear the corrected threshold). Two more are indistinguishable at ~40% lower cost. The pattern that matters is **variance**: which cheap baseline is competitive changes completely with the benchmark (Gemma3-4B near-best on GSM8K/StrategyQA, worst on MMLU; Qwen2.5-3B the reverse) — a practitioner cannot know in advance, and the cost of choosing wrong dwarfs anything adaptive stopping gains or loses. Ranked by worst-case regret against the best realisable policy per benchmark: **DUS-11 at most 3.7 points, fixed\_k2 at most 4.2, Gemma3-4B at most 6.7, majority vote at most 8.3, Qwen2.5-3B at most 15.9.** The cascade buys robustness across benchmarks, not accuracy on any one — and against fixed depth, equally robust and cheaper, it still doesn't pay for itself. MMLU remains the one benchmark where the best available policy reads nothing at all.
+**Six of twelve no-debate baselines lose to DUS-11** by margins surviving correction (up to 25.2 points). Exactly one beats it — Qwen2.5-3B on MMLU by 3.5 points, but nominal only (*p*=0.0186, does not clear the corrected threshold). Two more are indistinguishable at ~40% lower cost. The pattern that matters is **variance**: which cheap baseline is competitive changes completely with the benchmark (Gemma3-4B near-best on GSM8K/StrategyQA, worst on MMLU; Qwen2.5-3B the reverse) — a practitioner cannot know in advance, and the cost of choosing wrong dwarfs anything adaptive stopping gains or loses. Ranked by worst-case regret against the best realisable policy per benchmark: **DUS-11 at most 3.5 points, fixed\_k2 at most 4.2, Gemma3-4B at most 6.7, majority vote at most 8.3, Qwen2.5-3B at most 15.9.** The cascade buys robustness across benchmarks, not accuracy on any one — and against fixed depth, equally robust and cheaper, it still doesn't pay for itself. MMLU remains the one benchmark where the best available policy reads nothing at all.
 
 **TABLE X — CANDIDATE GOVERNING QUANTITIES ALONGSIDE THE OUTCOMES**
 
 | Benchmark | Answer space | Accuracy | Blind spot | AUC (pooled) | Consensus token share | Δ Token achieved |
 | :---- | :---- | ----: | ----: | ----: | ----: | ----: |
-| GSM8K | Unbounded integers | **0.779** | 2.9% | **0.875** | 56.0% | −6.0% |
-| StrategyQA | Binary | 0.686 | 24.4% | 0.609 | 48.5% | −0.4% |
-| MMLU | 4 options | **0.547** | **28.0%** | 0.685 | **68.2%** | **−39.4%** |
+| GSM8K | Unbounded integers | **0.779** | 2.9% | **0.875** | 56.0% | −6.8% |
+| StrategyQA | Binary | 0.686 | 24.4% | 0.609 | 48.5% | −1.9% |
+| MMLU | 4 options | **0.547** | **28.0%** | 0.685 | **68.2%** | **−41.1%** |
 
-Discrimination and operational value diverge sharply: GSM8K has the highest AUC (0.875) yet the smallest saving. Saving tracks the *room the incumbent leaves* — MMLU's consensus rule runs to 68.2% of full cost and yields 39.4% back; StrategyQA's runs to only 48.5% and yields nothing. Two accounts fit the blind-spot ordering. **Informational:** answer entropy carries at most log₂3≈1.58 bits (1 bit on a binary task); three agents landing on the same unbounded integer is near-proof (2.9% blind spot), two options coincide by chance ~25% of the time (24.4%). **Accuracy-based:** blind spot is inversely monotone in the protocol's own accuracy (0.779/0.686/0.547 ↔ 2.9%/24.4%/28.0%) — weak agents are also wrong together. These diverge on the one pair that could distinguish them: the informational account predicts a *larger* blind spot on binary than 4-option (25% vs. 6.25% chance coincidence); the data run the other way (24.4% vs. 28.0%), favouring the accuracy account. Both converge on the same recommendation — measure blind-spot rate on a pilot before building anything — and we cannot separate them further with only three, non-orthogonal benchmarks; that requires holding questions fixed and varying only answer format.
+Discrimination and operational value diverge sharply: GSM8K has the highest AUC (0.875) yet the smallest saving. Saving tracks the *room the incumbent leaves* — MMLU's consensus rule runs to 68.2% of full cost and yields 41.1% back; StrategyQA's runs to only 48.5% and yields almost nothing. Two accounts fit the blind-spot ordering. **Informational:** answer entropy carries at most log₂3≈1.58 bits (1 bit on a binary task); three agents landing on the same unbounded integer is near-proof (2.9% blind spot), two options coincide by chance ~25% of the time (24.4%). **Accuracy-based:** blind spot is inversely monotone in the protocol's own accuracy (0.779/0.686/0.547 ↔ 2.9%/24.4%/28.0%) — weak agents are also wrong together. These diverge on the one pair that could distinguish them: the informational account predicts a *larger* blind spot on binary than 4-option (25% vs. 6.25% chance coincidence); the data run the other way (24.4% vs. 28.0%), favouring the accuracy account. Both converge on the same recommendation — measure blind-spot rate on a pilot before building anything — and we cannot separate them further with only three, non-orthogonal benchmarks; that requires holding questions fixed and varying only answer format.
 
 ### **B. Recommendations for Evaluating Stopping Rules**
 
@@ -426,14 +453,14 @@ Two more recommendations, both about what to do *before* building a signal:
 - **Benchmark against policies that read nothing.** A learned rule should be compared to fixed\_k for every *k*, a matched-sample self-consistency baseline, and an ensemble vote, all at measured token cost — comparison against the incumbent alone cannot reveal fixed\_k2's weak dominance, since the incumbent also reads the transcript.
 - **Report self-consistency per model, never as one number.** TABLE XII's three models spread 29 points on MMLU alone and reverse rank across benchmarks; a single "self-consistency" row reports whatever model the authors happened to run, with a between-model standard error larger than most effects a stopping rule could claim.
 
-**Use blind-spot rate as a first screen, rescue/hurt as a second.** Blind-spot rate (TABLE I) bounds what any consensus-improving rule can reclaim, needs only agreement and correctness, and is nearly free: GSM8K's 2.9% predicts (and gets) zero gain. It is necessary but not sufficient — StrategyQA's headroom (24.4%) is unreachable because rescue and hurt cancel (TABLE IX, net +5, *p*=0.76): if the transcript on average doesn't improve an answer, no stopping rule can extract accuracy from disagreement about when to stop reading it. MMLU is the only benchmark clearing both screens, and the only one where DUS-11 shows any advantage. Applied honestly to our own pilot, this two-stage screen would have advised against building the cascade on two of three benchmarks — we treat that as the recommendation's strongest evidence. A third, cheaper screen needs no debate at all: **run self-consistency on each candidate model first.** On MMLU, Qwen2.5-3B@3 beats the cascade (0.582 vs. 0.545) at 30.2% fewer tokens; the reference class should be measured *before* the method is built, not assembled afterward to defend it.
+**Use blind-spot rate as a first screen, rescue/hurt as a second.** Blind-spot rate (TABLE I) bounds what any consensus-improving rule can reclaim, needs only agreement and correctness, and is nearly free: GSM8K's 2.9% predicts (and gets) zero gain. It is necessary but not sufficient — StrategyQA's headroom (24.4%) is unreachable because rescue and hurt cancel (TABLE IX, net +5, *p*=0.76): if the transcript on average doesn't improve an answer, no stopping rule can extract accuracy from disagreement about when to stop reading it. MMLU is the only benchmark clearing both screens, and the only one where DUS-11 shows any advantage. Applied honestly to our own pilot, this two-stage screen would have advised against building the cascade on two of three benchmarks — we treat that as the recommendation's strongest evidence. A third, cheaper screen needs no debate at all: **run self-consistency on each candidate model first.** On MMLU, Qwen2.5-3B@3 beats the cascade (0.582 vs. 0.547) at 29.1% fewer tokens; the reference class should be measured *before* the method is built, not assembled afterward to defend it.
 
 ### **C. Limitations**
 
 - **Baseline selection.** With 9 model–benchmark self-consistency cells, the one cell that beats DUS-11 does not survive correction across the family of 27 comparisons.
 - **Solver scale.** Both solvers are 3B, the critic 4B; absolute accuracies are modest (0.547 on MMLU). Whether the entropy–consensus identity and critic-signal value persist at larger scale is untested; the identity is structural and should hold, the relative value of critic confidence may not.
 - **Single topology.** Only two-solvers-plus-fixed-critic is studied; round-table \[3\] or cross-model \[6\] topologies may distribute uncertainty differently.
-- **Threshold transfer.** In-sample selection adds at most 3.2pp Δ Token; transfer *across* benchmarks, model pairs, or answer formats is untested and likely needs recalibration.
+- **Threshold transfer.** In-sample selection adds at most 3.7pp Δ Token; transfer *across* benchmarks, model pairs, or answer formats is untested and likely needs recalibration.
 - **Residual mass point / uncalibrated score.** 872 rounds tie exactly at *T* under the direct protocol; DUS-11 is used only for ranking/thresholding, not as a calibrated probability.
 - **One critic.** CRITIC-7 relies on the critic's independence; multiple critics, or a critic that revises, would need redefinition.
 - **Resolution of accuracy comparisons.** TABLE VIII's paired intervals span 1–3 points, so a genuine ~1-point cost would go undetected — the disagreeing MMLU holdout estimate is the concrete reason not to read "indistinguishable from zero" as equality.

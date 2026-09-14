@@ -18,7 +18,6 @@ Output:
   results/paper_audit.json - ban may doc
 
 Cach dung:  python audit_paper.py [duong/dan/paper.md]
-            mac dinh: "[ITWIN] MAD Uncertainty Estimation.md"
 """
 from __future__ import annotations
 
@@ -37,7 +36,7 @@ import logio
 # console Windows co the la cp1258: ep utf-8 de in duoc dau trong claim
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-PAPER = Path(sys.argv[1] if len(sys.argv) > 1 else "[ITWIN] MAD Uncertainty Estimation.md")
+PAPER = Path(sys.argv[1] if len(sys.argv) > 1 else "paper.md")
 R = Path("results")
 OUT_MD = Path("PROVENANCE.md")
 

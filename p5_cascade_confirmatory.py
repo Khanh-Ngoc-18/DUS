@@ -1,41 +1,15 @@
-"""P5 - Xac nhan cascade critic-SC: on dinh, cong dung that, frontier, rescue/hurt.
+"""P5 - Xac nhan cascade critic-SC: on dinh, cong dung that, frontier, rescue/hurt, va ablation.
 
 Bon manh rieng, GOP mot cho de dung chung du lieu da nap (p3.load/protocol_nested):
 
   [1] ON DINH CRITIC-SC qua N (so phieu SC, k=1..3) va SEED (5 lan chay doc lap).
-      - On dinh theo N: dap an da so cua CRITIC tu round-0-SC co doi khi them phieu
-        (k=1 -> k=2 -> k=3) khong? Bao ty le lat + do lech confidence.
-      - On dinh theo SEED: voi nguong T co dinh (unc<q50, chon tren val nhu p3),
-        ty le debate bi cong dung dat round 0 (r0sc) co on dinh giua 5 seed khong
-        (mean +/- SD qua seed, theo tung benchmark)?
-      Neu ca hai deu on dinh (lat thap, SD nho tuong doi so voi mean) thi cong
-      dung critic-SC co the dung duoc; neu khong, cascade dung tren no la mong manh.
-
-  [2] CASCADE CO CONG DUNG THAT: tai su dung dung policy "unc<qXX" cua p3, vi no
-      DA gan cong r0sc-gate that (xem apply_critic_sc_round0 + stop_index trong
-      p3_holdout_policy.py): nguong T chon tren val/inner-val, KHONG bao gio tren
-      tap dang cham -> day la "cascade" duoc xac nhan o day, khong phai dinh nghia
-      moi. Script nay chi TRICH XUAT frontier cua no (q=0.1..0.5) de doi chieu.
-
-  [3] FRONTIER CASCADE vs DUONG CONG SC-SOLO THEO k: voi moi benchmark, ve hai
-      duong tren cung mat phang (token%, accuracy):
-        - cascade: 5 diem unc<q10..q50 (p3, nested CV, T tu val)
-        - SC-solo(k): k=1,2,3 phieu subsample tu CHINH log self-consistency da chay
-          (results/logs_sc/agent_{a,b,c}), lay BAO (envelope) accuracy tot nhat
-          qua 3 model o moi k - dung gia thiet BAT LOI NHAT cho cascade (giong
-          quy uoc paper.md Section V-C: SC duoc chon model tot nhat/benchmark).
-      Bao cascade co PARETO-VUOT SC-solo hay khong (accuracy >= tai token% <=).
-
-  [4] RESCUE/HURT LA CONG DUNG DE CASCADE CO CO SO: doc lai results/p4_rescue_hurt.json
-      (da tinh boi p4_rescue_hurt.py, McNemar tren cap khong khop). Neu rescued == 0
-      o BAT KY benchmark nao (debate khong cuu duoc CAU NAO rieng le so voi round 0),
-      dung lai va bao ket qua AM: khong co co so de xay cascade. Neu rescued > 0 o
-      ca ba, in ro va tiep tuc - cascade co co so DE DUNG, du hieu ung co the nho.
-
-  [5] fixed_k4 / fixed_k5 SO VOI fixed_k2, GHEP CAP, bootstrap phan cum theo cau hoi
-      (tai su dung p3.cluster_bootstrap tren long_table cua nested CV) - cau hoi:
-      di sau vao fixed-depth co mua duoc gi so voi k=2 hay khong, va co dang ke
-      thong ke khong (Bonferroni tren so phep so sanh moi).
+  [2] CASCADE CO CONG DUNG THAT (nhu nguyen ban).
+  [3] FRONTIER CASCADE vs DUONG CONG SC-SOLO THEO k.
+  [5] fixed_k4 / fixed_k5 SO VOI fixed_k2, GHEP CAP.
+  [6] ABLATION STAGE 1 VS STAGE 2: Phan ra luong dong gop tiet kiem token (truoc consensus) 
+      den tu viec chan ngay tai Round 0 (Stage 1) so voi dung o cac round giua (Stage 2).
+  [7] CASCADE COMPONENT ABLATION: Phan tach policy thanh 3 bien the (Full, Stage1-only, Stage2-only) 
+      qua 5-fold nested CV (RNG=0).
 
 Output: results/p5_cascade_confirmatory.json (+ in tat ca ra stdout)
 """
@@ -81,10 +55,9 @@ def _vote_majority(votes: list[dict]) -> tuple[str, float]:
     return logio.select_final(cands), float(np.mean([c for _, c in cands]))
 
 
-def critic_sc_stability() -> dict:
+def critic_sc_stability() -> tuple[dict, pd.DataFrame]:
     recs = _sc_records("results/logs_sc/agent_c/**/self_consistency_*.jsonl")
 
-    # --- on dinh theo N (k=1,2,3 phieu, TRONG CUNG mot seed/cau hoi) ---
     by_n = {t: {"n": 0, "flip_1_2": 0, "flip_2_3": 0, "flip_1_3": 0,
                 "conf_gap_1_3": []} for t in TASKS}
     for (seed, task, sid), votes in recs.items():
@@ -108,7 +81,6 @@ def critic_sc_stability() -> dict:
                      "flip_rate_k1_to_k3": d["flip_1_3"] / n,
                      "mean_conf_gap_k1_to_k3": float(np.mean(d["conf_gap_1_3"])) if d["conf_gap_1_3"] else None}
 
-    # --- on dinh theo SEED: ty le round-0-gate (unc<q50) dat, moi seed rieng ---
     df = p3.load()
     nested, _ = p3.protocol_nested(df)
     seed_stab = {}
@@ -141,14 +113,12 @@ def critic_sc_stability() -> dict:
 
 # ============================================================ [3] frontier cascade vs SC-solo(k)
 def sc_solo_curve() -> dict:
-    """(token%, accuracy) cho k=1,2,3 phieu, moi agent rieng + bao (best) qua 3 agent."""
     agents = {"a": "agent_a", "b": "agent_b", "c": "agent_c"}
     base_tok = {t: None for t in TASKS}
-    # token% chuan theo `always` cua chinh p3 (nhat quan voi TABLE 0/VII)
     df = p3.load()
     for t in TASKS:
         base_tok[t] = df[(df.task == t) & (df.round_id == 0)].tok_per_round.to_numpy()
-        base_tok[t] = float(np.mean(base_tok[t]) * 6)  # 'always' ~ 6 round xap xi tu tok_per_round
+        base_tok[t] = float(np.mean(base_tok[t]) * 6)
 
     curve = {t: {} for t in TASKS}
     for ax, folder in agents.items():
@@ -199,7 +169,7 @@ def cascade_vs_sc_frontier(nested: pd.DataFrame) -> dict:
     import contextlib
     import io
     sc = sc_solo_curve()
-    with contextlib.redirect_stdout(io.StringIO()):   # p3.summarise() la ham dung chung, in rat dai
+    with contextlib.redirect_stdout(io.StringIO()):
         A = p3.summarise(nested, "cascade frontier (noi bo)")
     out = {}
     for t in TASKS:
@@ -211,9 +181,6 @@ def cascade_vs_sc_frontier(nested: pd.DataFrame) -> dict:
                               "acc": pol["acc"]["mean"], "tok_pct": pol["tok"]["mean"] * 100})
         sc_pts = [{"k": k, **v} for k, v in sc["envelope_best_per_k"].get(t, {}).items()]
 
-        # Pareto check: for every SC-solo point, is there a cascade point at <= token cost
-        # with >= accuracy? (interpolating cascade's own points is not needed - cascade
-        # already spans a wide range of q, so we just check point-wise domination.)
         dominated = []
         for sp in sc_pts:
             best_casc_at_or_below = [cp for cp in casc_pts if cp["tok_pct"] <= sp["tok_pct"] + 1e-6]
@@ -245,6 +212,175 @@ def fixed_k_paired(nested: pd.DataFrame) -> dict:
     return {"n_comparisons": n_comp, "results": out}
 
 
+# ============================================================ [6] ablation: stage 1 vs stage 2
+def cascade_ablation(nested: pd.DataFrame, df_raw: pd.DataFrame) -> dict:
+    cons_col = next((c for c in ["consensus", "is_consensus", "consensus_reached"] if c in df_raw.columns), None)
+    if cons_col:
+        cons_mask = df_raw[cons_col] == True
+    else:
+        cons_mask = df_raw["round_id"] == df_raw.groupby(["seed", "task", "sample_id"])["round_id"].transform("max")
+
+    cons_rounds = (
+        df_raw[cons_mask]
+        .groupby(["seed", "task", "sample_id"])["round_id"]
+        .min()
+        .reset_index()
+        .rename(columns={"round_id": "i_c"})
+    )
+    d_merged = nested.merge(cons_rounds, on=["seed", "task", "sample_id"], how="left")
+    d_merged["i_c"] = d_merged["i_c"].fillna(5).astype(int)
+
+    out = {}
+    for t in TASKS:
+        d = d_merged[d_merged.task == t]
+        stage1 = (d["i_unc<q50"] == 0).mean()
+        earlier_total = (d["i_unc<q50"] < d["i_c"]).mean()
+        earlier_s1 = ((d["i_unc<q50"] == 0) & (d["i_unc<q50"] < d["i_c"])).mean()
+        earlier_s2 = ((d["i_unc<q50"] > 0) & (d["i_unc<q50"] < d["i_c"])).mean()
+
+        out[t] = {
+            "stage1_stop_rate": float(stage1),
+            "earlier_than_consensus": float(earlier_total),
+            "earlier_due_to_stage1": float(earlier_s1),
+            "earlier_due_to_stage2": float(earlier_s2)
+        }
+    return out
+
+
+# ============================================================ [7] cascade component ablation (Full/Stage1/Stage2)
+def cascade_component_ablation(df_raw: pd.DataFrame) -> dict:
+    """
+    Chay lai 5-fold nested CV (RNG=0, cung logic shuffle/split) de tach policy unc<qXX 
+    thanh 3 bien the nguyen ban.
+    """
+    rng = np.random.default_rng(0)
+    
+    # df_raw khong luu cot `unc`: p3.load() luu raw features, sau do p3.fit_score()
+    # moi fold moi fit score. Dung cach nay de tranh leakage va dung cung protocol.
+    cons_col = next((c for c in ["consensus", "consensus_now", "is_consensus", "consensus_reached"] if c in df_raw.columns), None)
+    if cons_col:
+        cons_mask = df_raw[cons_col] == True
+    else:
+        cons_mask = df_raw["round_id"] == df_raw.groupby(["seed", "task", "sample_id"])["round_id"].transform("max")
+        
+    cons = df_raw[cons_mask].groupby(["seed", "task", "sample_id"])["round_id"].min().reset_index().rename(columns={"round_id": "i_c"})
+    df = df_raw.merge(cons, on=["seed", "task", "sample_id"], how="left")
+    df["i_c"] = df["i_c"].fillna(5).astype(int)
+    
+    records = []
+    for task in TASKS:
+        for seed in sorted(df["seed"].unique()):
+            df_ts = df[(df["task"] == task) & (df["seed"] == seed)]
+            if df_ts.empty: continue
+            
+            sids = np.sort(df_ts["sample_id"].unique())
+            rng.shuffle(sids)
+            folds = np.array_split(sids, 5)
+            
+            for i in range(5):
+                test_sids = folds[i]
+                train_sids = np.concatenate([folds[j] for j in range(5) if j != i])
+                
+                train_df = df_ts[df_ts["sample_id"].isin(train_sids)]
+                test_df = df_ts[df_ts["sample_id"].isin(test_sids)]
+                
+                if train_df[train_df["nonfinal"]].empty:
+                    continue
+                train_scores = p3.fit_score(train_df, train_df)
+                test_scores = p3.fit_score(train_df, test_df)
+                train_sc = train_df.copy()
+                test_sc = test_df.copy()
+                train_sc["_unc"] = train_scores
+                test_sc["_unc"] = test_scores
+                unc_train = train_sc.loc[train_sc["round_id"] == 0, "_unc"].dropna().to_numpy()
+                ths = np.quantile(unc_train, QS) if len(unc_train) > 0 else [0.0] * len(QS)
+                
+                for sid in test_sids:
+                    sample_df = test_sc[test_sc["sample_id"] == sid].sort_values("round_id")
+                    if sample_df.empty: continue
+                    i_c = int(sample_df["i_c"].iloc[0])
+                    
+                    row = {"task": task, "seed": seed, "sample_id": sid, "i_c": i_c}
+                    for q, th in zip(QS, ths):
+                        name = f"q{int(q*100):02d}"
+                        i_full, i_s1, i_s2 = i_c, i_c, i_c
+                        
+                        for _, r_row in sample_df.iterrows():
+                            r = int(r_row["round_id"])
+                            u = r_row["_unc"]
+                            if pd.isna(u): continue
+                            
+                            # full: Dung som nhat tu round 0 tro di
+                            if i_full == i_c and u < th: 
+                                i_full = r
+                            # stage1_only: Chi gate duy nhat tai round 0
+                            if r == 0 and u < th: 
+                                i_s1 = 0
+                            # stage2_only: Bo qua gate round 0, ap nguong tu round 1
+                            if i_s2 == i_c and r >= 1 and u < th: 
+                                i_s2 = r
+                                
+                        row[f"full_unc<{name}"] = i_full
+                        row[f"stage1_only_unc<{name}"] = i_s1
+                        row[f"stage2_only_unc<{name}"] = i_s2
+                        
+                    records.append(row)
+                    
+    res_df = pd.DataFrame(records)
+    
+    # Pre-compute metrics (Acc/Tok) for O(1) mapping
+    lookup = {}
+    for _, r_row in df_raw.iterrows():
+        lookup[(r_row["seed"], r_row["task"], r_row["sample_id"], r_row["round_id"])] = {
+            "acc": float(r_row["ok_if_stop"]), "tok": float(r_row["tok_per_round"])
+        }
+        
+    out = {}
+    base_tok_cache = {}
+    for t in TASKS:
+        bt_arr = df_raw[(df_raw.task == t) & (df_raw.round_id == 0)].tok_per_round.to_numpy()
+        base_tok_cache[t] = float(np.mean(bt_arr) * 6) if len(bt_arr) > 0 else 1.0
+
+    for task in TASKS:
+        out[task] = {}
+        task_res = res_df[res_df["task"] == task]
+        if task_res.empty: continue
+        
+        for q in QS:
+            name = f"unc<q{int(q*100):02d}"
+            metrics = {"full": {"acc": [], "tok": []}, 
+                       "stage1_only": {"acc": [], "tok": []}, 
+                       "stage2_only": {"acc": [], "tok": []}}
+                       
+            for _, row in task_res.iterrows():
+                seed, sid = row["seed"], row["sample_id"]
+                for var in ["full", "stage1_only", "stage2_only"]:
+                    stop_r = row[f"{var}_{name}"]
+                    
+                    acc = lookup.get((seed, task, sid, stop_r), {}).get("acc", 0.0)
+                    tok = sum(lookup.get((seed, task, sid, r), {}).get("tok", 0.0) for r in range(stop_r + 1))
+                        
+                    metrics[var]["acc"].append(acc)
+                    metrics[var]["tok"].append(tok)
+                    
+            out[task][name] = {
+                "full": {
+                    "acc": float(np.mean(metrics["full"]["acc"])), 
+                    "tok_pct": float(np.mean(metrics["full"]["tok"]) / base_tok_cache[task] * 100)
+                },
+                "stage1_only": {
+                    "acc": float(np.mean(metrics["stage1_only"]["acc"])), 
+                    "tok_pct": float(np.mean(metrics["stage1_only"]["tok"]) / base_tok_cache[task] * 100)
+                },
+                "stage2_only": {
+                    "acc": float(np.mean(metrics["stage2_only"]["acc"])), 
+                    "tok_pct": float(np.mean(metrics["stage2_only"]["tok"]) / base_tok_cache[task] * 100)
+                },
+            }
+            
+    return out
+
+
 def main() -> None:
     print("[1] ON DINH CRITIC-SC QUA N (k phieu) VA SEED")
     print("=" * 78)
@@ -257,7 +393,7 @@ def main() -> None:
               f"gate@round0 qua seed: {s['mean']*100:5.1f}% ± {s['sd']*100:4.1f}pp (CV={cv})")
     print(f"  => {stab['verdict']}")
 
-    print("[3] FRONTIER: CASCADE (cong dung r0sc that, unc<q10..q50) vs SC-SOLO(k=1,2,3)")
+    print("\n[3] FRONTIER: CASCADE (cong dung r0sc that, unc<q10..q50) vs SC-SOLO(k=1,2,3)")
     print("=" * 78)
     frontier = cascade_vs_sc_frontier(nested)
     for t in TASKS:
@@ -270,7 +406,8 @@ def main() -> None:
         print(f"  cascade >= SC-solo tai chi phi <= : {n_dom}/{n_tot} diem SC-solo")
 
 
-    print("[5] fixed_k4 / fixed_k5 SO VOI fixed_k2 (ghep cap, bootstrap phan cum theo cau hoi)")
+    print("\n[5] fixed_k4 / fixed_k5 SO VOI fixed_k2 (ghep cap, bootstrap phan cum theo cau hoi)")
+    print("=" * 78)
     fk = fixed_k_paired(nested)
     print(f"  Bonferroni alpha = {0.05/fk['n_comparisons']:.5f} tren {fk['n_comparisons']} phep so sanh")
     for k, r in fk["results"].items():
@@ -278,7 +415,37 @@ def main() -> None:
         print(f"  {k:<28} dAcc={r['dacc']:+.4f} 95%CI[{r['dacc_ci'][0]:+.4f},{r['dacc_ci'][1]:+.4f}] "
               f"p={r['dacc_p']:.4f} dTok={r['dtok_rel']*100:+.1f}%{star}")
 
-    out = {"critic_sc_stability": stab, "cascade_vs_sc_frontier": frontier, "fixed_k4_k5_vs_fixed_k2": fk}
+    print("\n[6] ABLATION: STAGE 1 (ROUND 0 GATE) vs STAGE 2 (DEBATE STOPPING)")
+    print("=" * 78)
+    df_raw = p3.load()
+    ablation = cascade_ablation(nested, df_raw=df_raw)
+    for t in TASKS:
+        a = ablation[t]
+        print(f"  {t:<12} Dung R0 (Stage 1): {a['stage1_stop_rate']*100:5.1f}% | "
+              f"Dung truoc consensus: {a['earlier_than_consensus']*100:5.1f}% "
+              f"(Stage 1 gop: {a['earlier_due_to_stage1']*100:4.1f}%, Stage 2 gop: {a['earlier_due_to_stage2']*100:4.1f}%)")
+
+    print("\n[7] CASCADE COMPONENT ABLATION (Full vs Stage1-only vs Stage2-only)")
+    print("=" * 78)
+    comp_ablation = cascade_component_ablation(df_raw)
+    for t in TASKS:
+        print(f"\n--- {t} ---")
+        for q in [0.25, 0.50, 0.75]:
+            name = f"unc<q{int(q*100):02d}"
+            if name in comp_ablation[t]:
+                r = comp_ablation[t][name]
+                print(f"  {name:<9} | "
+                      f"Full: {r['full']['acc']:.3f} ({r['full']['tok_pct']:5.1f}%) | "
+                      f"Stage1-only: {r['stage1_only']['acc']:.3f} ({r['stage1_only']['tok_pct']:5.1f}%) | "
+                      f"Stage2-only: {r['stage2_only']['acc']:.3f} ({r['stage2_only']['tok_pct']:5.1f}%)")
+
+    out = {
+        "critic_sc_stability": stab, 
+        "cascade_vs_sc_frontier": frontier, 
+        "fixed_k4_k5_vs_fixed_k2": fk, 
+        "cascade_ablation": ablation,
+        "cascade_component_ablation": comp_ablation
+    }
     Path("results/p5_cascade_confirmatory.json").write_text(
         json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
     print("\n-> results/p5_cascade_confirmatory.json")
