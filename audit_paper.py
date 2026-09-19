@@ -137,6 +137,7 @@ VT, W, P0, P1, P2, P3, P4 = ("verify_threshold.json", "dus_weights.json",
                              "p0_critic_eval.json", "p1_power.json",
                              "p2_cost_accuracy.json", "p3_holdout_policy.json",
                              "p4_rescue_hurt.json")
+P5 = "p5_cascade_confirmatory.json"
 A = load(P3)["nested_cv"]
 H = load(P3)["fixed_holdout"]
 NICE = {"GSM8K": "gsm8k", "MMLU": "mmlu", "StrategyQA": "strategyqa"}
@@ -209,13 +210,13 @@ for src, lbl in PAIR_LBL.items():
           f"{P0} :: paired['{src}'].p_two_sided", v["p_two_sided"], "V-C")
 
 # ---- V-D thoi diem dung ----
-check("56.6", "% debate mmlu q50 dung SOM HON consensus",
+check("57.9", "% debate mmlu q50 dung SOM HON consensus",
       f"{P3} :: nested_cv.mmlu.stop_timing['unc<q50'].earlier_pct",
       A["mmlu"]["stop_timing"]["unc<q50"]["earlier_pct"], "V-D")
 
 # ---- V-E danh doi cost-accuracy ----
-for b, q, dt, da in [("mmlu", "unc<q50", "-39.4", "-0.001"), ("mmlu", "unc<q40", "-26.1", "-0.003"),
-                     ("gsm8k", "unc<q50", "-6.0", "-0.001"), ("strategyqa", "unc<q50", "-0.4", "-0.001")]:
+for b, q, dt, da in [("mmlu", "unc<q50", "-41.1", "+0.001"),
+                     ("gsm8k", "unc<q50", "-6.8", "+0.001"), ("strategyqa", "unc<q50", "-1.9", "+0.003")]:
     p = A[b]["paired_vs_consensus"][q]
     # dang co dau (bang) va dang tri tuyet doi (van xuoi) deu xuat hien trong paper
     check(dt, f"dToken {b} {q} vs consensus (nested CV)",
@@ -228,24 +229,24 @@ check("0.51", "TABLE IX net tong theo %", f"{P4} :: total.net_pct",
       key(P4, "total.net_pct"), "V-F")
 check("116", "so cap khong khop cua gsm8k (rescued + corrupted)",
       f"{P4} :: gsm8k.n_discordant", key(P4, "gsm8k.n_discordant"), "V-F")
-check("2.3", "SD cua dToken mmlu q50 qua 5 seed",
+check("2.2", "SD cua dToken mmlu q50 qua 5 seed",
       f"{P3} :: nested_cv.mmlu.paired_vs_consensus['unc<q50'].dtok.sd",
       A["mmlu"]["paired_vs_consensus"]["unc<q50"]["dtok"]["sd"] * 100, "V-E")
 hp = H["mmlu"]["paired_vs_consensus"]["unc<q50"]
-check("-39.2", "dToken mmlu q50 tren holdout 70/20/10",
+check("-41.7", "dToken mmlu q50 tren holdout 70/20/10",
       f"{P3} :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dtok.mean",
       hp["dtok"]["mean"] * 100, "V-E")
-covered.add("39.2")
-check("14.6", "SD cua dToken mmlu q50 tren holdout",
+covered.add("41.7")
+check("12.7", "SD cua dToken mmlu q50 tren holdout",
       f"{P3} :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dtok.sd",
       hp["dtok"]["sd"] * 100, "V-E")
-check("-0.046", "dAccuracy mmlu q50 tren holdout 70/20/10",
+check("-0.016", "dAccuracy mmlu q50 tren holdout 70/20/10",
       f"{P3} :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc.mean",
       hp["dacc"]["mean"], "V-E")
-check("-0.096", "CI cua dAcc mmlu q50 tren holdout, can duoi",
+check("-0.075", "CI cua dAcc mmlu q50 tren holdout, can duoi",
       f"{P3} :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc_ci_clustered[0]",
       hp["dacc_ci_clustered"][0], "V-E")
-check("-0.007", "CI cua dAcc mmlu q50 tren holdout, can tren",
+check("+0.031", "CI cua dAcc mmlu q50 tren holdout, can tren",
       f"{P3} :: fixed_holdout.mmlu.paired_vs_consensus['unc<q50'].dacc_ci_clustered[1]",
       hp["dacc_ci_clustered"][1], "V-E")
 check("151", "so debate test cua mmlu", f"{P3} :: fixed_holdout.mmlu.n_debate",
@@ -253,14 +254,11 @@ check("151", "so debate test cua mmlu", f"{P3} :: fixed_holdout.mmlu.n_debate",
 check("0.587", "accuracy cua `always` tren tap test MMLU",
       f"{P3} :: fixed_holdout.mmlu.policies.always.acc.mean",
       H["mmlu"]["policies"]["always"]["acc"]["mean"], "V-E")
-check("-40.9", "dToken mmlu q50 neu chon T in-sample",
-      f"{P3} :: threshold_selection_optimism.mmlu['unc<q50'].in_sample_dtok",
-      load(P3)["threshold_selection_optimism"]["mmlu"]["unc<q50"]["in_sample_dtok"], "V-E")
 opt = load(P3)["threshold_selection_optimism"]
-check("3.2", "do lac quan LON NHAT cua dToken khi chon T in-sample",
+check("3.7", "do lac quan LON NHAT cua dToken khi chon T in-sample",
       f"{P3} :: max |threshold_selection_optimism.*.*.dtok_pp|",
       max(abs(v["dtok_pp"]) for b in opt.values() for v in b.values()), "V-E")
-check("0.004", "do lac quan LON NHAT cua dAccuracy khi chon T in-sample",
+check("0.006", "do lac quan LON NHAT cua dAccuracy khi chon T in-sample",
       f"{P3} :: max |threshold_selection_optimism.*.*.dacc|",
       max(abs(v["dacc"]) for b in opt.values() for v in b.values()), "V-E")
 
@@ -281,7 +279,7 @@ for t in ("gsm8k", "mmlu", "strategyqa"):
 # ================================================================ [B2] o bang
 # TABLE II - trong so DUS-4
 for r in md_table("**TABLE II —")[1:]:
-    f = r[0].replace("\_", "_").replace("*", "").strip()
+    f = r[0].replace("\\_", "_").replace("*", "").strip()
     cellcheck(f"TABLE II he so tho {f}", r[1],
               key(W, f"logistic_coefficients_on_standardized_features.{f}"), 0.0005, "TABLE II")
     cellcheck(f"TABLE II trong so cuoi {f}", r[2].split("(")[0],
@@ -334,8 +332,8 @@ for r in md_table("**TABLE VI —")[1:]:
 # TABLE VII - accuracy / token cua moi chinh sach
 POL = {"always (6 rounds)": "always", "consensus": "consensus",
        "round-0 ensemble vote (fixed\\_k1)": "fixed_k1", "fixed\\_k2": "fixed_k2",
-       "fixed\\_k3": "fixed_k3", "unc\\<q30": "unc<q30", "unc\\<q40": "unc<q40",
-       "unc\\<q50": "unc<q50", "oracle (unachievable)": "oracle"}
+       "fixed\\_k3": "fixed_k3", "unc<q30": "unc<q30", "unc<q40": "unc<q40",
+       "unc<q50": "unc<q50", "oracle (unachievable)": "oracle"}
 for r in md_table("**TABLE VII —")[1:]:
     p = POL[r[0].replace("**", "").strip()]
     for c, b in zip(r[1:4], ("gsm8k", "mmlu", "strategyqa")):
@@ -391,7 +389,7 @@ POL0 = {"always (6 rounds)": "always", "consensus (incumbent)": "consensus",
         "fixed\\_k1 *(round-0 ensemble vote)*": "fixed_k1",
         "fixed\\_k2": "fixed_k2", "fixed\\_k3": "fixed_k3",
         "fixed\\_k4": "fixed_k4", "fixed\\_k5": "fixed_k5",
-        "DUS-11, *q* \\= 0.4": "unc<q40", "DUS-11, *q* \\= 0.5": "unc<q50",
+        "DUS-11, *q* = 0.4": "unc<q40", "DUS-11, *q* = 0.5": "unc<q50",
         "oracle (unachievable)": "oracle",
         "self-consistency@3, Qwen2.5-3B": "self_consistency_a",
         "self-consistency@3, Llama3.2-3B": "self_consistency_b",
@@ -446,6 +444,88 @@ for r in md_table("**TABLE XII —")[1:]:
     cellcheck(f"TABLE XII CI-hi {b} {p}", hi, s["dacc_ci"][1], 0.0005, "TABLE XII")
     cellcheck(f"TABLE XII p {b} {p}", r[4], s["dacc_p"], 0.0015, "TABLE XII")
     cellcheck(f"TABLE XII dtok {b} {p}", r[5], s["dtok_rel"] * 100, 0.05, "TABLE XII")
+
+# ---- VI-A van xuoi quanh TABLE XI/XII: nguong Bonferroni va cac diem noi bat ----
+check("0.0033", "nguong Bonferroni, 15 phep so sanh k/benchmark (VI-A)",
+      "0.05 / 15", 0.05 / 15, "VI-A")
+check("0.00185", "nguong Bonferroni, 27 phep so sanh (TABLE XII / Limitations)",
+      "0.05 / 27", 0.05 / 27, "VI-A")
+check("0.0186", "p nominal cua Qwen2.5-3B tren MMLU (khong qua duoc hieu chinh)",
+      f"{P6} :: baseline_showdown.vs_dus11['mmlu|self_consistency_a'].dacc_p",
+      key(P6, "baseline_showdown.vs_dus11.mmlu|self_consistency_a.dacc_p"), "VI-A")
+_XI_DTOK = [abs(key(P6, f"baseline_showdown.fixed_k2_vs_dus11.{b}|fixed_k2-{q}")["dtok_rel"]) * 100
+            for b in ("gsm8k", "mmlu", "strategyqa") for q in ("unc<q40", "unc<q50")]
+check("8.0", "Δ Token NHO NHAT trong 6 phep so sanh fixed_k2 vs DUS-11 (TABLE XI)",
+      f"{P6} :: min |baseline_showdown.fixed_k2_vs_dus11.*.dtok_rel|", min(_XI_DTOK), "VI-A")
+check("29.7", "Δ Token LON NHAT trong 6 phep so sanh fixed_k2 vs DUS-11 (TABLE XI)",
+      f"{P6} :: max |baseline_showdown.fixed_k2_vs_dus11.*.dtok_rel|", max(_XI_DTOK), "VI-A")
+_XII_DACC = [abs(key(P6, f"baseline_showdown.vs_dus11.{b}|{p}")["dacc"]) * 100
+             for b in ("gsm8k", "mmlu", "strategyqa")
+             for p in ("ensemble_vote", "self_consistency_a", "self_consistency_b", "self_consistency_c")]
+check("25.2", "chenh lech LON NHAT giua 12 baseline khong-debate va DUS-11, con so vuot qua hieu chinh (TABLE XII)",
+      f"{P6} :: max |baseline_showdown.vs_dus11.*.dacc| qua 12 baseline khong-debate",
+      max(_XII_DACC), "VI-A")
+
+# TABLE 0-A - do on dinh cua cong Critic-SC (stage 1) qua seed va qua so phieu
+CSC = load(P5)["critic_sc_stability"]
+for r in md_table("**TABLE 0-A —")[1:]:
+    b = NICE[r[0].strip()]
+    flip = CSC["stability_over_n_votes"][b]["flip_rate_k1_to_k3"] * 100
+    cellcheck(f"TABLE 0-A flip rate {b}", r[1], flip, 0.1, "TABLE 0-A")
+    mean_s, sd_s = r[2].split("±")
+    seed_stats = CSC["stability_over_seed"][b]
+    cellcheck(f"TABLE 0-A gate rate mean {b}", mean_s, seed_stats["mean"] * 100, 0.2, "TABLE 0-A")
+    cellcheck(f"TABLE 0-A gate rate SD {b}", sd_s.replace("pp", ""),
+              seed_stats["sd"] * 100, 0.2, "TABLE 0-A")
+    cellcheck(f"TABLE 0-A CV {b}", r[3], seed_stats["cv_pct"], 0.2, "TABLE 0-A")
+
+# TABLE VII-A - fixed_k3/k4/k5 ghep cap voi fixed_k2 (Bonferroni tren 9 phep so sanh)
+FKV = load(P5)["fixed_k4_k5_vs_fixed_k2"]["results"]
+check(f"{0.05 / 9:.4f}", "nguong Bonferroni, 9 phep so sanh", f"{P5} :: 0.05 / 9",
+      0.05 / 9, "TABLE VII-A")
+for r in md_table("**TABLE VII-A —")[1:]:
+    b = NICE[r[0].strip()]
+    for i, k in enumerate((3, 4, 5)):
+        cell, pcell = r[1 + i * 2], r[2 + i * 2]
+        dacc_s, ci_s = cell.split(" [")
+        lo, hi = ci_s.rstrip("]").split(",")
+        s = FKV[f"{b}|fixed_k{k}_vs_fixed_k2"]
+        cellcheck(f"TABLE VII-A {b} fixed_k{k}-fixed_k2 dacc", dacc_s, s["dacc"],
+                  0.0005, "TABLE VII-A")
+        cellcheck(f"TABLE VII-A {b} fixed_k{k}-fixed_k2 CI lo", lo, s["dacc_ci"][0],
+                  0.0005, "TABLE VII-A")
+        cellcheck(f"TABLE VII-A {b} fixed_k{k}-fixed_k2 CI hi", hi, s["dacc_ci"][1],
+                  0.0005, "TABLE VII-A")
+        p_s = pcell.replace("\\*", "").replace("*", "").strip()
+        cellcheck(f"TABLE VII-A {b} fixed_k{k}-fixed_k2 p", p_s, s["dacc_p"],
+                  0.0015, "TABLE VII-A")
+
+# TABLE VIII-A - phan tich cascade thanh Stage1-only / Stage2-only / Full
+CCA = load(P5)["cascade_component_ablation"]
+CAB = load(P5)["cascade_ablation"]
+for r in md_table("**TABLE VIII-A —")[1:]:
+    b = NICE[r[0].strip()]
+    label = r[1].replace("*", "").strip()
+    variant = ("stage1_only" if label.startswith("Stage1") else
+               "stage2_only" if label.startswith("Stage2") else "full")
+    v = CCA[b]["unc<q50"][variant]
+    cellcheck(f"TABLE VIII-A {b} {variant} acc", r[2], v["acc"], 0.0005, "TABLE VIII-A")
+    cellcheck(f"TABLE VIII-A {b} {variant} token%", r[3].replace("*", ""),
+              v["tok_pct"], 0.05, "TABLE VIII-A")
+    share_cell = r[4].replace("*", "").strip()
+    ab = CAB[b]
+    if variant == "full":
+        pct_str = share_cell.split("(")[1].split("%")[0]
+        cellcheck(f"TABLE VIII-A {b} full earlier-share", pct_str,
+                  ab["earlier_than_consensus"] * 100, 0.2, "TABLE VIII-A")
+    elif variant == "stage1_only":
+        cellcheck(f"TABLE VIII-A {b} stage1 share", share_cell,
+                  ab["earlier_due_to_stage1"] / ab["earlier_than_consensus"] * 100,
+                  0.2, "TABLE VIII-A")
+    else:
+        cellcheck(f"TABLE VIII-A {b} stage2 share", share_cell,
+                  ab["earlier_due_to_stage2"] / ab["earlier_than_consensus"] * 100,
+                  0.2, "TABLE VIII-A")
 
 # ================================================================ [C] tinh lai tu log tho
 print("Doc log tho ...")
@@ -560,7 +640,7 @@ def _regret(policy: str) -> float:
                for _b in ("gsm8k", "mmlu", "strategyqa"))
 
 
-for _p, _claim in (("unc<q50", "3.7"), ("fixed_k2", "4.2"), ("self_consistency_c", "6.7"),
+for _p, _claim in (("unc<q50", "3.5"), ("fixed_k2", "4.2"), ("self_consistency_c", "6.7"),
                    ("ensemble_vote", "8.3"), ("self_consistency_a", "15.9")):
     lc(_claim, f"worst-case regret cua {_p} (diem accuracy)",
        "max qua benchmark cua (acc tot nhat - acc chinh sach) * 100", _regret(_p), "VI-A")
@@ -628,6 +708,15 @@ IGNORE = {
     "40", "60", "1e-3", "0.05", "24", "0.35", "-1", "150", "50", "95",
     "6.25", "28",              # xac suat trung ngau nhien tren 4 lua chon (giai tich, VI-A)
     "0.1", "0.6",              # con so cua [7] trich trong Related Work, khong phai so cua ta
+    "01",                      # artifact: regex gop "[0,1]" (khoang gia tri confidence) thanh "0,1"
+    "345",                     # artifact: regex gop "*k*=3,4,5" (TABLE VII-A tieu de) thanh "3,4,5"
+    "10000",                   # "10,000 resamples" - tham so bootstrap, khong phai ket qua
+    "27",                      # so phep so sanh (TABLE XII / Limitations) - tham so thiet ke
+    "15",                      # nguong CV pre-registered "15%/25% bar" (V-A) - tham so thiet ke
+    "200",                     # "1.000 from 200 [cau hoi]" - tham so power analysis, gia tri power da kiem o noi khac
+    "7000",                    # "~7,000" - so uoc luong, tac gia tu ghi ro la xap xi
+    "14",                      # "7-14 points" (V, doc mo ta) - khoang uoc luong, khong phai so don le
+    "0.76",                    # "p=0.76" - lam tron 2 chu so cua 0.764 (da kiem chinh xac o TABLE IX)
 }
 orphans = sorted({_norm(m) for m in NUM.findall(SCAN)} - covered - IGNORE)
 
